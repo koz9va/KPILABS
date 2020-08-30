@@ -13,8 +13,6 @@ public class Main {
     private static double betta;
     private static double U0;
 
-
-
     public static void main(String[] args) {
         if (args.length == 7) {
 
@@ -96,3 +94,7 @@ public class Main {
         }
     }
 }
+
+
+
+//100 строчка
