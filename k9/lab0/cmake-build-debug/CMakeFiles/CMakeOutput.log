@@ -1,0 +1,225 @@
+The system is: Linux - 5.6.19-2-MANJARO - x86_64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: /home/serafim/.linuxbrew/bin/cc 
+Build flags: 
+Id flags:  
+
+The output was:
+0
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
+
+The C compiler identification is GNU, found in "/home/serafim/Documents/KPI/labs/k9/lab0/cmake-build-debug/CMakeFiles/3.17.3/CompilerIdC/a.out"
+
+Determining if the C compiler works passed with the following output:
+Change Dir: /home/serafim/Documents/KPI/labs/k9/lab0/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_5b43c/fast && /usr/bin/make  -f CMakeFiles/cmTC_5b43c.dir/build.make CMakeFiles/cmTC_5b43c.dir/build
+make[1]: Entering directory '/home/serafim/Documents/KPI/labs/k9/lab0/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_5b43c.dir/testCCompiler.c.o
+/home/serafim/.linuxbrew/bin/cc    -o CMakeFiles/cmTC_5b43c.dir/testCCompiler.c.o   -c /home/serafim/Documents/KPI/labs/k9/lab0/cmake-build-debug/CMakeFiles/CMakeTmp/testCCompiler.c
+Linking C executable cmTC_5b43c
+/home/serafim/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/202.6397.106/bin/cmake/linux/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5b43c.dir/link.txt --verbose=1
+/home/serafim/.linuxbrew/bin/cc      CMakeFiles/cmTC_5b43c.dir/testCCompiler.c.o  -o cmTC_5b43c 
+make[1]: Leaving directory '/home/serafim/Documents/KPI/labs/k9/lab0/cmake-build-debug/CMakeFiles/CMakeTmp'
+
+
+
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: /home/serafim/Documents/KPI/labs/k9/lab0/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/make cmTC_8505e/fast && /usr/bin/make  -f CMakeFiles/cmTC_8505e.dir/build.make CMakeFiles/cmTC_8505e.dir/build
+make[1]: Entering directory '/home/serafim/Documents/KPI/labs/k9/lab0/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_8505e.dir/CMakeCCompilerABI.c.o
+/home/serafim/.linuxbrew/bin/cc   -v -o CMakeFiles/cmTC_8505e.dir/CMakeCCompilerABI.c.o   -c /home/serafim/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/202.6397.106/bin/cmake/linux/share/cmake-3.17/Modules/CMakeCCompilerABI.c
+Reading specs from /home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/specs
+COLLECT_GCC=/home/serafim/.linuxbrew/bin/cc
+Target: x86_64-unknown-linux-gnu
+Configured with: ../configure --prefix=/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_7 --disable-nls --enable-checking=release --enable-languages=c,c++,objc,obj-c++,fortran --program-suffix=-5 --with-gmp=/home/linuxbrew/.linuxbrew/opt/gmp --with-mpfr=/home/linuxbrew/.linuxbrew/opt/mpfr --with-mpc=/home/linuxbrew/.linuxbrew/opt/libmpc --with-pkgversion='Homebrew GCC 5.5.0_7' --with-isl=/home/linuxbrew/.linuxbrew/opt/isl@0.18 --with-bugurl=https://github.com/Homebrew/linuxbrew-core/issues --with-boot-ldflags='-static-libstdc++ -static-libgcc ' --disable-multilib
+Thread model: posix
+gcc version 5.5.0 (Homebrew GCC 5.5.0_7) 
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_8505e.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64'
+ /home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../libexec/gcc/x86_64-unknown-linux-gnu/5.5.0/cc1 -quiet -v -imultiarch x86_64-linux-gnu -iprefix /home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/ /home/serafim/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/202.6397.106/bin/cmake/linux/share/cmake-3.17/Modules/CMakeCCompilerABI.c -isysroot /home/serafim/.linuxbrew/nonexistent -idirafter /home/serafim/.linuxbrew/include -idirafter /usr/include/x86_64-linux-gnu -idirafter /usr/include -quiet -dumpbase CMakeCCompilerABI.c -mtune=generic -march=x86-64 -auxbase-strip CMakeFiles/cmTC_8505e.dir/CMakeCCompilerABI.c.o -version -o /tmp/ccLI6wgO.s
+GNU C11 (Homebrew GCC 5.5.0_7) version 5.5.0 (x86_64-unknown-linux-gnu)
+	compiled by GNU C version 5.5.0, GMP version 6.1.2, MPFR version 4.0.2, MPC version 1.1.0
+warning: GMP header version 6.1.2 differs from library version 6.2.0.
+warning: MPFR header version 4.0.2 differs from library version 4.1.0.
+GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+ignoring nonexistent directory "/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/../../../../x86_64-unknown-linux-gnu/include"
+ignoring duplicate directory "/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/../../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/include"
+ignoring nonexistent directory "/home/serafim/.linuxbrew/nonexistent/usr/local/include/x86_64-linux-gnu"
+ignoring nonexistent directory "/home/serafim/.linuxbrew/nonexistent/usr/local/include"
+ignoring duplicate directory "/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/../../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/include-fixed"
+ignoring nonexistent directory "/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/../../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/../../../../x86_64-unknown-linux-gnu/include"
+ignoring nonexistent directory "/home/serafim/.linuxbrew/nonexistent/usr/include/x86_64-linux-gnu"
+ignoring nonexistent directory "/home/serafim/.linuxbrew/nonexistent/usr/include"
+ignoring nonexistent directory "/usr/include/x86_64-linux-gnu"
+#include "..." search starts here:
+#include <...> search starts here:
+ /home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/include
+ /home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/include-fixed
+ /home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/../../include
+ /home/serafim/.linuxbrew/include
+ /usr/include
+End of search list.
+GNU C11 (Homebrew GCC 5.5.0_7) version 5.5.0 (x86_64-unknown-linux-gnu)
+	compiled by GNU C version 5.5.0, GMP version 6.1.2, MPFR version 4.0.2, MPC version 1.1.0
+warning: GMP header version 6.1.2 differs from library version 6.2.0.
+warning: MPFR header version 4.0.2 differs from library version 4.1.0.
+GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+Compiler executable checksum: dd2098097044f004c3fa9906302a33dd
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_8505e.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64'
+ as -v --64 -o CMakeFiles/cmTC_8505e.dir/CMakeCCompilerABI.c.o /tmp/ccLI6wgO.s
+GNU assembler version 2.34 (x86_64-pc-linux-gnu) using BFD version (GNU Binutils) 2.34
+COMPILER_PATH=/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../libexec/gcc/x86_64-unknown-linux-gnu/5.5.0/:/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../libexec/gcc/
+LIBRARY_PATH=/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/:/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/:/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/../../../:/lib/:/usr/lib/
+COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_8505e.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64'
+Linking C executable cmTC_8505e
+/home/serafim/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/202.6397.106/bin/cmake/linux/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8505e.dir/link.txt --verbose=1
+/home/serafim/.linuxbrew/bin/cc     -v CMakeFiles/cmTC_8505e.dir/CMakeCCompilerABI.c.o  -o cmTC_8505e 
+Reading specs from /home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/specs
+COLLECT_GCC=/home/serafim/.linuxbrew/bin/cc
+COLLECT_LTO_WRAPPER=/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../libexec/gcc/x86_64-unknown-linux-gnu/5.5.0/lto-wrapper
+Target: x86_64-unknown-linux-gnu
+Configured with: ../configure --prefix=/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_7 --disable-nls --enable-checking=release --enable-languages=c,c++,objc,obj-c++,fortran --program-suffix=-5 --with-gmp=/home/linuxbrew/.linuxbrew/opt/gmp --with-mpfr=/home/linuxbrew/.linuxbrew/opt/mpfr --with-mpc=/home/linuxbrew/.linuxbrew/opt/libmpc --with-pkgversion='Homebrew GCC 5.5.0_7' --with-isl=/home/linuxbrew/.linuxbrew/opt/isl@0.18 --with-bugurl=https://github.com/Homebrew/linuxbrew-core/issues --with-boot-ldflags='-static-libstdc++ -static-libgcc ' --disable-multilib
+Thread model: posix
+gcc version 5.5.0 (Homebrew GCC 5.5.0_7) 
+COMPILER_PATH=/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../libexec/gcc/x86_64-unknown-linux-gnu/5.5.0/:/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../libexec/gcc/
+LIBRARY_PATH=/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/:/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/:/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/../../../:/lib/:/usr/lib/
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_8505e' '-mtune=generic' '-march=x86-64'
+ /home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../libexec/gcc/x86_64-unknown-linux-gnu/5.5.0/collect2 -plugin /home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../libexec/gcc/x86_64-unknown-linux-gnu/5.5.0/liblto_plugin.so -plugin-opt=/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../libexec/gcc/x86_64-unknown-linux-gnu/5.5.0/lto-wrapper -plugin-opt=-fresolution=/tmp/ccjUXXhc.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 --dynamic-linker /home/serafim/.linuxbrew/lib/ld.so -rpath /home/serafim/.linuxbrew/lib -o cmTC_8505e /home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/crt1.o /home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/crti.o /home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/crtbegin.o -L/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0 -L/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc -L/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/../../.. -L/home/serafim/.linuxbrew/lib CMakeFiles/cmTC_8505e.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/crtend.o /home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/crtn.o
+make[1]: Leaving directory '/home/serafim/Documents/KPI/labs/k9/lab0/cmake-build-debug/CMakeFiles/CMakeTmp'
+
+
+
+Parsed C implicit include dir info from above output: rv=done
+  found start of include info
+  found start of implicit include info
+    add: [/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/include]
+    add: [/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/include-fixed]
+    add: [/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/../../include]
+    add: [/home/serafim/.linuxbrew/include]
+    add: [/usr/include]
+  end of search list found
+  collapse include dir [/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/include] ==> [/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/lib/gcc/x86_64-unknown-linux-gnu/5.5.0/include]
+  collapse include dir [/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/include-fixed] ==> [/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/lib/gcc/x86_64-unknown-linux-gnu/5.5.0/include-fixed]
+  collapse include dir [/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/../../include] ==> [/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/include]
+  collapse include dir [/home/serafim/.linuxbrew/include] ==> [/home/serafim/.linuxbrew/include]
+  collapse include dir [/usr/include] ==> [/usr/include]
+  implicit include dirs: [/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/lib/gcc/x86_64-unknown-linux-gnu/5.5.0/include;/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/lib/gcc/x86_64-unknown-linux-gnu/5.5.0/include-fixed;/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/include;/home/serafim/.linuxbrew/include;/usr/include]
+
+
+Parsed C implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /home/serafim/Documents/KPI/labs/k9/lab0/cmake-build-debug/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command(s):/usr/bin/make cmTC_8505e/fast && /usr/bin/make  -f CMakeFiles/cmTC_8505e.dir/build.make CMakeFiles/cmTC_8505e.dir/build]
+  ignore line: [make[1]: Entering directory '/home/serafim/Documents/KPI/labs/k9/lab0/cmake-build-debug/CMakeFiles/CMakeTmp']
+  ignore line: [Building C object CMakeFiles/cmTC_8505e.dir/CMakeCCompilerABI.c.o]
+  ignore line: [/home/serafim/.linuxbrew/bin/cc   -v -o CMakeFiles/cmTC_8505e.dir/CMakeCCompilerABI.c.o   -c /home/serafim/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/202.6397.106/bin/cmake/linux/share/cmake-3.17/Modules/CMakeCCompilerABI.c]
+  ignore line: [Reading specs from /home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/specs]
+  ignore line: [COLLECT_GCC=/home/serafim/.linuxbrew/bin/cc]
+  ignore line: [Target: x86_64-unknown-linux-gnu]
+  ignore line: [Configured with: ../configure --prefix=/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_7 --disable-nls --enable-checking=release --enable-languages=c,c++,objc,obj-c++,fortran --program-suffix=-5 --with-gmp=/home/linuxbrew/.linuxbrew/opt/gmp --with-mpfr=/home/linuxbrew/.linuxbrew/opt/mpfr --with-mpc=/home/linuxbrew/.linuxbrew/opt/libmpc --with-pkgversion='Homebrew GCC 5.5.0_7' --with-isl=/home/linuxbrew/.linuxbrew/opt/isl@0.18 --with-bugurl=https://github.com/Homebrew/linuxbrew-core/issues --with-boot-ldflags='-static-libstdc++ -static-libgcc ' --disable-multilib]
+  ignore line: [Thread model: posix]
+  ignore line: [gcc version 5.5.0 (Homebrew GCC 5.5.0_7) ]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_8505e.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64']
+  ignore line: [ /home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../libexec/gcc/x86_64-unknown-linux-gnu/5.5.0/cc1 -quiet -v -imultiarch x86_64-linux-gnu -iprefix /home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/ /home/serafim/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/202.6397.106/bin/cmake/linux/share/cmake-3.17/Modules/CMakeCCompilerABI.c -isysroot /home/serafim/.linuxbrew/nonexistent -idirafter /home/serafim/.linuxbrew/include -idirafter /usr/include/x86_64-linux-gnu -idirafter /usr/include -quiet -dumpbase CMakeCCompilerABI.c -mtune=generic -march=x86-64 -auxbase-strip CMakeFiles/cmTC_8505e.dir/CMakeCCompilerABI.c.o -version -o /tmp/ccLI6wgO.s]
+  ignore line: [GNU C11 (Homebrew GCC 5.5.0_7) version 5.5.0 (x86_64-unknown-linux-gnu)]
+  ignore line: [	compiled by GNU C version 5.5.0  GMP version 6.1.2  MPFR version 4.0.2  MPC version 1.1.0]
+  ignore line: [warning: GMP header version 6.1.2 differs from library version 6.2.0.]
+  ignore line: [warning: MPFR header version 4.0.2 differs from library version 4.1.0.]
+  ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+  ignore line: [ignoring nonexistent directory "/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/../../../../x86_64-unknown-linux-gnu/include"]
+  ignore line: [ignoring duplicate directory "/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/../../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/include"]
+  ignore line: [ignoring nonexistent directory "/home/serafim/.linuxbrew/nonexistent/usr/local/include/x86_64-linux-gnu"]
+  ignore line: [ignoring nonexistent directory "/home/serafim/.linuxbrew/nonexistent/usr/local/include"]
+  ignore line: [ignoring duplicate directory "/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/../../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/include-fixed"]
+  ignore line: [ignoring nonexistent directory "/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/../../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/../../../../x86_64-unknown-linux-gnu/include"]
+  ignore line: [ignoring nonexistent directory "/home/serafim/.linuxbrew/nonexistent/usr/include/x86_64-linux-gnu"]
+  ignore line: [ignoring nonexistent directory "/home/serafim/.linuxbrew/nonexistent/usr/include"]
+  ignore line: [ignoring nonexistent directory "/usr/include/x86_64-linux-gnu"]
+  ignore line: [#include "..." search starts here:]
+  ignore line: [#include <...> search starts here:]
+  ignore line: [ /home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/include]
+  ignore line: [ /home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/include-fixed]
+  ignore line: [ /home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/../../include]
+  ignore line: [ /home/serafim/.linuxbrew/include]
+  ignore line: [ /usr/include]
+  ignore line: [End of search list.]
+  ignore line: [GNU C11 (Homebrew GCC 5.5.0_7) version 5.5.0 (x86_64-unknown-linux-gnu)]
+  ignore line: [	compiled by GNU C version 5.5.0  GMP version 6.1.2  MPFR version 4.0.2  MPC version 1.1.0]
+  ignore line: [warning: GMP header version 6.1.2 differs from library version 6.2.0.]
+  ignore line: [warning: MPFR header version 4.0.2 differs from library version 4.1.0.]
+  ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
+  ignore line: [Compiler executable checksum: dd2098097044f004c3fa9906302a33dd]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_8505e.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64']
+  ignore line: [ as -v --64 -o CMakeFiles/cmTC_8505e.dir/CMakeCCompilerABI.c.o /tmp/ccLI6wgO.s]
+  ignore line: [GNU assembler version 2.34 (x86_64-pc-linux-gnu) using BFD version (GNU Binutils) 2.34]
+  ignore line: [COMPILER_PATH=/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../libexec/gcc/x86_64-unknown-linux-gnu/5.5.0/:/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../libexec/gcc/]
+  ignore line: [LIBRARY_PATH=/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/:/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/:/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/../../../:/lib/:/usr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_8505e.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64']
+  ignore line: [Linking C executable cmTC_8505e]
+  ignore line: [/home/serafim/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/202.6397.106/bin/cmake/linux/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8505e.dir/link.txt --verbose=1]
+  ignore line: [/home/serafim/.linuxbrew/bin/cc     -v CMakeFiles/cmTC_8505e.dir/CMakeCCompilerABI.c.o  -o cmTC_8505e ]
+  ignore line: [Reading specs from /home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/specs]
+  ignore line: [COLLECT_GCC=/home/serafim/.linuxbrew/bin/cc]
+  ignore line: [COLLECT_LTO_WRAPPER=/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../libexec/gcc/x86_64-unknown-linux-gnu/5.5.0/lto-wrapper]
+  ignore line: [Target: x86_64-unknown-linux-gnu]
+  ignore line: [Configured with: ../configure --prefix=/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_7 --disable-nls --enable-checking=release --enable-languages=c,c++,objc,obj-c++,fortran --program-suffix=-5 --with-gmp=/home/linuxbrew/.linuxbrew/opt/gmp --with-mpfr=/home/linuxbrew/.linuxbrew/opt/mpfr --with-mpc=/home/linuxbrew/.linuxbrew/opt/libmpc --with-pkgversion='Homebrew GCC 5.5.0_7' --with-isl=/home/linuxbrew/.linuxbrew/opt/isl@0.18 --with-bugurl=https://github.com/Homebrew/linuxbrew-core/issues --with-boot-ldflags='-static-libstdc++ -static-libgcc ' --disable-multilib]
+  ignore line: [Thread model: posix]
+  ignore line: [gcc version 5.5.0 (Homebrew GCC 5.5.0_7) ]
+  ignore line: [COMPILER_PATH=/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../libexec/gcc/x86_64-unknown-linux-gnu/5.5.0/:/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../libexec/gcc/]
+  ignore line: [LIBRARY_PATH=/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/:/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/:/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/../../../:/lib/:/usr/lib/]
+  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_8505e' '-mtune=generic' '-march=x86-64']
+  link line: [ /home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../libexec/gcc/x86_64-unknown-linux-gnu/5.5.0/collect2 -plugin /home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../libexec/gcc/x86_64-unknown-linux-gnu/5.5.0/liblto_plugin.so -plugin-opt=/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../libexec/gcc/x86_64-unknown-linux-gnu/5.5.0/lto-wrapper -plugin-opt=-fresolution=/tmp/ccjUXXhc.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 --dynamic-linker /home/serafim/.linuxbrew/lib/ld.so -rpath /home/serafim/.linuxbrew/lib -o cmTC_8505e /home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/crt1.o /home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/crti.o /home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/crtbegin.o -L/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0 -L/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc -L/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/../../.. -L/home/serafim/.linuxbrew/lib CMakeFiles/cmTC_8505e.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/crtend.o /home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/crtn.o]
+    arg [/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../libexec/gcc/x86_64-unknown-linux-gnu/5.5.0/collect2] ==> ignore
+    arg [-plugin] ==> ignore
+    arg [/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../libexec/gcc/x86_64-unknown-linux-gnu/5.5.0/liblto_plugin.so] ==> ignore
+    arg [-plugin-opt=/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../libexec/gcc/x86_64-unknown-linux-gnu/5.5.0/lto-wrapper] ==> ignore
+    arg [-plugin-opt=-fresolution=/tmp/ccjUXXhc.res] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+    arg [-plugin-opt=-pass-through=-lc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
+    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
+    arg [--eh-frame-hdr] ==> ignore
+    arg [-m] ==> ignore
+    arg [elf_x86_64] ==> ignore
+    arg [-dynamic-linker] ==> ignore
+    arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
+    arg [--dynamic-linker] ==> ignore
+    arg [/home/serafim/.linuxbrew/lib/ld.so] ==> ignore
+    arg [-rpath] ==> ignore
+    arg [/home/serafim/.linuxbrew/lib] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTC_8505e] ==> ignore
+    arg [/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/crt1.o] ==> ignore
+    arg [/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/crti.o] ==> ignore
+    arg [/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/crtbegin.o] ==> ignore
+    arg [-L/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0] ==> dir [/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0]
+    arg [-L/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc] ==> dir [/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc]
+    arg [-L/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/../../..] ==> dir [/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/../../..]
+    arg [-L/home/serafim/.linuxbrew/lib] ==> dir [/home/serafim/.linuxbrew/lib]
+    arg [CMakeFiles/cmTC_8505e.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [-lgcc] ==> lib [gcc]
+    arg [--as-needed] ==> ignore
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [--no-as-needed] ==> ignore
+    arg [-lc] ==> lib [c]
+    arg [-lgcc] ==> lib [gcc]
+    arg [--as-needed] ==> ignore
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [--no-as-needed] ==> ignore
+    arg [/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/crtend.o] ==> ignore
+    arg [/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/crtn.o] ==> ignore
+  collapse library dir [/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0] ==> [/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/lib/gcc/x86_64-unknown-linux-gnu/5.5.0]
+  collapse library dir [/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc] ==> [/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/lib/gcc]
+  collapse library dir [/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/../../..] ==> [/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/lib]
+  collapse library dir [/home/serafim/.linuxbrew/lib] ==> [/home/serafim/.linuxbrew/lib]
+  implicit libs: [gcc;gcc_s;c;gcc;gcc_s]
+  implicit dirs: [/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/lib/gcc/x86_64-unknown-linux-gnu/5.5.0;/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/lib/gcc;/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/lib;/home/serafim/.linuxbrew/lib]
+  implicit fwks: []
+
+
