@@ -55,7 +55,7 @@ public class Main {
                 }
 
                 try(BufferedWriter writer = new BufferedWriter(new FileWriter(CurrentFileName))) {
-                    MathContext context = new MathContext(4, RoundingMode.UP);
+                    MathContext context = new MathContext(4, RoundingMode.HALF_UP);
                     for (double arrayOfUg : arrayOfUgs) {
                         for (double arrayOfUd : arrayOfUds) {
                             writer.write(new BigDecimal(getCurrent(arrayOfUg, arrayOfUd), context)  + " ");
@@ -94,8 +94,3 @@ public class Main {
         }
     }
 }
-
-
-
-//100 строчка
-//101 строчка
