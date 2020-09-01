@@ -3,6 +3,7 @@ package lab2;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
@@ -34,7 +35,12 @@ public class Main {
                 }
             }
 
+            double[][] soulution = interp(arrayOfCurrent, arrayOfUds);
 
+            for (double[] i:
+            soulution){
+                System.out.println(Arrays.toString(i));
+            }
 
         }
         catch (IOException ignored) {
@@ -43,6 +49,35 @@ public class Main {
 
     }
 
-    private
+    private static double[][] interp (double[][] matrix, double[] arrayOfXiXj){
+        double[] arrayOfX = new double[arrayOfXiXj.length - 1];
+        for (int i = 0; i < arrayOfXiXj.length - 1; i++) {
+            arrayOfX[i] = (arrayOfXiXj[i] + arrayOfXiXj[i + 1]) / 2;
+        }
+
+        //int HorizontalLen = arrayOfX.length + arrayOfXiXj.length;
+        double[][] response = new double[lab1.Main.UgsLengthOfArray][arrayOfX.length];
+
+        for (int i = 0; i < response.length; i++) {
+            for (int j = 0; j < arrayOfX.length; j++) {
+                double sum = 0;
+
+                for (int k = 1; k < arrayOfXiXj.length; k++) {
+                    double product = matrix[i][k];
+
+                    for (int l = 1; l < arrayOfXiXj.length; l++) {
+                        if (l != k){
+                            product *= (arrayOfX[j] - arrayOfXiXj[l]) / (arrayOfXiXj[k] - arrayOfXiXj[l]);
+                        }
+                    }
+
+                    sum += product;
+                }
+
+                response[i][j] = sum;
+            }
+        }
+        return response;
+    }
 
 }
