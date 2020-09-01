@@ -6,8 +6,8 @@ import java.math.MathContext;
 import java.math.RoundingMode;
 
 public class Main {
-    private final static int UgsLengthOfArray = 3;
-    private final static int UdsLengthOfArray = 7;
+    public final static int UgsLengthOfArray = 3;
+    public final static int UdsLengthOfArray = 7;
 
     private static double g22;
     private static double betta;
