@@ -1,6 +1,6 @@
-The system is: Linux - 5.6.19-2-MANJARO - x86_64
+The system is: Darwin - 19.6.0 - x86_64
 Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
-Compiler: /home/serafim/.linuxbrew/bin/cc 
+Compiler: /Library/Developer/CommandLineTools/usr/bin/cc 
 Build flags: 
 Id flags:  
 
@@ -10,216 +10,133 @@ The output was:
 
 Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.out"
 
-The C compiler identification is GNU, found in "/home/serafim/Documents/KPI/labs/k9/lab0/cmake-build-debug/CMakeFiles/3.17.3/CompilerIdC/a.out"
+The C compiler identification is AppleClang, found in "/Users/serafimgoncarov/Documents/KPILABS/k9/lab0/cmake-build-debug/CMakeFiles/3.17.3/CompilerIdC/a.out"
 
 Determining if the C compiler works passed with the following output:
-Change Dir: /home/serafim/Documents/KPI/labs/k9/lab0/cmake-build-debug/CMakeFiles/CMakeTmp
+Change Dir: /Users/serafimgoncarov/Documents/KPILABS/k9/lab0/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make cmTC_5b43c/fast && /usr/bin/make  -f CMakeFiles/cmTC_5b43c.dir/build.make CMakeFiles/cmTC_5b43c.dir/build
-make[1]: Entering directory '/home/serafim/Documents/KPI/labs/k9/lab0/cmake-build-debug/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_5b43c.dir/testCCompiler.c.o
-/home/serafim/.linuxbrew/bin/cc    -o CMakeFiles/cmTC_5b43c.dir/testCCompiler.c.o   -c /home/serafim/Documents/KPI/labs/k9/lab0/cmake-build-debug/CMakeFiles/CMakeTmp/testCCompiler.c
-Linking C executable cmTC_5b43c
-/home/serafim/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/202.6397.106/bin/cmake/linux/bin/cmake -E cmake_link_script CMakeFiles/cmTC_5b43c.dir/link.txt --verbose=1
-/home/serafim/.linuxbrew/bin/cc      CMakeFiles/cmTC_5b43c.dir/testCCompiler.c.o  -o cmTC_5b43c 
-make[1]: Leaving directory '/home/serafim/Documents/KPI/labs/k9/lab0/cmake-build-debug/CMakeFiles/CMakeTmp'
+Run Build Command(s):/usr/bin/make cmTC_70556/fast && /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/cmTC_70556.dir/build.make CMakeFiles/cmTC_70556.dir/build
+Building C object CMakeFiles/cmTC_70556.dir/testCCompiler.c.o
+/Library/Developer/CommandLineTools/usr/bin/cc   -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk   -o CMakeFiles/cmTC_70556.dir/testCCompiler.c.o   -c /Users/serafimgoncarov/Documents/KPILABS/k9/lab0/cmake-build-debug/CMakeFiles/CMakeTmp/testCCompiler.c
+Linking C executable cmTC_70556
+"/Users/serafimgoncarov/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/202.6397.106/CLion.app/Contents/bin/cmake/mac/bin/cmake" -E cmake_link_script CMakeFiles/cmTC_70556.dir/link.txt --verbose=1
+/Library/Developer/CommandLineTools/usr/bin/cc   -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/cmTC_70556.dir/testCCompiler.c.o  -o cmTC_70556 
 
 
 
 Detecting C compiler ABI info compiled with the following output:
-Change Dir: /home/serafim/Documents/KPI/labs/k9/lab0/cmake-build-debug/CMakeFiles/CMakeTmp
+Change Dir: /Users/serafimgoncarov/Documents/KPILABS/k9/lab0/cmake-build-debug/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make cmTC_8505e/fast && /usr/bin/make  -f CMakeFiles/cmTC_8505e.dir/build.make CMakeFiles/cmTC_8505e.dir/build
-make[1]: Entering directory '/home/serafim/Documents/KPI/labs/k9/lab0/cmake-build-debug/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_8505e.dir/CMakeCCompilerABI.c.o
-/home/serafim/.linuxbrew/bin/cc   -v -o CMakeFiles/cmTC_8505e.dir/CMakeCCompilerABI.c.o   -c /home/serafim/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/202.6397.106/bin/cmake/linux/share/cmake-3.17/Modules/CMakeCCompilerABI.c
-Reading specs from /home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/specs
-COLLECT_GCC=/home/serafim/.linuxbrew/bin/cc
-Target: x86_64-unknown-linux-gnu
-Configured with: ../configure --prefix=/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_7 --disable-nls --enable-checking=release --enable-languages=c,c++,objc,obj-c++,fortran --program-suffix=-5 --with-gmp=/home/linuxbrew/.linuxbrew/opt/gmp --with-mpfr=/home/linuxbrew/.linuxbrew/opt/mpfr --with-mpc=/home/linuxbrew/.linuxbrew/opt/libmpc --with-pkgversion='Homebrew GCC 5.5.0_7' --with-isl=/home/linuxbrew/.linuxbrew/opt/isl@0.18 --with-bugurl=https://github.com/Homebrew/linuxbrew-core/issues --with-boot-ldflags='-static-libstdc++ -static-libgcc ' --disable-multilib
+Run Build Command(s):/usr/bin/make cmTC_88bda/fast && /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/cmTC_88bda.dir/build.make CMakeFiles/cmTC_88bda.dir/build
+Building C object CMakeFiles/cmTC_88bda.dir/CMakeCCompilerABI.c.o
+/Library/Developer/CommandLineTools/usr/bin/cc   -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk   -v -Wl,-v -o CMakeFiles/cmTC_88bda.dir/CMakeCCompilerABI.c.o   -c "/Users/serafimgoncarov/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/202.6397.106/CLion.app/Contents/bin/cmake/mac/share/cmake-3.17/Modules/CMakeCCompilerABI.c"
+Apple clang version 12.0.0 (clang-1200.0.26.2)
+Target: x86_64-apple-darwin19.6.0
 Thread model: posix
-gcc version 5.5.0 (Homebrew GCC 5.5.0_7) 
-COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_8505e.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64'
- /home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../libexec/gcc/x86_64-unknown-linux-gnu/5.5.0/cc1 -quiet -v -imultiarch x86_64-linux-gnu -iprefix /home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/ /home/serafim/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/202.6397.106/bin/cmake/linux/share/cmake-3.17/Modules/CMakeCCompilerABI.c -isysroot /home/serafim/.linuxbrew/nonexistent -idirafter /home/serafim/.linuxbrew/include -idirafter /usr/include/x86_64-linux-gnu -idirafter /usr/include -quiet -dumpbase CMakeCCompilerABI.c -mtune=generic -march=x86-64 -auxbase-strip CMakeFiles/cmTC_8505e.dir/CMakeCCompilerABI.c.o -version -o /tmp/ccLI6wgO.s
-GNU C11 (Homebrew GCC 5.5.0_7) version 5.5.0 (x86_64-unknown-linux-gnu)
-	compiled by GNU C version 5.5.0, GMP version 6.1.2, MPFR version 4.0.2, MPC version 1.1.0
-warning: GMP header version 6.1.2 differs from library version 6.2.0.
-warning: MPFR header version 4.0.2 differs from library version 4.1.0.
-GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
-ignoring nonexistent directory "/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/../../../../x86_64-unknown-linux-gnu/include"
-ignoring duplicate directory "/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/../../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/include"
-ignoring nonexistent directory "/home/serafim/.linuxbrew/nonexistent/usr/local/include/x86_64-linux-gnu"
-ignoring nonexistent directory "/home/serafim/.linuxbrew/nonexistent/usr/local/include"
-ignoring duplicate directory "/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/../../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/include-fixed"
-ignoring nonexistent directory "/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/../../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/../../../../x86_64-unknown-linux-gnu/include"
-ignoring nonexistent directory "/home/serafim/.linuxbrew/nonexistent/usr/include/x86_64-linux-gnu"
-ignoring nonexistent directory "/home/serafim/.linuxbrew/nonexistent/usr/include"
-ignoring nonexistent directory "/usr/include/x86_64-linux-gnu"
+InstalledDir: /Library/Developer/CommandLineTools/usr/bin
+clang: warning: -Wl,-v: 'linker' input unused [-Wunused-command-line-argument]
+ "/Library/Developer/CommandLineTools/usr/bin/clang" -cc1 -triple x86_64-apple-macosx10.15.0 -Wdeprecated-objc-isa-usage -Werror=deprecated-objc-isa-usage -Werror=implicit-function-declaration -emit-obj -mrelax-all -disable-free -disable-llvm-verifier -discard-value-names -main-file-name CMakeCCompilerABI.c -mrelocation-model pic -pic-level 2 -mthread-model posix -mframe-pointer=all -fno-strict-return -fno-rounding-math -masm-verbose -munwind-tables -target-sdk-version=10.15.6 -target-cpu penryn -dwarf-column-info -debugger-tuning=lldb -target-linker-version 607.2 -v -resource-dir /Library/Developer/CommandLineTools/usr/lib/clang/12.0.0 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -internal-isystem /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/usr/local/include -internal-isystem /Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/include -internal-externc-isystem /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/usr/include -internal-externc-isystem /Library/Developer/CommandLineTools/usr/include -Wno-reorder-init-list -Wno-implicit-int-float-conversion -Wno-c99-designator -Wno-final-dtor-non-final-class -Wno-extra-semi-stmt -Wno-misleading-indentation -Wno-quoted-include-in-framework-header -Wno-implicit-fallthrough -Wno-enum-enum-conversion -Wno-enum-float-conversion -fdebug-compilation-dir /Users/serafimgoncarov/Documents/KPILABS/k9/lab0/cmake-build-debug/CMakeFiles/CMakeTmp -ferror-limit 19 -fmessage-length 0 -stack-protector 1 -fstack-check -mdarwin-stkchk-strong-link -fblocks -fencode-extended-block-signature -fregister-global-dtors-with-atexit -fgnuc-version=4.2.1 -fobjc-runtime=macosx-10.15.0 -fmax-type-align=16 -fdiagnostics-show-option -o CMakeFiles/cmTC_88bda.dir/CMakeCCompilerABI.c.o -x c "/Users/serafimgoncarov/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/202.6397.106/CLion.app/Contents/bin/cmake/mac/share/cmake-3.17/Modules/CMakeCCompilerABI.c"
+clang -cc1 version 12.0.0 (clang-1200.0.26.2) default target x86_64-apple-darwin19.6.0
+ignoring nonexistent directory "/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/usr/local/include"
+ignoring nonexistent directory "/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/Library/Frameworks"
 #include "..." search starts here:
 #include <...> search starts here:
- /home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/include
- /home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/include-fixed
- /home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/../../include
- /home/serafim/.linuxbrew/include
- /usr/include
+ /Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/include
+ /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/usr/include
+ /Library/Developer/CommandLineTools/usr/include
+ /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/System/Library/Frameworks (framework directory)
 End of search list.
-GNU C11 (Homebrew GCC 5.5.0_7) version 5.5.0 (x86_64-unknown-linux-gnu)
-	compiled by GNU C version 5.5.0, GMP version 6.1.2, MPFR version 4.0.2, MPC version 1.1.0
-warning: GMP header version 6.1.2 differs from library version 6.2.0.
-warning: MPFR header version 4.0.2 differs from library version 4.1.0.
-GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
-Compiler executable checksum: dd2098097044f004c3fa9906302a33dd
-COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_8505e.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64'
- as -v --64 -o CMakeFiles/cmTC_8505e.dir/CMakeCCompilerABI.c.o /tmp/ccLI6wgO.s
-GNU assembler version 2.34 (x86_64-pc-linux-gnu) using BFD version (GNU Binutils) 2.34
-COMPILER_PATH=/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../libexec/gcc/x86_64-unknown-linux-gnu/5.5.0/:/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../libexec/gcc/
-LIBRARY_PATH=/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/:/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/:/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/../../../:/lib/:/usr/lib/
-COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_8505e.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64'
-Linking C executable cmTC_8505e
-/home/serafim/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/202.6397.106/bin/cmake/linux/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8505e.dir/link.txt --verbose=1
-/home/serafim/.linuxbrew/bin/cc     -v CMakeFiles/cmTC_8505e.dir/CMakeCCompilerABI.c.o  -o cmTC_8505e 
-Reading specs from /home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/specs
-COLLECT_GCC=/home/serafim/.linuxbrew/bin/cc
-COLLECT_LTO_WRAPPER=/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../libexec/gcc/x86_64-unknown-linux-gnu/5.5.0/lto-wrapper
-Target: x86_64-unknown-linux-gnu
-Configured with: ../configure --prefix=/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_7 --disable-nls --enable-checking=release --enable-languages=c,c++,objc,obj-c++,fortran --program-suffix=-5 --with-gmp=/home/linuxbrew/.linuxbrew/opt/gmp --with-mpfr=/home/linuxbrew/.linuxbrew/opt/mpfr --with-mpc=/home/linuxbrew/.linuxbrew/opt/libmpc --with-pkgversion='Homebrew GCC 5.5.0_7' --with-isl=/home/linuxbrew/.linuxbrew/opt/isl@0.18 --with-bugurl=https://github.com/Homebrew/linuxbrew-core/issues --with-boot-ldflags='-static-libstdc++ -static-libgcc ' --disable-multilib
+Linking C executable cmTC_88bda
+"/Users/serafimgoncarov/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/202.6397.106/CLion.app/Contents/bin/cmake/mac/bin/cmake" -E cmake_link_script CMakeFiles/cmTC_88bda.dir/link.txt --verbose=1
+/Library/Developer/CommandLineTools/usr/bin/cc   -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -Wl,-search_paths_first -Wl,-headerpad_max_install_names  -v -Wl,-v CMakeFiles/cmTC_88bda.dir/CMakeCCompilerABI.c.o  -o cmTC_88bda 
+Apple clang version 12.0.0 (clang-1200.0.26.2)
+Target: x86_64-apple-darwin19.6.0
 Thread model: posix
-gcc version 5.5.0 (Homebrew GCC 5.5.0_7) 
-COMPILER_PATH=/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../libexec/gcc/x86_64-unknown-linux-gnu/5.5.0/:/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../libexec/gcc/
-LIBRARY_PATH=/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/:/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/:/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/../../../:/lib/:/usr/lib/
-COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_8505e' '-mtune=generic' '-march=x86-64'
- /home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../libexec/gcc/x86_64-unknown-linux-gnu/5.5.0/collect2 -plugin /home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../libexec/gcc/x86_64-unknown-linux-gnu/5.5.0/liblto_plugin.so -plugin-opt=/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../libexec/gcc/x86_64-unknown-linux-gnu/5.5.0/lto-wrapper -plugin-opt=-fresolution=/tmp/ccjUXXhc.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 --dynamic-linker /home/serafim/.linuxbrew/lib/ld.so -rpath /home/serafim/.linuxbrew/lib -o cmTC_8505e /home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/crt1.o /home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/crti.o /home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/crtbegin.o -L/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0 -L/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc -L/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/../../.. -L/home/serafim/.linuxbrew/lib CMakeFiles/cmTC_8505e.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/crtend.o /home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/crtn.o
-make[1]: Leaving directory '/home/serafim/Documents/KPI/labs/k9/lab0/cmake-build-debug/CMakeFiles/CMakeTmp'
+InstalledDir: /Library/Developer/CommandLineTools/usr/bin
+ "/Library/Developer/CommandLineTools/usr/bin/ld" -demangle -lto_library /Library/Developer/CommandLineTools/usr/lib/libLTO.dylib -dynamic -arch x86_64 -platform_version macos 10.15.0 10.15.6 -syslibroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -o cmTC_88bda -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTC_88bda.dir/CMakeCCompilerABI.c.o -lSystem /Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/lib/darwin/libclang_rt.osx.a
+@(#)PROGRAM:ld  PROJECT:ld64-607.2
+BUILD 04:30:50 Jul 14 2020
+configured to support archs: armv6 armv7 armv7s arm64 arm64e arm64_32 i386 x86_64 x86_64h armv6m armv7k armv7m armv7em
+Library search paths:
+	/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/usr/lib
+Framework search paths:
+	/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/
 
 
 
 Parsed C implicit include dir info from above output: rv=done
   found start of include info
   found start of implicit include info
-    add: [/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/include]
-    add: [/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/include-fixed]
-    add: [/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/../../include]
-    add: [/home/serafim/.linuxbrew/include]
-    add: [/usr/include]
+    add: [/Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/include]
+    add: [/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/usr/include]
+    add: [/Library/Developer/CommandLineTools/usr/include]
   end of search list found
-  collapse include dir [/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/include] ==> [/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/lib/gcc/x86_64-unknown-linux-gnu/5.5.0/include]
-  collapse include dir [/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/include-fixed] ==> [/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/lib/gcc/x86_64-unknown-linux-gnu/5.5.0/include-fixed]
-  collapse include dir [/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/../../include] ==> [/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/include]
-  collapse include dir [/home/serafim/.linuxbrew/include] ==> [/home/serafim/.linuxbrew/include]
-  collapse include dir [/usr/include] ==> [/usr/include]
-  implicit include dirs: [/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/lib/gcc/x86_64-unknown-linux-gnu/5.5.0/include;/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/lib/gcc/x86_64-unknown-linux-gnu/5.5.0/include-fixed;/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/include;/home/serafim/.linuxbrew/include;/usr/include]
+  collapse include dir [/Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/include] ==> [/Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/include]
+  collapse include dir [/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/usr/include] ==> [/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/usr/include]
+  collapse include dir [/Library/Developer/CommandLineTools/usr/include] ==> [/Library/Developer/CommandLineTools/usr/include]
+  implicit include dirs: [/Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/include;/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/usr/include;/Library/Developer/CommandLineTools/usr/include]
 
 
 Parsed C implicit link information from above output:
   link line regex: [^( *|.*[/\])(ld|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
-  ignore line: [Change Dir: /home/serafim/Documents/KPI/labs/k9/lab0/cmake-build-debug/CMakeFiles/CMakeTmp]
+  ignore line: [Change Dir: /Users/serafimgoncarov/Documents/KPILABS/k9/lab0/cmake-build-debug/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command(s):/usr/bin/make cmTC_8505e/fast && /usr/bin/make  -f CMakeFiles/cmTC_8505e.dir/build.make CMakeFiles/cmTC_8505e.dir/build]
-  ignore line: [make[1]: Entering directory '/home/serafim/Documents/KPI/labs/k9/lab0/cmake-build-debug/CMakeFiles/CMakeTmp']
-  ignore line: [Building C object CMakeFiles/cmTC_8505e.dir/CMakeCCompilerABI.c.o]
-  ignore line: [/home/serafim/.linuxbrew/bin/cc   -v -o CMakeFiles/cmTC_8505e.dir/CMakeCCompilerABI.c.o   -c /home/serafim/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/202.6397.106/bin/cmake/linux/share/cmake-3.17/Modules/CMakeCCompilerABI.c]
-  ignore line: [Reading specs from /home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/specs]
-  ignore line: [COLLECT_GCC=/home/serafim/.linuxbrew/bin/cc]
-  ignore line: [Target: x86_64-unknown-linux-gnu]
-  ignore line: [Configured with: ../configure --prefix=/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_7 --disable-nls --enable-checking=release --enable-languages=c,c++,objc,obj-c++,fortran --program-suffix=-5 --with-gmp=/home/linuxbrew/.linuxbrew/opt/gmp --with-mpfr=/home/linuxbrew/.linuxbrew/opt/mpfr --with-mpc=/home/linuxbrew/.linuxbrew/opt/libmpc --with-pkgversion='Homebrew GCC 5.5.0_7' --with-isl=/home/linuxbrew/.linuxbrew/opt/isl@0.18 --with-bugurl=https://github.com/Homebrew/linuxbrew-core/issues --with-boot-ldflags='-static-libstdc++ -static-libgcc ' --disable-multilib]
+  ignore line: [Run Build Command(s):/usr/bin/make cmTC_88bda/fast && /Library/Developer/CommandLineTools/usr/bin/make  -f CMakeFiles/cmTC_88bda.dir/build.make CMakeFiles/cmTC_88bda.dir/build]
+  ignore line: [Building C object CMakeFiles/cmTC_88bda.dir/CMakeCCompilerABI.c.o]
+  ignore line: [/Library/Developer/CommandLineTools/usr/bin/cc   -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk   -v -Wl -v -o CMakeFiles/cmTC_88bda.dir/CMakeCCompilerABI.c.o   -c "/Users/serafimgoncarov/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/202.6397.106/CLion.app/Contents/bin/cmake/mac/share/cmake-3.17/Modules/CMakeCCompilerABI.c"]
+  ignore line: [Apple clang version 12.0.0 (clang-1200.0.26.2)]
+  ignore line: [Target: x86_64-apple-darwin19.6.0]
   ignore line: [Thread model: posix]
-  ignore line: [gcc version 5.5.0 (Homebrew GCC 5.5.0_7) ]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_8505e.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64']
-  ignore line: [ /home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../libexec/gcc/x86_64-unknown-linux-gnu/5.5.0/cc1 -quiet -v -imultiarch x86_64-linux-gnu -iprefix /home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/ /home/serafim/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/202.6397.106/bin/cmake/linux/share/cmake-3.17/Modules/CMakeCCompilerABI.c -isysroot /home/serafim/.linuxbrew/nonexistent -idirafter /home/serafim/.linuxbrew/include -idirafter /usr/include/x86_64-linux-gnu -idirafter /usr/include -quiet -dumpbase CMakeCCompilerABI.c -mtune=generic -march=x86-64 -auxbase-strip CMakeFiles/cmTC_8505e.dir/CMakeCCompilerABI.c.o -version -o /tmp/ccLI6wgO.s]
-  ignore line: [GNU C11 (Homebrew GCC 5.5.0_7) version 5.5.0 (x86_64-unknown-linux-gnu)]
-  ignore line: [	compiled by GNU C version 5.5.0  GMP version 6.1.2  MPFR version 4.0.2  MPC version 1.1.0]
-  ignore line: [warning: GMP header version 6.1.2 differs from library version 6.2.0.]
-  ignore line: [warning: MPFR header version 4.0.2 differs from library version 4.1.0.]
-  ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
-  ignore line: [ignoring nonexistent directory "/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/../../../../x86_64-unknown-linux-gnu/include"]
-  ignore line: [ignoring duplicate directory "/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/../../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/include"]
-  ignore line: [ignoring nonexistent directory "/home/serafim/.linuxbrew/nonexistent/usr/local/include/x86_64-linux-gnu"]
-  ignore line: [ignoring nonexistent directory "/home/serafim/.linuxbrew/nonexistent/usr/local/include"]
-  ignore line: [ignoring duplicate directory "/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/../../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/include-fixed"]
-  ignore line: [ignoring nonexistent directory "/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/../../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/../../../../x86_64-unknown-linux-gnu/include"]
-  ignore line: [ignoring nonexistent directory "/home/serafim/.linuxbrew/nonexistent/usr/include/x86_64-linux-gnu"]
-  ignore line: [ignoring nonexistent directory "/home/serafim/.linuxbrew/nonexistent/usr/include"]
-  ignore line: [ignoring nonexistent directory "/usr/include/x86_64-linux-gnu"]
+  ignore line: [InstalledDir: /Library/Developer/CommandLineTools/usr/bin]
+  ignore line: [clang: warning: -Wl -v: 'linker' input unused [-Wunused-command-line-argument]]
+  ignore line: [ "/Library/Developer/CommandLineTools/usr/bin/clang" -cc1 -triple x86_64-apple-macosx10.15.0 -Wdeprecated-objc-isa-usage -Werror=deprecated-objc-isa-usage -Werror=implicit-function-declaration -emit-obj -mrelax-all -disable-free -disable-llvm-verifier -discard-value-names -main-file-name CMakeCCompilerABI.c -mrelocation-model pic -pic-level 2 -mthread-model posix -mframe-pointer=all -fno-strict-return -fno-rounding-math -masm-verbose -munwind-tables -target-sdk-version=10.15.6 -target-cpu penryn -dwarf-column-info -debugger-tuning=lldb -target-linker-version 607.2 -v -resource-dir /Library/Developer/CommandLineTools/usr/lib/clang/12.0.0 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -internal-isystem /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/usr/local/include -internal-isystem /Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/include -internal-externc-isystem /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/usr/include -internal-externc-isystem /Library/Developer/CommandLineTools/usr/include -Wno-reorder-init-list -Wno-implicit-int-float-conversion -Wno-c99-designator -Wno-final-dtor-non-final-class -Wno-extra-semi-stmt -Wno-misleading-indentation -Wno-quoted-include-in-framework-header -Wno-implicit-fallthrough -Wno-enum-enum-conversion -Wno-enum-float-conversion -fdebug-compilation-dir /Users/serafimgoncarov/Documents/KPILABS/k9/lab0/cmake-build-debug/CMakeFiles/CMakeTmp -ferror-limit 19 -fmessage-length 0 -stack-protector 1 -fstack-check -mdarwin-stkchk-strong-link -fblocks -fencode-extended-block-signature -fregister-global-dtors-with-atexit -fgnuc-version=4.2.1 -fobjc-runtime=macosx-10.15.0 -fmax-type-align=16 -fdiagnostics-show-option -o CMakeFiles/cmTC_88bda.dir/CMakeCCompilerABI.c.o -x c "/Users/serafimgoncarov/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/202.6397.106/CLion.app/Contents/bin/cmake/mac/share/cmake-3.17/Modules/CMakeCCompilerABI.c"]
+  ignore line: [clang -cc1 version 12.0.0 (clang-1200.0.26.2) default target x86_64-apple-darwin19.6.0]
+  ignore line: [ignoring nonexistent directory "/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/usr/local/include"]
+  ignore line: [ignoring nonexistent directory "/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/Library/Frameworks"]
   ignore line: [#include "..." search starts here:]
   ignore line: [#include <...> search starts here:]
-  ignore line: [ /home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/include]
-  ignore line: [ /home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/include-fixed]
-  ignore line: [ /home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/../../include]
-  ignore line: [ /home/serafim/.linuxbrew/include]
-  ignore line: [ /usr/include]
+  ignore line: [ /Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/include]
+  ignore line: [ /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/usr/include]
+  ignore line: [ /Library/Developer/CommandLineTools/usr/include]
+  ignore line: [ /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/System/Library/Frameworks (framework directory)]
   ignore line: [End of search list.]
-  ignore line: [GNU C11 (Homebrew GCC 5.5.0_7) version 5.5.0 (x86_64-unknown-linux-gnu)]
-  ignore line: [	compiled by GNU C version 5.5.0  GMP version 6.1.2  MPFR version 4.0.2  MPC version 1.1.0]
-  ignore line: [warning: GMP header version 6.1.2 differs from library version 6.2.0.]
-  ignore line: [warning: MPFR header version 4.0.2 differs from library version 4.1.0.]
-  ignore line: [GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072]
-  ignore line: [Compiler executable checksum: dd2098097044f004c3fa9906302a33dd]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_8505e.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64']
-  ignore line: [ as -v --64 -o CMakeFiles/cmTC_8505e.dir/CMakeCCompilerABI.c.o /tmp/ccLI6wgO.s]
-  ignore line: [GNU assembler version 2.34 (x86_64-pc-linux-gnu) using BFD version (GNU Binutils) 2.34]
-  ignore line: [COMPILER_PATH=/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../libexec/gcc/x86_64-unknown-linux-gnu/5.5.0/:/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../libexec/gcc/]
-  ignore line: [LIBRARY_PATH=/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/:/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/:/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/../../../:/lib/:/usr/lib/]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'CMakeFiles/cmTC_8505e.dir/CMakeCCompilerABI.c.o' '-c' '-mtune=generic' '-march=x86-64']
-  ignore line: [Linking C executable cmTC_8505e]
-  ignore line: [/home/serafim/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/202.6397.106/bin/cmake/linux/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8505e.dir/link.txt --verbose=1]
-  ignore line: [/home/serafim/.linuxbrew/bin/cc     -v CMakeFiles/cmTC_8505e.dir/CMakeCCompilerABI.c.o  -o cmTC_8505e ]
-  ignore line: [Reading specs from /home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/specs]
-  ignore line: [COLLECT_GCC=/home/serafim/.linuxbrew/bin/cc]
-  ignore line: [COLLECT_LTO_WRAPPER=/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../libexec/gcc/x86_64-unknown-linux-gnu/5.5.0/lto-wrapper]
-  ignore line: [Target: x86_64-unknown-linux-gnu]
-  ignore line: [Configured with: ../configure --prefix=/home/linuxbrew/.linuxbrew/Cellar/gcc/5.5.0_7 --disable-nls --enable-checking=release --enable-languages=c,c++,objc,obj-c++,fortran --program-suffix=-5 --with-gmp=/home/linuxbrew/.linuxbrew/opt/gmp --with-mpfr=/home/linuxbrew/.linuxbrew/opt/mpfr --with-mpc=/home/linuxbrew/.linuxbrew/opt/libmpc --with-pkgversion='Homebrew GCC 5.5.0_7' --with-isl=/home/linuxbrew/.linuxbrew/opt/isl@0.18 --with-bugurl=https://github.com/Homebrew/linuxbrew-core/issues --with-boot-ldflags='-static-libstdc++ -static-libgcc ' --disable-multilib]
+  ignore line: [Linking C executable cmTC_88bda]
+  ignore line: ["/Users/serafimgoncarov/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/202.6397.106/CLion.app/Contents/bin/cmake/mac/bin/cmake" -E cmake_link_script CMakeFiles/cmTC_88bda.dir/link.txt --verbose=1]
+  ignore line: [/Library/Developer/CommandLineTools/usr/bin/cc   -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -Wl -search_paths_first -Wl -headerpad_max_install_names  -v -Wl -v CMakeFiles/cmTC_88bda.dir/CMakeCCompilerABI.c.o  -o cmTC_88bda ]
+  ignore line: [Apple clang version 12.0.0 (clang-1200.0.26.2)]
+  ignore line: [Target: x86_64-apple-darwin19.6.0]
   ignore line: [Thread model: posix]
-  ignore line: [gcc version 5.5.0 (Homebrew GCC 5.5.0_7) ]
-  ignore line: [COMPILER_PATH=/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../libexec/gcc/x86_64-unknown-linux-gnu/5.5.0/:/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../libexec/gcc/]
-  ignore line: [LIBRARY_PATH=/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/:/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/:/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/../../../:/lib/:/usr/lib/]
-  ignore line: [COLLECT_GCC_OPTIONS='-v' '-o' 'cmTC_8505e' '-mtune=generic' '-march=x86-64']
-  link line: [ /home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../libexec/gcc/x86_64-unknown-linux-gnu/5.5.0/collect2 -plugin /home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../libexec/gcc/x86_64-unknown-linux-gnu/5.5.0/liblto_plugin.so -plugin-opt=/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../libexec/gcc/x86_64-unknown-linux-gnu/5.5.0/lto-wrapper -plugin-opt=-fresolution=/tmp/ccjUXXhc.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 --dynamic-linker /home/serafim/.linuxbrew/lib/ld.so -rpath /home/serafim/.linuxbrew/lib -o cmTC_8505e /home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/crt1.o /home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/crti.o /home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/crtbegin.o -L/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0 -L/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc -L/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/../../.. -L/home/serafim/.linuxbrew/lib CMakeFiles/cmTC_8505e.dir/CMakeCCompilerABI.c.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/crtend.o /home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/crtn.o]
-    arg [/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../libexec/gcc/x86_64-unknown-linux-gnu/5.5.0/collect2] ==> ignore
-    arg [-plugin] ==> ignore
-    arg [/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../libexec/gcc/x86_64-unknown-linux-gnu/5.5.0/liblto_plugin.so] ==> ignore
-    arg [-plugin-opt=/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../libexec/gcc/x86_64-unknown-linux-gnu/5.5.0/lto-wrapper] ==> ignore
-    arg [-plugin-opt=-fresolution=/tmp/ccjUXXhc.res] ==> ignore
-    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
-    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
-    arg [-plugin-opt=-pass-through=-lc] ==> ignore
-    arg [-plugin-opt=-pass-through=-lgcc] ==> ignore
-    arg [-plugin-opt=-pass-through=-lgcc_s] ==> ignore
-    arg [--eh-frame-hdr] ==> ignore
-    arg [-m] ==> ignore
-    arg [elf_x86_64] ==> ignore
-    arg [-dynamic-linker] ==> ignore
-    arg [/lib64/ld-linux-x86-64.so.2] ==> ignore
-    arg [--dynamic-linker] ==> ignore
-    arg [/home/serafim/.linuxbrew/lib/ld.so] ==> ignore
-    arg [-rpath] ==> ignore
-    arg [/home/serafim/.linuxbrew/lib] ==> ignore
+  ignore line: [InstalledDir: /Library/Developer/CommandLineTools/usr/bin]
+  link line: [ "/Library/Developer/CommandLineTools/usr/bin/ld" -demangle -lto_library /Library/Developer/CommandLineTools/usr/lib/libLTO.dylib -dynamic -arch x86_64 -platform_version macos 10.15.0 10.15.6 -syslibroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -o cmTC_88bda -search_paths_first -headerpad_max_install_names -v CMakeFiles/cmTC_88bda.dir/CMakeCCompilerABI.c.o -lSystem /Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/lib/darwin/libclang_rt.osx.a]
+    arg [/Library/Developer/CommandLineTools/usr/bin/ld] ==> ignore
+    arg [-demangle] ==> ignore
+    arg [-lto_library] ==> ignore, skip following value
+    arg [/Library/Developer/CommandLineTools/usr/lib/libLTO.dylib] ==> skip value of -lto_library
+    arg [-dynamic] ==> ignore
+    arg [-arch] ==> ignore
+    arg [x86_64] ==> ignore
+    arg [-platform_version] ==> ignore
+    arg [macos] ==> ignore
+    arg [10.15.0] ==> ignore
+    arg [10.15.6] ==> ignore
+    arg [-syslibroot] ==> ignore
+    arg [/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk] ==> ignore
     arg [-o] ==> ignore
-    arg [cmTC_8505e] ==> ignore
-    arg [/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/crt1.o] ==> ignore
-    arg [/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/crti.o] ==> ignore
-    arg [/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/crtbegin.o] ==> ignore
-    arg [-L/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0] ==> dir [/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0]
-    arg [-L/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc] ==> dir [/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc]
-    arg [-L/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/../../..] ==> dir [/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/../../..]
-    arg [-L/home/serafim/.linuxbrew/lib] ==> dir [/home/serafim/.linuxbrew/lib]
-    arg [CMakeFiles/cmTC_8505e.dir/CMakeCCompilerABI.c.o] ==> ignore
-    arg [-lgcc] ==> lib [gcc]
-    arg [--as-needed] ==> ignore
-    arg [-lgcc_s] ==> lib [gcc_s]
-    arg [--no-as-needed] ==> ignore
-    arg [-lc] ==> lib [c]
-    arg [-lgcc] ==> lib [gcc]
-    arg [--as-needed] ==> ignore
-    arg [-lgcc_s] ==> lib [gcc_s]
-    arg [--no-as-needed] ==> ignore
-    arg [/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/crtend.o] ==> ignore
-    arg [/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/crtn.o] ==> ignore
-  collapse library dir [/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0] ==> [/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/lib/gcc/x86_64-unknown-linux-gnu/5.5.0]
-  collapse library dir [/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc] ==> [/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/lib/gcc]
-  collapse library dir [/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/bin/../lib/gcc/x86_64-unknown-linux-gnu/5.5.0/../../..] ==> [/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/lib]
-  collapse library dir [/home/serafim/.linuxbrew/lib] ==> [/home/serafim/.linuxbrew/lib]
-  implicit libs: [gcc;gcc_s;c;gcc;gcc_s]
-  implicit dirs: [/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/lib/gcc/x86_64-unknown-linux-gnu/5.5.0;/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/lib/gcc;/home/serafim/.linuxbrew/Cellar/gcc/5.5.0_7/lib;/home/serafim/.linuxbrew/lib]
-  implicit fwks: []
+    arg [cmTC_88bda] ==> ignore
+    arg [-search_paths_first] ==> ignore
+    arg [-headerpad_max_install_names] ==> ignore
+    arg [-v] ==> ignore
+    arg [CMakeFiles/cmTC_88bda.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [-lSystem] ==> lib [System]
+    arg [/Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/lib/darwin/libclang_rt.osx.a] ==> lib [/Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/lib/darwin/libclang_rt.osx.a]
+  Library search paths: [;/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/usr/lib]
+  Framework search paths: [;/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/]
+  remove lib [System]
+  remove lib [/Library/Developer/CommandLineTools/usr/lib/clang/12.0.0/lib/darwin/libclang_rt.osx.a]
+  collapse library dir [/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/usr/lib] ==> [/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/usr/lib]
+  collapse framework dir [/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/] ==> [/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/System/Library/Frameworks]
+  implicit libs: []
+  implicit dirs: [/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/usr/lib]
+  implicit fwks: [/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/System/Library/Frameworks]
 
 

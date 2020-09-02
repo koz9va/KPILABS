@@ -79,17 +79,11 @@ int main(int argc, char **argv) {
             atof(argv[7])
             );
 
-    for( i = 0; i < DS; ++i) {
-
-
-     for(j = 0; j < GS; ++j) {
+    for( i = 0; i < GS; ++i) {
+    	for(j = 0; j < DS; ++j) {
          current << P.FindIc(P.Ugs[i], P.Uds[j]) << " ";
-
-
-
-     }
+     	}
     current << endl;
-
     }
 
     for(i = 0; i < GS; ++i) {

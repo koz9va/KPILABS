@@ -1,14 +1,10 @@
-#define N 3
-#define M 7
-
+#define M 3
+#define N 7
+#define u0 0.25e-3
+#define betta 3e-6
+#define g22 4.5
 #include <stdio.h>
 #include <stdlib.h>
-
-typedef struct {
-	double U0;
-	double beta;
-	double G22;
-} Transistor;
 
 typedef struct {
 	int len;
@@ -32,16 +28,16 @@ void FillArr(DArr *in) {
 	}
 }
 
-double CalcIc(Transistor *in, double Ugs, double Uds) {
-	if (Ugs <= in->U0) {
-		return in->G22 * Uds;
+double CalcIc(double Ugs, double Uds) {
+	if (Ugs <= u0) {
+		return g22 * Uds;
 	}
 	else {
-		if (Uds < (Ugs - in->U0)) {
-			return in->beta * (2 * (Ugs - in->U0) - Uds) * Uds + in->G22 * Uds;
+		if (Uds < (Ugs - u0)) {
+			return betta * (2 * (Ugs - u0) - Uds) * Uds + g22 * Uds;
 		}
 		else {
-			return in->beta * (Ugs - in->U0) * (Ugs - in->U0) + in->G22 * Uds;
+			return betta * (Ugs - u0) * (Ugs - u0) + g22 * Uds;
 		}
 	}
 }
@@ -108,7 +104,6 @@ int main(int argc, char **argv) {
 	}
 
 	fclose(DataFile);
-
 
 	return 0;
 }
