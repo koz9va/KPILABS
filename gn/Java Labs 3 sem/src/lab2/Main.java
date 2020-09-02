@@ -35,10 +35,10 @@ public class Main {
                 }
             }
 
-            double[][] soulution = interp(arrayOfCurrent, arrayOfUds);
+            double[][] solution = inter(arrayOfCurrent, arrayOfUds);
 
             for (double[] i:
-            soulution){
+            solution){
                 System.out.println(Arrays.toString(i));
             }
 
@@ -49,7 +49,7 @@ public class Main {
 
     }
 
-    private static double[][] interp (double[][] matrix, double[] arrayOfXiXj){
+    private static double[][] inter(double[][] matrix, double[] arrayOfXiXj){
         double[] arrayOfX = new double[arrayOfXiXj.length - 1];
         for (int i = 0; i < arrayOfXiXj.length - 1; i++) {
             arrayOfX[i] = (arrayOfXiXj[i] + arrayOfXiXj[i + 1]) / 2;
@@ -63,14 +63,14 @@ public class Main {
                 double sum = 0;
 
                 for (int k = 1; k < arrayOfXiXj.length; k++) {
-                    double product = matrix[i][k];
+                    double product = 1.0;
 
                     for (int l = 1; l < arrayOfXiXj.length; l++) {
                         if (l != k){
                             product *= (arrayOfX[j] - arrayOfXiXj[l]) / (arrayOfXiXj[k] - arrayOfXiXj[l]);
                         }
                     }
-
+                    product *= matrix[i][k];
                     sum += product;
                 }
 
