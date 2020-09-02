@@ -3,7 +3,7 @@ package lab2;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Arrays;
+import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
@@ -35,12 +35,27 @@ public class Main {
                 }
             }
 
-            double[][] solution = inter(arrayOfCurrent, arrayOfUds);
+            double step = (arrayOfUds[0] + arrayOfUds[1]) / 2;
 
-            for (double[] i:
-            solution){
-                System.out.println(Arrays.toString(i));
+            ArrayList<ArrayList<Double>> finalArray = new ArrayList<>();
+
+            for (double[] array :
+                    arrayOfCurrent) {
+                ArrayList<Double> tmparr = inter(array, step, array[0], arrayOfUds);
+                finalArray.add(tmparr);
+                System.out.println(tmparr.toString());
             }
+
+            for (int i = 0; i < finalArray.get(i).size(); i++) {
+                ArrayList<Double> tmparr = null;
+                for (ArrayList<Double> doubles : finalArray) {
+                    tmparr = new ArrayList<>();
+                    tmparr.add(doubles.get(i));
+                }
+                inter(tmparr, step, tmparr.get(0), arrayOfUgs);
+            }
+
+
 
         }
         catch (IOException ignored) {
@@ -49,37 +64,30 @@ public class Main {
 
     }
 
-    private static double[][] inter(double[][] matrix, double[] arrayOfXiXj){
-        double[] arrayOfX = new double[arrayOfXiXj.length - 1];
-        for (int i = 0; i < arrayOfXiXj.length - 1; i++) {
-            arrayOfX[i] = (arrayOfXiXj[i] + arrayOfXiXj[i + 1]) / 2;
-        }
+    private static ArrayList<Double> inter(double[] DefaultArray, double step, double FirstElement, double[] arrayOfUds){
+        ArrayList<Double> arrayList = new ArrayList<>();
 
-        //int HorizontalLen = arrayOfX.length + arrayOfXiXj.length;
-        double[][] response = new double[lab1.Main.UgsLengthOfArray][arrayOfX.length];
+        for(int k = 0; k < 13; ++k){// поменять 13
 
-        for (int i = 0; i < response.length; i++) {
-            for (int j = 0; j < arrayOfX.length; j++) {
-                double sum = 0;
-
-                for (int k = 1; k < arrayOfXiXj.length; k++) {
-                    double product = 1.0;
-
-                    for (int l = 1; l < arrayOfXiXj.length; l++) {
-                        if (l != k){
-                            product *= (arrayOfX[j] - arrayOfXiXj[l]) / (arrayOfXiXj[k] - arrayOfXiXj[l]);
-                        }
+            double sum = 0;
+            for (int i = 0; i < DefaultArray.length; i++) {
+                double product = DefaultArray[i];
+                for (int j = 0; j < DefaultArray.length; j++) {
+                    if (i != j) {
+                        product *= (FirstElement - arrayOfUds[j]) / (arrayOfUds[i] - arrayOfUds[j]);
                     }
-                    product *= matrix[i][k];
-                    sum += product;
                 }
-
-                response[i][j] = sum;
+                sum += product;
             }
+            arrayList.add(sum);
+            FirstElement += step;
         }
-        return response;
+        return arrayList;
     }
 
+    private static ArrayList<Double> inter (ArrayList<Double> VerticalLine, double step, double FirstElement, double[] arrayOfUgs) {
+
+    }
 }
 
 
