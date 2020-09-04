@@ -9,4 +9,6 @@
 /Users/serafimgoncarov/Documents/KPILABS/k9/lab0/lab0.c
 stdio.h
 -
+stdlib.h
+-
 
