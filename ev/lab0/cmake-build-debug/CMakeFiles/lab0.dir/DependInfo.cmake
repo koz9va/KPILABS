@@ -4,19 +4,12 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/Users/serafimgoncarov/Documents/KPILABS/k9/lab1/main.cpp" "/Users/serafimgoncarov/Documents/KPILABS/k9/lab1/cmake-build-debug/CMakeFiles/lab1.dir/main.cpp.o"
+  "/Users/serafimgoncarov/Documents/KPILABS/ev/lab0/main.cpp" "/Users/serafimgoncarov/Documents/KPILABS/ev/lab0/cmake-build-debug/CMakeFiles/lab0.dir/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "AppleClang")
 
-# Preprocessor definitions for this target.
-set(CMAKE_TARGET_DEFINITIONS_CXX
-  "BOOST_ALL_NO_LIB"
-  "BOOST_PROGRAM_OPTIONS_DYN_LINK"
-  )
-
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
-  "/usr/local/include"
   )
 
 # Targets to which this target links.

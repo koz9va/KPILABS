@@ -68,10 +68,10 @@ RM = "/Users/serafimgoncarov/Library/Application Support/JetBrains/Toolbox/apps/
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/serafimgoncarov/Documents/KPILABS/k9/lab1
+CMAKE_SOURCE_DIR = /Users/serafimgoncarov/Documents/KPILABS/ev/lab0
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/serafimgoncarov/Documents/KPILABS/k9/lab1/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/serafimgoncarov/Documents/KPILABS/ev/lab0/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -100,9 +100,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/serafimgoncarov/Documents/KPILABS/k9/lab1/cmake-build-debug/CMakeFiles /Users/serafimgoncarov/Documents/KPILABS/k9/lab1/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/serafimgoncarov/Documents/KPILABS/ev/lab0/cmake-build-debug/CMakeFiles /Users/serafimgoncarov/Documents/KPILABS/ev/lab0/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/serafimgoncarov/Documents/KPILABS/k9/lab1/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/serafimgoncarov/Documents/KPILABS/ev/lab0/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -131,17 +131,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named lab1
+# Target rules for targets named lab0
 
 # Build rule for target.
-lab1: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lab1
-.PHONY : lab1
+lab0: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 lab0
+.PHONY : lab0
 
 # fast build rule for target.
-lab1/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab1.dir/build.make CMakeFiles/lab1.dir/build
-.PHONY : lab1/fast
+lab0/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab0.dir/build.make CMakeFiles/lab0.dir/build
+.PHONY : lab0/fast
 
 main.o: main.cpp.o
 
@@ -149,7 +149,7 @@ main.o: main.cpp.o
 
 # target to build an object file
 main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab1.dir/build.make CMakeFiles/lab1.dir/main.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab0.dir/build.make CMakeFiles/lab0.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -158,7 +158,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab1.dir/build.make CMakeFiles/lab1.dir/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab0.dir/build.make CMakeFiles/lab0.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -167,7 +167,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab1.dir/build.make CMakeFiles/lab1.dir/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/lab0.dir/build.make CMakeFiles/lab0.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 # Help Target
@@ -178,7 +178,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... lab1"
+	@echo "... lab0"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

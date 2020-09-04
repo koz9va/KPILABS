@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/serafimgoncarov/Documents/KPILABS/ev/lab0/main.cpp
+iostream
+-
+fstream
+-
+cstdlib
+-
+

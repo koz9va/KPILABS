@@ -27,9 +27,6 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/Users/serafimgoncarov/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/202.6397.106/CLion.app/Contents/bin/cmake/mac/share/cmake-3.17/Modules/Compiler/CMakeCommonCompilerMacros.cmake"
   "/Users/serafimgoncarov/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/202.6397.106/CLion.app/Contents/bin/cmake/mac/share/cmake-3.17/Modules/Compiler/Clang.cmake"
   "/Users/serafimgoncarov/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/202.6397.106/CLion.app/Contents/bin/cmake/mac/share/cmake-3.17/Modules/Compiler/GNU.cmake"
-  "/Users/serafimgoncarov/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/202.6397.106/CLion.app/Contents/bin/cmake/mac/share/cmake-3.17/Modules/FindBoost.cmake"
-  "/Users/serafimgoncarov/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/202.6397.106/CLion.app/Contents/bin/cmake/mac/share/cmake-3.17/Modules/FindPackageHandleStandardArgs.cmake"
-  "/Users/serafimgoncarov/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/202.6397.106/CLion.app/Contents/bin/cmake/mac/share/cmake-3.17/Modules/FindPackageMessage.cmake"
   "/Users/serafimgoncarov/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/202.6397.106/CLion.app/Contents/bin/cmake/mac/share/cmake-3.17/Modules/Internal/CMakeCheckCompilerFlag.cmake"
   "/Users/serafimgoncarov/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/202.6397.106/CLion.app/Contents/bin/cmake/mac/share/cmake-3.17/Modules/Platform/Apple-AppleClang-C.cmake"
   "/Users/serafimgoncarov/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/202.6397.106/CLion.app/Contents/bin/cmake/mac/share/cmake-3.17/Modules/Platform/Apple-AppleClang-CXX.cmake"
@@ -40,17 +37,6 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/Users/serafimgoncarov/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/202.6397.106/CLion.app/Contents/bin/cmake/mac/share/cmake-3.17/Modules/Platform/Darwin.cmake"
   "/Users/serafimgoncarov/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/202.6397.106/CLion.app/Contents/bin/cmake/mac/share/cmake-3.17/Modules/Platform/UnixPaths.cmake"
   "/Users/serafimgoncarov/Library/Application Support/JetBrains/Toolbox/apps/CLion/ch-0/202.6397.106/CLion.app/Contents/bin/cmake/mac/share/cmake-3.17/Modules/ProcessorCount.cmake"
-  "/usr/local/lib/cmake/Boost-1.73.0/BoostConfig.cmake"
-  "/usr/local/lib/cmake/Boost-1.73.0/BoostConfigVersion.cmake"
-  "/usr/local/lib/cmake/BoostDetectToolset-1.73.0.cmake"
-  "/usr/local/lib/cmake/boost_headers-1.73.0/boost_headers-config-version.cmake"
-  "/usr/local/lib/cmake/boost_headers-1.73.0/boost_headers-config.cmake"
-  "/usr/local/lib/cmake/boost_program_options-1.73.0/boost_program_options-config-version.cmake"
-  "/usr/local/lib/cmake/boost_program_options-1.73.0/boost_program_options-config.cmake"
-  "/usr/local/lib/cmake/boost_program_options-1.73.0/libboost_program_options-variant-mt-shared.cmake"
-  "/usr/local/lib/cmake/boost_program_options-1.73.0/libboost_program_options-variant-mt-static.cmake"
-  "/usr/local/lib/cmake/boost_program_options-1.73.0/libboost_program_options-variant-shared.cmake"
-  "/usr/local/lib/cmake/boost_program_options-1.73.0/libboost_program_options-variant-static.cmake"
   )
 
 # The corresponding makefile is:
@@ -66,5 +52,5 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "CMakeFiles/lab1.dir/DependInfo.cmake"
+  "CMakeFiles/lab0.dir/DependInfo.cmake"
   )
