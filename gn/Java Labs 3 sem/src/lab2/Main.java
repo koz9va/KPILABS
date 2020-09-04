@@ -52,7 +52,7 @@ public class Main {
                     tmparr = new ArrayList<>();
                     tmparr.add(doubles.get(i));
                 }
-                inter(tmparr, step, tmparr.get(0), arrayOfUgs);
+                //inter(tmparr, step, tmparr.get(0), arrayOfUgs);
             }
 
 
@@ -85,9 +85,9 @@ public class Main {
         return arrayList;
     }
 
-    private static ArrayList<Double> inter (ArrayList<Double> VerticalLine, double step, double FirstElement, double[] arrayOfUgs) {
-
-    }
+//    private static ArrayList<Double> inter (ArrayList<Double> VerticalLine, double step, double FirstElement, double[] arrayOfUgs) {
+//
+//    }
 }
 
 
