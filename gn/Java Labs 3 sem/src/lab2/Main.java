@@ -41,18 +41,18 @@ public class Main {
 
             for (double[] array :
                     arrayOfCurrent) {
-                ArrayList<Double> tmparr = inter(array, step, array[0], arrayOfUds);
-                finalArray.add(tmparr);
-                System.out.println(tmparr.toString());
+                ArrayList<Double> tmpArr = inter(array, step, array[0], arrayOfUds);
+                finalArray.add(tmpArr);
+                System.out.println(tmpArr.toString());
             }
 
             for (int i = 0; i < finalArray.get(i).size(); i++) {
-                ArrayList<Double> tmparr = null;
+                ArrayList<Double> tmpArr = null;
                 for (ArrayList<Double> doubles : finalArray) {
-                    tmparr = new ArrayList<>();
-                    tmparr.add(doubles.get(i));
+                    tmpArr = new ArrayList<>(lab1.Main.UgsLengthOfArray);
+                    tmpArr.add(doubles.get(i));
                 }
-                //inter(tmparr, step, tmparr.get(0), arrayOfUgs);
+                System.out.print(inter(tmpArr, tmpArr.get(0), arrayOfUgs) + " ");
             }
 
 
@@ -85,7 +85,19 @@ public class Main {
         return arrayList;
     }
 
-//    private static ArrayList<Double> inter (ArrayList<Double> VerticalLine, double step, double FirstElement, double[] arrayOfUgs) {
-//
-//    }
+    private static Double inter (ArrayList<Double> VerticalLine, double FirstElement, double[] arrayOfUgs) {
+        double sum = 0;
+
+        for (int i = 0; i < arrayOfUgs.length; i++) {
+            double product = VerticalLine.get(i);
+
+            for (int j = 0; j < arrayOfUgs.length; j++) {
+                if (i != j) {
+                     product = (FirstElement - arrayOfUgs[j]) / (arrayOfUgs[i] - arrayOfUgs[j]);
+                }
+            }
+            sum += product;
+        }
+        return sum;
+    }
 }
