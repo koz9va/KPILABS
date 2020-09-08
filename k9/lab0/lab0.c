@@ -5,6 +5,11 @@
 #include <stdlib.h>
 
 typedef struct {
+	double x;
+	double y;
+} point;
+
+typedef struct {
 	double U0;
 	double beta;
 	double G22;
@@ -52,12 +57,15 @@ int main(int argc, char **argv) {
 
 	int i, j;
 
-	double deb;
+	double temp[2];
+	int tempi[2];
+	const size_t temp_size = sizeof(double)*2;
 
 	Transistor out;
 	DArr data3;
 	DArr data7;
 	FILE *DataFile;
+	FILE *BinFile;
 
 	if(argc != 10)
 		printf("There are wrong number of arguments :(\n");
@@ -65,6 +73,7 @@ int main(int argc, char **argv) {
 		printf("There is wrong key :(\n");
 
 	DataFile = fopen(argv[9], "w");
+	BinFile = fopen("data.bin", "wb");
 
 	if(!DataFile) {
 		printf("Can't find this file :(\n");
@@ -88,9 +97,22 @@ int main(int argc, char **argv) {
 
 	fprintf(DataFile, "---Currents---\n");
 
+	tempi[0] = N;
+	tempi[1] = M;
+
+	fwrite(&temp_size, 1, sizeof(size_t), BinFile);
+	fwrite(tempi, 2, sizeof(int), BinFile);
+
+
 	for (i = 0; i < N; ++i) {
 		for (j = 0; j < M; ++j) {
-			fprintf(DataFile, "%lf ", CalcIc(&out, data3.ptr[i], data7.ptr[j]));
+			temp[0] =  CalcIc(&out, data3.ptr[i], data7.ptr[j]);
+			fprintf(DataFile, "%lf ", temp[0]);
+
+			temp[1] = (double)data3.ptr[i];
+			fwrite(temp, 2, sizeof(double), BinFile);
+
+
 		}
 		fprintf(DataFile, "\n");
 	}
@@ -108,6 +130,7 @@ int main(int argc, char **argv) {
 	}
 
 	fclose(DataFile);
+	fclose(BinFile);
 
 
 	return 0;
