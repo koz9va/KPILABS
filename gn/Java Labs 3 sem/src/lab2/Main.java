@@ -1,16 +1,13 @@
 package lab2;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
+import java.io.*;
 
 public class Main {
     public static void main(String[] args) {
         double[] arrayOfUds = new double[lab1.Main.UdsLengthOfArray];
         double[] arrayOfUgs = new double[lab1.Main.UgsLengthOfArray];
         double[][] arrayOfCurrent = new double[lab1.Main.UgsLengthOfArray][lab1.Main.UdsLengthOfArray];
-        try {
+        try (BufferedReader console_reader = new BufferedReader(new InputStreamReader(System.in))) {
 
             try (BufferedReader fileReader = new BufferedReader(new FileReader("Uds.txt"))) {
                 for (int i = 0; fileReader.ready() ; i++) {
@@ -35,69 +32,78 @@ public class Main {
                 }
             }
 
-            double step = (arrayOfUds[0] + arrayOfUds[1]) / 2;
+            double stepUds = (arrayOfUds[0] + arrayOfUds[1]) / 2;
 
-            ArrayList<ArrayList<Double>> finalArray = new ArrayList<>();
+            double stepUgs = (arrayOfUgs[0] + arrayOfUgs[1]) / 2;
 
-            for (double[] array :
-                    arrayOfCurrent) {
-                ArrayList<Double> tmpArr = inter(array, step, array[0], arrayOfUds);
-                finalArray.add(tmpArr);
-                System.out.println(tmpArr.toString());
-            }
+            System.out.println("Enter File to write");
+            String filename = console_reader.readLine();
 
-            for (int i = 0; i < finalArray.get(i).size(); i++) {
-                ArrayList<Double> tmpArr = null;
-                for (ArrayList<Double> doubles : finalArray) {
-                    tmpArr = new ArrayList<>(lab1.Main.UgsLengthOfArray);
-                    tmpArr.add(doubles.get(i));
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename))) {
+                for (double arrayOfUg : arrayOfUgs) {
+                    double value = 0;
+                    for (int i = 0; i < lab1.Main.UdsLengthOfArray * 2 - 1; i++) {
+                        writer.write(inter(arrayOfUgs, arrayOfUds, arrayOfCurrent, arrayOfUg, value) + " ");
+                        value += stepUds;
+                    }
+                    writer.write("\n");
                 }
-                System.out.print(inter(tmpArr, tmpArr.get(0), arrayOfUgs) + " ");
+
+
+                double Uds = 0;
+                for (int i = 0; i < lab1.Main.UdsLengthOfArray * 2 - 1; i++) {
+                    writer.write(inter(arrayOfUgs, arrayOfUds, arrayOfCurrent, stepUgs, Uds) + " ");
+                    Uds += stepUds;
+                }
             }
-
-
 
         }
         catch (IOException ignored) {
             System.out.println("E0");
         }
-
     }
 
-    private static ArrayList<Double> inter(double[] DefaultArray, double step, double FirstElement, double[] arrayOfUds){
-        ArrayList<Double> arrayList = new ArrayList<>();
+    private static double inter(double[] arrayOfUgs, double[] arrayOfUds, double[][] matrix, double ugsX, double udsX) {
 
-        for(int k = 0; k < 13; ++k){// поменять 13
+        double sum, product;
+        double[] tmp = new double[lab1.Main.UgsLengthOfArray];
 
-            double sum = 0;
-            for (int i = 0; i < DefaultArray.length; i++) {
-                double product = DefaultArray[i];
-                for (int j = 0; j < DefaultArray.length; j++) {
-                    if (i != j) {
-                        product *= (FirstElement - arrayOfUds[j]) / (arrayOfUds[i] - arrayOfUds[j]);
+        for (int k = 0; k < arrayOfUgs.length; k++) {
+
+            sum = 0;
+
+            for (int i = 0; i < arrayOfUds.length; i++) {
+
+                product = matrix[k][i];
+
+                for (int j = 0; j < arrayOfUds.length; j++) {
+
+                    if (j != i) {
+                        product *= (udsX - arrayOfUds[j]) / (arrayOfUds[i] - arrayOfUds[j]);
                     }
                 }
+
                 sum += product;
             }
-            arrayList.add(sum);
-            FirstElement += step;
-        }
-        return arrayList;
-    }
 
-    private static Double inter (ArrayList<Double> VerticalLine, double FirstElement, double[] arrayOfUgs) {
-        double sum = 0;
+            tmp[k] = sum;
+        }
+
+        sum = 0;
 
         for (int i = 0; i < arrayOfUgs.length; i++) {
-            double product = VerticalLine.get(i);
+
+            product = tmp[i];
 
             for (int j = 0; j < arrayOfUgs.length; j++) {
-                if (i != j) {
-                     product = (FirstElement - arrayOfUgs[j]) / (arrayOfUgs[i] - arrayOfUgs[j]);
+
+                if (j != i) {
+                    product *= (ugsX - arrayOfUgs[j]) / (arrayOfUgs[i] - arrayOfUgs[j]);
                 }
             }
             sum += product;
         }
+
         return sum;
     }
 }
