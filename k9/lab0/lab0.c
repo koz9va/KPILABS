@@ -100,8 +100,8 @@ int main(int argc, char **argv) {
 	tempi[0] = N;
 	tempi[1] = M;
 
-	fwrite(&temp_size, 1, sizeof(size_t), BinFile);
-	fwrite(tempi, 2, sizeof(int), BinFile);
+	fwrite(&temp_size, sizeof(size_t), 1, BinFile);
+	fwrite(tempi, sizeof(int), 2, BinFile);
 
 
 	for (i = 0; i < N; ++i) {
@@ -110,23 +110,30 @@ int main(int argc, char **argv) {
 			fprintf(DataFile, "%lf ", temp[0]);
 
 			temp[1] = (double)data3.ptr[i];
-			fwrite(temp, 2, sizeof(double), BinFile);
-
-
+			fwrite(temp, sizeof(double), 2, BinFile);
 		}
 		fprintf(DataFile, "\n");
 	}
 
 	fprintf(DataFile, "---data3---\n");
 
+	i = N;
+	fwrite(&i, sizeof(int), 1, BinFile);
+
 	for (i = 0; i < N; ++i) {
 		fprintf(DataFile, "%.3lf ", data3.ptr[i]);
+		fwrite(data3.ptr + i, sizeof(double), 1, BinFile);
 	}
 
 	fprintf(DataFile ,"\n---data7---\n");
 
+	i = M;
+
+	fwrite(&i, sizeof(int), 1, BinFile);
+
 	for (i = 0; i < M; ++i) {
 		fprintf(DataFile, "%lf ", data7.ptr[i]);
+		fwrite(data7.ptr + i, sizeof(double), 1, BinFile);
 	}
 
 	fclose(DataFile);
