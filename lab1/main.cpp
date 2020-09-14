@@ -1,5 +1,7 @@
 #include <iostream>
 #include <fstream>
+#include <vector>
+#include <future>
 #include <boost/numeric/ublas/matrix.hpp>
 
 typedef struct {
@@ -48,7 +50,7 @@ ublas::matrix<T> readMatrix(char *filename, double **Uds, int *Lds, double **Ugs
 	return outMatrix;
 }
 
-double GaussInter(double *Ugs, double *Uds, int Lgs, int Lds, ublas::matrix<point> &input,
+double GaussInter(double *Ugs, double *Uds, int Lgs, int Lds, ublas::matrix<point> input,
 				  double ugsx, double udsx)
 				  {
 	double sum, product, value;
@@ -89,23 +91,43 @@ ublas::matrix<point> InterpolateMatrix( ublas::matrix<point> &input, double *Uds
 	ublas::matrix<point> out(Lgs + 1, Lds * 2 - 1);
 	int i, j;
 	double dUds, dUgs, value;
+	std::vector<std::future<double>> AsyncMatrix[out.size1()];
+
 
 	dUds = (Uds[0] + Uds[1]) / 2;
 	dUgs = (Ugs[0] + Ugs[1]) / 2;
 
-	for(i = 0; i < Lgs; ++i) {
+	for(i = 0; i < out.size1() - 1; ++i) {
 		value = 0;
-		for(j = 0; j < Lds * 2 - 1; ++j) {
-			out(i, j).x = GaussInter(Ugs, Uds, Lgs, Lds, input, Ugs[i], value);
+		AsyncMatrix[i].reserve(out.size2());
+		for(j = 0; j < out.size2(); ++j) {
+			//out(i, j).x = GaussInter(Ugs, Uds, Lgs, Lds, input, Ugs[i], value);
+			AsyncMatrix[i].emplace_back(std::async(
+					std::launch::any, GaussInter, Ugs, Uds, Lgs, Lds, input, Ugs[i], value)
+					);
+			out(i, j).y = input(i, 0).y;
 			value += dUds;
 		}
 	}
+
+
+	AsyncMatrix[out.size1() - 1].reserve(out.size2());
+
 	value = 0;
-	for(i = 0; i < Lds * 2 - 1; ++i) {
-		out(input.size1(), i).x = GaussInter(Ugs, Uds, Lgs, Lds, input, dUgs, value);
+	for(i = 0; i < out.size2(); ++i) {
+		//out(input.size1(), i).x = GaussInter(Ugs, Uds, Lgs, Lds, input, dUgs, value);
+		AsyncMatrix[out.size1() - 1].emplace_back(
+				std::async(std::launch::any, GaussInter, Ugs, Uds, Lgs, Lds, input, dUgs, value)
+				);
+		out(input.size1(), i).y = input(0, 0).y + dUds;
 		value += dUds;
 	}
 
+	for(i = 0; i < out.size1(); ++i) {
+		for(j = 0; j < out.size2(); ++j) {
+			out(i, j).x = AsyncMatrix[i][j].get();
+		}
+	}
 
 
 	return out;
@@ -125,7 +147,7 @@ int main() {
 
 	for(i = 0; i < big.size1(); ++i) {
 		for(j = 0; j < big.size2(); ++j) {
-			std::cout << big(i, j).x << " ";
+			std::cout << big(i, j).y << " ";
 		}
 		std::cout << "\n";
 	}
