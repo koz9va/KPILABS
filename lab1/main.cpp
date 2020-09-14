@@ -147,7 +147,7 @@ int main() {
 
 	for(i = 0; i < big.size1(); ++i) {
 		for(j = 0; j < big.size2(); ++j) {
-			std::cout << big(i, j).y << " ";
+			std::cout << big(i, j).x << " ";
 		}
 		std::cout << "\n";
 	}
