@@ -33,89 +33,80 @@ ublas::matrix<T> readMatrix(char *filename, double **Uds, int *Lds, double **Ugs
 		}
 	}
 
-	file.read((char*) Lds, sizeof(int));
-
-	*Uds = new double [*Lds];
-
-	file.read((char*) *Uds, *Lds * sizeof(double));
-
 	file.read((char*) Lgs, sizeof(int));
 
 	*Ugs = new double [*Lgs];
 
 	file.read((char*) *Ugs, *Lgs * sizeof(double));
 
+	file.read((char*) Lds, sizeof(int));
+
+	*Uds = new double [*Lds];
+
+	file.read((char*) *Uds, *Lds * sizeof(double));
+
 	return outMatrix;
 }
 
-double GaussInter(ublas::matrix<point> &input, double ugsx, double udsx,
-				  const double *Uds, const double *Ugs, int Lds, int Lgs)
+double GaussInter(double *Ugs, double *Uds, int Lgs, int Lds, ublas::matrix<point> &input,
+				  double ugsx, double udsx)
 				  {
-	double sum, product, *temp;
+	double sum, product, value;
 	int i, j, k;
 
-	temp = new double [Lds];
+ value = 0;
 
-
-	for(k = 0; k < Lds; ++k) {
+	for(k = 0; k < Lgs; ++k) {
 		sum = 0;
-		for(i = 0; i < Lds; ++i) {
+		for (i = 0; i < Lds; ++i) {
 			product = input(k, i).x;
 
-			for(j = 0; j < Lds; ++j) {
-				if(i != j)
+			for (j = 0; j < Lds; ++j) {
+				if (i != j)
 					product *= (udsx - Uds[j]) / (Uds[i] - Uds[j]);
 			}
 			sum += product;
 		}
-		temp[k] = sum;
-	}
 
-	sum = 0;
-	for(i = 0; i < Lgs; ++i) {
-		product = temp[i];
-		for(j = 0; j < Lgs; ++j) {
-			if(i != j)
-				product *= (ugsx - Ugs[j]) / (Ugs[i] - Ugs[j]);
+
+		for (i = 0; i < Lgs; ++i) {
+			if (i != k) {
+				sum *= (ugsx - Ugs[i]) / (Ugs[k] - Ugs[i]);
+			}
+			value += sum;
 		}
-		sum += product;
+
 	}
 
-	delete [] temp;
-
-	return sum;
+	return value;
 }
 
 
 
-ublas::matrix<point> InterpolateMatrix( ublas::matrix<point> &input, const double *Uds, int Lds,
-										const double *Ugs, int Lgs)
+ublas::matrix<point> InterpolateMatrix( ublas::matrix<point> &input, double *Uds, int Lds,
+										double *Ugs, int Lgs)
 										{
-	ublas::matrix<point> out(Lds + 1, Lgs * 2 );
+	ublas::matrix<point> out(Lgs + 1, Lds * 2 - 1);
 	int i, j;
-	double dUds, dUgs, uds, ugs, deb;
+	double dUds, dUgs, value;
 
 	dUds = (Uds[0] + Uds[1]) / 2;
 	dUgs = (Ugs[0] + Ugs[1]) / 2;
-	uds = 0;
-	ugs = 0;
-	for(i = 0; i < out.size1(); ++i) {
-		for(j = 0; j < out.size2(); ++j) {
-			out(i, j).x = GaussInter(input, ugs, uds, Uds, Ugs, Lds, Lgs);
-			out(i, j).y = Uds[i];
-			uds += dUds;
-			deb = out(i, j).x;
+
+	for(i = 0; i < Lgs; ++i) {
+		value = 0;
+		for(j = 0; j < Lds * 2 - 1; ++j) {
+			out(i, j).x = GaussInter(Ugs, Uds, Lgs, Lds, input, Ugs[i], value);
+			value += dUds;
 		}
-		ugs += dUgs;
+	}
+	value = 0;
+	for(i = 0; i < Lds * 2 - 1; ++i) {
+		out(input.size1(), i).x = GaussInter(Ugs, Uds, Lgs, Lds, input, dUgs, value);
+		value += dUds;
 	}
 
-	ugs = (Uds[0] + Uds[1]) / 2;
 
-	for(i = 0; i < out.size2(); ++i) {
-		out(out.size1() - 1, i).x = GaussInter(input, ugs, uds, Uds, Ugs, Lds, Lgs);
-		out(out.size1() - 1, i).y = ugs;
-		uds += dUds;
-	}
 
 	return out;
 }
