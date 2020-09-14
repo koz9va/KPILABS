@@ -1,8 +1,6 @@
 #include <iostream>
 #include <fstream>
 #include <boost/numeric/ublas/matrix.hpp>
-#include <future>
-#include <vector>
 
 typedef struct {
 	double x;
@@ -12,7 +10,7 @@ typedef struct {
 using namespace boost::numeric;
 
 template<typename T>
-ublas::matrix<T> readMatrix(char *filename) {
+ublas::matrix<T> readMatrix(char *filename, double **Uds, int *Lds, double **Ugs, int *Lgs) {
 
 	int colls, rows, i, j;
 	size_t elementSize;
@@ -35,60 +33,89 @@ ublas::matrix<T> readMatrix(char *filename) {
 		}
 	}
 
+	file.read((char*) Lds, sizeof(int));
+
+	*Uds = new double [*Lds];
+
+	file.read((char*) *Uds, *Lds * sizeof(double));
+
+	file.read((char*) Lgs, sizeof(int));
+
+	*Ugs = new double [*Lgs];
+
+	file.read((char*) *Ugs, *Lgs * sizeof(double));
+
 	return outMatrix;
 }
 
-double GaussInter(ublas::matrix<point> input, double x, int row) {
-	double sum, product, deb;
-	size_t i, j;
+double GaussInter(ublas::matrix<point> &input, double ugsx, double udsx,
+				  const double *Uds, const double *Ugs, int Lds, int Lgs)
+				  {
+	double sum, product, *temp;
+	int i, j, k;
 
-	if(row > input.size1() - 1)
-		exit(-1);
+	temp = new double [Lds];
+
+
+	for(k = 0; k < Lds; ++k) {
+		sum = 0;
+		for(i = 0; i < Lds; ++i) {
+			product = input(k, i).x;
+
+			for(j = 0; j < Lds; ++j) {
+				if(i != j)
+					product *= (udsx - Uds[j]) / (Uds[i] - Uds[j]);
+			}
+			sum += product;
+		}
+		temp[k] = sum;
+	}
 
 	sum = 0;
-	for(i = 0; i < input.size2(); ++i) {
-		product = 1;
-		for(j = 0; j < input.size2(); ++j) {
-			if(i != j) {
-				product *= (x - input(row, j).x ) / (input(row, i).x - input(row, j).x);
-			}
+	for(i = 0; i < Lgs; ++i) {
+		product = temp[i];
+		for(j = 0; j < Lgs; ++j) {
+			if(i != j)
+				product *= (ugsx - Ugs[j]) / (Ugs[i] - Ugs[j]);
 		}
-		deb = input(row, i).y;
-		sum += product * input(row, i).y;
+		sum += product;
 	}
+
+	delete [] temp;
 
 	return sum;
 }
 
 
 
-ublas::matrix<point> InterpolateMatrix( ublas::matrix<point> input) {
-	ublas::matrix<point> out;
-	std::vector< std::future<double> > results;
+ublas::matrix<point> InterpolateMatrix( ublas::matrix<point> &input, const double *Uds, int Lds,
+										const double *Ugs, int Lgs)
+										{
+	ublas::matrix<point> out(Lds + 1, Lgs * 2 );
 	int i, j;
+	double dUds, dUgs, uds, ugs, deb;
 
-	out = input;
-	out.resize(input.size1(), input.size2() * 2);
-
+	dUds = (Uds[0] + Uds[1]) / 2;
+	dUgs = (Ugs[0] + Ugs[1]) / 2;
+	uds = 0;
+	ugs = 0;
 	for(i = 0; i < out.size1(); ++i) {
-		results.reserve(input.size2());
-
-		for(j = 0; j < out.size2() - 2; ++j) {
-				out(i, j).x = (input(i, j/2).x + input(i, j/2 + 1).x) / 2;
-
-				results.emplace_back(std::async(std::launch::any, GaussInter, input, out(i, j).x, i));
+		for(j = 0; j < out.size2(); ++j) {
+			out(i, j).x = GaussInter(input, ugs, uds, Uds, Ugs, Lds, Lgs);
+			out(i, j).y = Uds[i];
+			uds += dUds;
+			deb = out(i, j).x;
 		}
-
-		for(j = 0; j < out.size2() - 1; ++j) {
-			if(j % 2) {
-				out(i, j).y = results[j].get();
-			}
-		}
-
-		results.clear();
-
+		ugs += dUgs;
 	}
 
+	ugs = (Uds[0] + Uds[1]) / 2;
+
+	for(i = 0; i < out.size2(); ++i) {
+		out(out.size1() - 1, i).x = GaussInter(input, ugs, uds, Uds, Ugs, Lds, Lgs);
+		out(out.size1() - 1, i).y = ugs;
+		uds += dUds;
+	}
 
 	return out;
 }
@@ -96,17 +123,25 @@ ublas::matrix<point> InterpolateMatrix( ublas::matrix<point> input) {
 
 int main() {
 
-	ublas::matrix<point> ReadData = readMatrix<point>("data.bin");
+	int Lds, Lgs, i, j;
+	double *Uds, *Ugs;
 
-	ublas::matrix<point> big = InterpolateMatrix(ReadData);
+	Uds = Ugs = nullptr;
 
-	for(int i = 0; i < big.size1(); ++i) {
-		for(int j = 0; j < big.size2(); ++j) {
+	ublas::matrix<point> ReadData = readMatrix<point>("data.bin", &Uds, &Lds, &Ugs, &Lgs);
+
+	ublas::matrix<point> big = InterpolateMatrix(ReadData, Uds, Lds, Ugs, Lgs);
+
+	for(i = 0; i < big.size1(); ++i) {
+		for(j = 0; j < big.size2(); ++j) {
 			std::cout << big(i, j).x << " ";
 		}
 		std::cout << "\n";
 	}
 
+
+	delete [] Uds;
+	delete [] Ugs;
 
 	return 0;
 }
