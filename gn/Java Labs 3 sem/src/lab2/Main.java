@@ -1,6 +1,6 @@
 package lab2;
 
-import java.io.*;
+        import java.io.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -65,8 +65,7 @@ public class Main {
 
     private static double inter(double[] arrayOfUgs, double[] arrayOfUds, double[][] matrix, double ugsX, double udsX) {
 
-        double sum, product;
-        double[] tmp = new double[lab1.Main.UgsLengthOfArray];
+        double sum, product, f = 0;
 
         for (int k = 0; k < arrayOfUgs.length; k++) {
 
@@ -86,24 +85,15 @@ public class Main {
                 sum += product;
             }
 
-            tmp[k] = sum;
+
+            for (int i = 0; i < arrayOfUgs.length; i++)
+
+                if (i != k)
+
+                    sum *= (ugsX - arrayOfUgs[i]) / (arrayOfUgs[k] - arrayOfUgs[i]);
+
+            f += sum;
         }
-
-        sum = 0;
-
-        for (int i = 0; i < arrayOfUgs.length; i++) {
-
-            product = tmp[i];
-
-            for (int j = 0; j < arrayOfUgs.length; j++) {
-
-                if (j != i) {
-                    product *= (ugsX - arrayOfUgs[j]) / (arrayOfUgs[i] - arrayOfUgs[j]);
-                }
-            }
-            sum += product;
-        }
-
-        return sum;
+        return f;
     }
 }

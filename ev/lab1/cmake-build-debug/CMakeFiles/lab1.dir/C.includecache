@@ -6,9 +6,9 @@
 
 #IncludeRegexTransform: 
 
-/Users/serafimgoncarov/Documents/KPILABS/k9/lab0/lab0.c
-stdio.h
--
+/cygdrive/c/Users/Min/KPILABS/ev/lab1/main.c
 stdlib.h
+-
+stdio.h
 -
 
