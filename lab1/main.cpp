@@ -111,7 +111,7 @@ ublas::matrix<point> InterpolateMatrix( ublas::matrix<point> &input, double *Uds
 			AsyncMatrix[i].emplace_back(std::async(
 					std::launch::any, GaussInter, Ugs, Uds, Lgs, Lds, input, Ugs[i], value)
 					);
-	//		out(i, j).y = input(i, 0).y;
+			out(i, j).y = input(i, 0).y;
 			value += dUds;
 		}
 	}
@@ -144,7 +144,6 @@ int main() {
 
 	int Lds, Lgs, i, j;
 	double *Uds, *Ugs;
-
 	Uds = Ugs = nullptr;
 
 	ublas::matrix<point> ReadData = readMatrix<point>("data.bin", &Uds, &Lds, &Ugs, &Lgs);
@@ -157,7 +156,6 @@ int main() {
 		}
 		std::cout << "\n";
 	}
-
 
 	delete [] Uds;
 	delete [] Ugs;
