@@ -47,40 +47,46 @@ ublas::matrix<T> readMatrix(char *filename, double **Uds, int *Lds, double **Ugs
 
 	file.read((char*) *Uds, *Lds * sizeof(double));
 
+
 	return outMatrix;
 }
 
 double GaussInter(double *Ugs, double *Uds, int Lgs, int Lds, ublas::matrix<point> input,
 				  double ugsx, double udsx)
 				  {
-	double sum, product, value;
+	double sum, product, value, *temp;
 	int i, j, k;
 
- value = 0;
+ 	temp = new double [input.size1()];
+
 
 	for(k = 0; k < Lgs; ++k) {
 		sum = 0;
 		for (i = 0; i < Lds; ++i) {
 			product = input(k, i).x;
-
 			for (j = 0; j < Lds; ++j) {
 				if (i != j)
 					product *= (udsx - Uds[j]) / (Uds[i] - Uds[j]);
 			}
 			sum += product;
 		}
-
-
-		for (i = 0; i < Lgs; ++i) {
-			if (i != k) {
-				sum *= (ugsx - Ugs[i]) / (Ugs[k] - Ugs[i]);
-			}
-			value += sum;
-		}
-
+		temp[k] = sum;
 	}
 
-	return value;
+		sum = 0;
+		for (i = 0; i < Lgs; ++i) {
+			value = temp[i];
+			for(j = 0; j < Lgs; ++j) {
+				if (i != j) {
+					value *= (ugsx - Ugs[j]) / (Ugs[i] - Ugs[j]);
+				}
+			}
+			sum += value;
+		}
+
+	delete [] temp;
+
+	return sum;
 }
 
 
@@ -105,7 +111,7 @@ ublas::matrix<point> InterpolateMatrix( ublas::matrix<point> &input, double *Uds
 			AsyncMatrix[i].emplace_back(std::async(
 					std::launch::any, GaussInter, Ugs, Uds, Lgs, Lds, input, Ugs[i], value)
 					);
-			out(i, j).y = input(i, 0).y;
+	//		out(i, j).y = input(i, 0).y;
 			value += dUds;
 		}
 	}
