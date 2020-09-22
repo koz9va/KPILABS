@@ -54,11 +54,10 @@ double InterPol (int Ugsl, int Udsl,
              product = matrix[k][i];
 
              for (int j = 0; j < Udsl; ++j) {
-                 if (i != j)
-                     product *= (Udsx - Uds[j]) / (Uds[i] - Uds[j]);
-
+                 if (i != j) {
+					 product *= (Udsx - Uds[j]) / (Uds[i] - Uds[j]);
+                 }
              }
-
              sum += product;
          }
          temp[k] = sum;
@@ -71,7 +70,6 @@ double InterPol (int Ugsl, int Udsl,
              if (j != i) {
                  product *= (Ugsx - Ugs[j]) / (Ugs[i] - Ugs[j]);
              }
-
          }
          sum += product;
      }
@@ -84,28 +82,26 @@ void InterPolmatrix (int Ugsl, int Udsl, double *Ugs, double *Uds, double **matr
     double UdsStep = (Uds[0] + Uds[1]) / 2;
     double UgsStep = (Ugs[0] + Ugs[1]) / 2;
 
-    double value = 0;
+	double value;
 
     for (int i = 0; i < Ugsl; ++i) {
-
+		value = 0;
         for (int j = 0; j < Udsl * 2 - 1 ; ++j) {
 
-
-        cout << InterPol(Ugsl, Udsl, Ugs, Uds, matrix, UgsStep, value) << " ";
+        cout << InterPol(Ugsl, Udsl, Ugs, Uds, matrix, Ugs[i], value) << " ";
 
         value += UdsStep;
         }
 
-        cout<< "\n";
+        cout << "\n";
 
     }
 
     value = 0;
-    for (int i = 0; i < Udsl * 2 -1; ++i) {
+
+    for (int i = 0; i < Udsl * 2 - 1; ++i) {
         cout << InterPol(Ugsl, Udsl, Ugs, Uds, matrix, UgsStep, value) << " ";
-
         value += UdsStep;
-
     }
 
 }
