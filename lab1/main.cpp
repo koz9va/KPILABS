@@ -1,5 +1,7 @@
 #include <iostream>
 #include <fstream>
+#include <vector>
+#include <future>
 #include <boost/numeric/ublas/matrix.hpp>
 
 typedef struct {
@@ -33,37 +35,37 @@ ublas::matrix<T> readMatrix(char *filename, double **Uds, int *Lds, double **Ugs
 		}
 	}
 
-	file.read((char*) Lds, sizeof(int));
-
-	*Uds = new double [*Lds];
-
-	file.read((char*) *Uds, *Lds * sizeof(double));
-
 	file.read((char*) Lgs, sizeof(int));
 
 	*Ugs = new double [*Lgs];
 
 	file.read((char*) *Ugs, *Lgs * sizeof(double));
 
+	file.read((char*) Lds, sizeof(int));
+
+	*Uds = new double [*Lds];
+
+	file.read((char*) *Uds, *Lds * sizeof(double));
+
+
 	return outMatrix;
 }
 
-double GaussInter(ublas::matrix<point> &input, double ugsx, double udsx,
-				  const double *Uds, const double *Ugs, int Lds, int Lgs)
+double GaussInter(double *Ugs, double *Uds, int Lgs, int Lds, ublas::matrix<point> input,
+				  double ugsx, double udsx)
 				  {
-	double sum, product, *temp;
+	double sum, product, value, *temp;
 	int i, j, k;
 
-	temp = new double [Lds];
+ 	temp = new double [input.size1()];
 
 
-	for(k = 0; k < Lds; ++k) {
+	for(k = 0; k < Lgs; ++k) {
 		sum = 0;
-		for(i = 0; i < Lds; ++i) {
+		for (i = 0; i < Lds; ++i) {
 			product = input(k, i).x;
-
-			for(j = 0; j < Lds; ++j) {
-				if(i != j)
+			for (j = 0; j < Lds; ++j) {
+				if (i != j)
 					product *= (udsx - Uds[j]) / (Uds[i] - Uds[j]);
 			}
 			sum += product;
@@ -71,15 +73,16 @@ double GaussInter(ublas::matrix<point> &input, double ugsx, double udsx,
 		temp[k] = sum;
 	}
 
-	sum = 0;
-	for(i = 0; i < Lgs; ++i) {
-		product = temp[i];
-		for(j = 0; j < Lgs; ++j) {
-			if(i != j)
-				product *= (ugsx - Ugs[j]) / (Ugs[i] - Ugs[j]);
+		sum = 0;
+		for (i = 0; i < Lgs; ++i) {
+			value = temp[i];
+			for(j = 0; j < Lgs; ++j) {
+				if (i != j) {
+					value *= (ugsx - Ugs[j]) / (Ugs[i] - Ugs[j]);
+				}
+			}
+			sum += value;
 		}
-		sum += product;
-	}
 
 	delete [] temp;
 
@@ -88,34 +91,50 @@ double GaussInter(ublas::matrix<point> &input, double ugsx, double udsx,
 
 
 
-ublas::matrix<point> InterpolateMatrix( ublas::matrix<point> &input, const double *Uds, int Lds,
-										const double *Ugs, int Lgs)
+ublas::matrix<point> InterpolateMatrix( ublas::matrix<point> &input, double *Uds, int Lds,
+										double *Ugs, int Lgs)
 										{
-	ublas::matrix<point> out(Lds + 1, Lgs * 2 );
+	ublas::matrix<point> out(Lgs + 1, Lds * 2 - 1);
 	int i, j;
-	double dUds, dUgs, uds, ugs, deb;
+	double dUds, dUgs, value;
+	std::vector<std::future<double>> AsyncMatrix[out.size1()];
+
 
 	dUds = (Uds[0] + Uds[1]) / 2;
 	dUgs = (Ugs[0] + Ugs[1]) / 2;
-	uds = 0;
-	ugs = 0;
+
+	for(i = 0; i < out.size1() - 1; ++i) {
+		value = 0;
+		AsyncMatrix[i].reserve(out.size2());
+		for(j = 0; j < out.size2(); ++j) {
+			//out(i, j).x = GaussInter(Ugs, Uds, Lgs, Lds, input, Ugs[i], value);
+			AsyncMatrix[i].emplace_back(std::async(
+					std::launch::any, GaussInter, Ugs, Uds, Lgs, Lds, input, Ugs[i], value)
+					);
+			out(i, j).y = input(i, 0).y;
+			value += dUds;
+		}
+	}
+
+
+	AsyncMatrix[out.size1() - 1].reserve(out.size2());
+
+	value = 0;
+	for(i = 0; i < out.size2(); ++i) {
+		//out(input.size1(), i).x = GaussInter(Ugs, Uds, Lgs, Lds, input, dUgs, value);
+		AsyncMatrix[out.size1() - 1].emplace_back(
+				std::async(std::launch::any, GaussInter, Ugs, Uds, Lgs, Lds, input, dUgs, value)
+				);
+		out(input.size1(), i).y = input(0, 0).y + dUds;
+		value += dUds;
+	}
+
 	for(i = 0; i < out.size1(); ++i) {
 		for(j = 0; j < out.size2(); ++j) {
-			out(i, j).x = GaussInter(input, ugs, uds, Uds, Ugs, Lds, Lgs);
-			out(i, j).y = Uds[i];
-			uds += dUds;
-			deb = out(i, j).x;
+			out(i, j).x = AsyncMatrix[i][j].get();
 		}
-		ugs += dUgs;
 	}
 
-	ugs = (Uds[0] + Uds[1]) / 2;
-
-	for(i = 0; i < out.size2(); ++i) {
-		out(out.size1() - 1, i).x = GaussInter(input, ugs, uds, Uds, Ugs, Lds, Lgs);
-		out(out.size1() - 1, i).y = ugs;
-		uds += dUds;
-	}
 
 	return out;
 }
@@ -125,7 +144,6 @@ int main() {
 
 	int Lds, Lgs, i, j;
 	double *Uds, *Ugs;
-
 	Uds = Ugs = nullptr;
 
 	ublas::matrix<point> ReadData = readMatrix<point>("data.bin", &Uds, &Lds, &Ugs, &Lgs);
@@ -138,7 +156,6 @@ int main() {
 		}
 		std::cout << "\n";
 	}
-
 
 	delete [] Uds;
 	delete [] Ugs;

@@ -47,7 +47,7 @@ int main() {
     FILE * final;
 
 
-    matrix = (float**)malloc(M * sizeof(float ));
+    matrix = (float**)malloc(M * sizeof(float* ));
     if (!matrix){
         printf("666\n");
         return -1;
@@ -116,17 +116,18 @@ int main() {
             fprintf(final, "%f ", inter(M, N, arrOfUgs, arrOfUds, matrix, arrOfUgs[i], value));
             value += UdsStep;
         }
+        fprintf(final, "\n");
     }
 
     float value = 0;
     for(i = 0; i < N * 2 - 1; i++) {
         fprintf(final, "%f ", inter(M, N, arrOfUgs, arrOfUds, matrix, UgsStep, value));
-        value += UgsStep;
+        value += UdsStep;
     }
 
     free(arrOfUds);
     free(arrOfUgs);
-    for (i = 0; i < N; i++) {
+    for (i = 0; i < M; i++) {
         free(matrix[i]);
     }
     free(matrix);
