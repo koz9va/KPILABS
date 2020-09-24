@@ -1,16 +1,13 @@
 package lab2;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.Arrays;
+        import java.io.*;
 
 public class Main {
     public static void main(String[] args) {
         double[] arrayOfUds = new double[lab1.Main.UdsLengthOfArray];
         double[] arrayOfUgs = new double[lab1.Main.UgsLengthOfArray];
         double[][] arrayOfCurrent = new double[lab1.Main.UgsLengthOfArray][lab1.Main.UdsLengthOfArray];
-        try {
+        try (BufferedReader console_reader = new BufferedReader(new InputStreamReader(System.in))) {
 
             try (BufferedReader fileReader = new BufferedReader(new FileReader("Uds.txt"))) {
                 for (int i = 0; fileReader.ready() ; i++) {
@@ -35,68 +32,68 @@ public class Main {
                 }
             }
 
-            double[][] solution = inter(arrayOfCurrent, arrayOfUds);
+            double stepUds = (arrayOfUds[0] + arrayOfUds[1]) / 2;
 
-            for (double[] i:
-            solution){
-                System.out.println(Arrays.toString(i));
+            double stepUgs = (arrayOfUgs[0] + arrayOfUgs[1]) / 2;
+
+            System.out.println("Enter File to write");
+            String filename = console_reader.readLine();
+
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename))) {
+                for (double arrayOfUg : arrayOfUgs) {
+                    double value = 0;
+                    for (int i = 0; i < lab1.Main.UdsLengthOfArray * 2 - 1; i++) {
+                        writer.write(inter(arrayOfUgs, arrayOfUds, arrayOfCurrent, arrayOfUg, value) + " ");
+                        value += stepUds;
+                    }
+                    writer.write("\n");
+                }
+
+
+                double Uds = 0;
+                for (int i = 0; i < lab1.Main.UdsLengthOfArray * 2 - 1; i++) {
+                    writer.write(inter(arrayOfUgs, arrayOfUds, arrayOfCurrent, stepUgs, Uds) + " ");
+                    Uds += stepUds;
+                }
             }
 
         }
         catch (IOException ignored) {
             System.out.println("E0");
         }
-
     }
 
-    private static double[][] inter(double[][] matrix, double[] arrayOfXiXj){
-        double[] arrayOfX = new double[arrayOfXiXj.length - 1];
-        for (int i = 0; i < arrayOfXiXj.length - 1; i++) {
-            arrayOfX[i] = (arrayOfXiXj[i] + arrayOfXiXj[i + 1]) / 2;
-        }
+    private static double inter(double[] arrayOfUgs, double[] arrayOfUds, double[][] matrix, double ugsX, double udsX) {
 
-        //int HorizontalLen = arrayOfX.length + arrayOfXiXj.length;
-        double[][] response = new double[lab1.Main.UgsLengthOfArray][arrayOfX.length];
+        double sum, product, f = 0;
 
-        for (int i = 0; i < response.length; i++) {
-            for (int j = 0; j < arrayOfX.length; j++) {
-                double sum = 0;
+        for (int k = 0; k < arrayOfUgs.length; k++) {
 
-                for (int k = 1; k < arrayOfXiXj.length; k++) {
-                    double product = 1.0;
+            sum = 0;
 
-                    for (int l = 1; l < arrayOfXiXj.length; l++) {
-                        if (l != k){
-                            product *= (arrayOfX[j] - arrayOfXiXj[l]) / (arrayOfXiXj[k] - arrayOfXiXj[l]);
-                        }
+            for (int i = 0; i < arrayOfUds.length; i++) {
+
+                product = matrix[k][i];
+
+                for (int j = 0; j < arrayOfUds.length; j++) {
+
+                    if (j != i) {
+                        product *= (udsX - arrayOfUds[j]) / (arrayOfUds[i] - arrayOfUds[j]);
                     }
-                    product *= matrix[i][k];
-                    sum += product;
                 }
 
-                response[i][j] = sum;
+                sum += product;
             }
+
+
+            for (int i = 0; i < arrayOfUgs.length; i++)
+
+                if (i != k)
+
+                    sum *= (ugsX - arrayOfUgs[i]) / (arrayOfUgs[k] - arrayOfUgs[i]);
+
+            f += sum;
         }
-        return response;
+        return f;
     }
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -8,9 +8,8 @@
 float inter(int m, int n, const float* arrayOfUgs, const float* arrayOfUds, float** matrix, float UgsX, float UdsX) {
 
     int i, j, k;
-    float sum;
+    float sum, finalValue = 0;
     float multiply;
-    float tmpArray[M];
 
     for (k = 0; k < m; k++) {
 
@@ -25,20 +24,14 @@ float inter(int m, int n, const float* arrayOfUgs, const float* arrayOfUds, floa
 
             sum += multiply;
         }
-        tmpArray[k] = sum;
-    }
 
-    sum = 0;
-    for (i = 0; i < m; ++i) {
-        multiply = tmpArray[i];
         for (j = 0; j < m; j++) {
-            if (j != i) {
-                multiply *= (UgsX - arrayOfUgs[j]) / (arrayOfUgs[i] - arrayOfUgs[j]);
-            }
+            if (j != k)
+                sum *= (UgsX - arrayOfUgs[j]) / (arrayOfUgs[k] - arrayOfUgs[j]);
         }
-        sum += multiply;
+        finalValue += sum;
     }
-    return sum;
+    return finalValue;
 }
 
 
