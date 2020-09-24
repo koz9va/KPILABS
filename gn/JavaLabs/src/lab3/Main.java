@@ -1,44 +1,106 @@
 package lab3;
 
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
 
-        Matrix matrix = new Matrix(getFilenameFromConsole());
-
-        Matrix matrix1 = new Matrix(matrix);
-
-        double[] b = {0, 20, -12};
         double[] x = new double[3];
+        Matrix matrix;
+        VectorOfFreeMembers vectorOfFreeMembers;
 
-        QR(new Matrix(matrix), b, x);
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
+            System.out.println("Matrix");
+            matrix = new Matrix(getFilenameFromConsole(reader));
 
-        for (double v : x) {
-            System.out.println(v);
+            System.out.println("Vector");
+            vectorOfFreeMembers = new VectorOfFreeMembers(getFilenameFromConsole(reader));
+
+            System.out.println("Enter file to write Main Matrix");
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(reader.readLine()))) {
+                for (int i = 0; i < matrix.matrix.length; i++) {
+                    for (int j = 0; j < matrix.matrix.length; j++) {
+                        writer.write(matrix.matrix[i][j] + " ");
+                    }
+                    writer.write("\n");
+                }
+            }
+
+            System.out.println("Enter file to write LU fact");
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(reader.readLine()))) {
+
+                Matrix LUMatrix = new Matrix(matrix);
+                VectorOfFreeMembers vec = new VectorOfFreeMembers(vectorOfFreeMembers);
+
+                LU(LUMatrix, vec, x);
+
+                writer.write("LU_fact_Matrix\n");
+                for (int i = 0; i < LUMatrix.matrix.length; i++) {
+                    for (int j = 0; j < LUMatrix.matrix.length; j++) {
+                        writer.write(LUMatrix.matrix[i][j] + " ");
+                    }
+                    writer.write("\n");
+                }
+                PrintInfoOfFact(x, matrix, vectorOfFreeMembers, writer);
+            }
+
+            System.out.println("Enter file to write QR fact");
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(reader.readLine()))) {
+
+                Matrix QRMatrix = new Matrix(matrix);
+                VectorOfFreeMembers vec = new VectorOfFreeMembers(vectorOfFreeMembers);
+
+                QR(QRMatrix, vec, x);
+
+                writer.write("QR_fact_Matrix\n");
+                for (int i = 0; i < QRMatrix.matrix.length; i++) {
+                    for (int j = 0; j < QRMatrix.matrix.length; j++) {
+                        writer.write(QRMatrix.matrix[i][j] + " ");
+                    }
+                    writer.write("\n");
+                }
+                PrintInfoOfFact(x, matrix, vectorOfFreeMembers, writer);
+            }
+
+            System.out.println("Enter file to write Holes fact");
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(reader.readLine()))) {
+
+                Matrix HolesMatrix = new Matrix(matrix);
+                VectorOfFreeMembers vec = new VectorOfFreeMembers(vectorOfFreeMembers);
+
+                Hales(HolesMatrix, vec, x);
+
+                writer.write("LU_fact_Matrix\n");
+                for (int i = 0; i < HolesMatrix.matrix.length; i++) {
+                    for (int j = 0; j < HolesMatrix.matrix.length; j++) {
+                        writer.write(HolesMatrix.matrix[i][j] + " ");
+                    }
+                    writer.write("\n");
+                }
+                PrintInfoOfFact(x, matrix, vectorOfFreeMembers, writer);
+            }
         }
-
-//        Matrix matrix2 = new Matrix(1);
-//        matrix2.matrix[0][0] = 21;
-//        Matrix matrix3 = new Matrix(matrix2);
-//
-//
-//        double[][] mat = matrix.clone();
-
-
-//        LU(matrix, b, x);
-//        QR(matrix, b, x);
-//        Hales(matrix, b, x);
-//
-//        double[] arr = vectorR(matrix1, x, b);
-//        double norm = normVec(arr);
+        catch(IOException ignored){
+            System.out.println("E1");
+        }
     }
-    
-    public static void LU (Matrix a, double[] b, double[] x) {
+
+    private static void PrintInfoOfFact(double[] x, Matrix matrix, VectorOfFreeMembers vectorOfFreeMembers, BufferedWriter writer) throws IOException {
+        writer.write("\nUnknown_Vector\n");
+        for (double v : x) {
+            writer.write(v + " ");
+        }
+        writer.write("\nResidual_Vector\n");
+        double[] arr = residualVector(new Matrix(matrix), x, new VectorOfFreeMembers(vectorOfFreeMembers));
+        writer.write(Arrays.toString(arr) + " ");
+        writer.write("\nNormal_Residual_Vector\n");
+        writer.write(normVec(arr) + " ");
+        writer.write("\n");
+    }
+
+    public static void LU (Matrix a, VectorOfFreeMembers b, double[] x) {
         Arrays.fill(x,0);
 
         for (int j = 0; j < a.matrix.length; j++) {
@@ -61,7 +123,7 @@ public class Main {
         }
 
         for (int i = 0; i < a.matrix.length; i++) {
-            x[i] = b[i];
+            x[i] = b.vector[i];
             for (int j = 0; j <= i - 1; j++) {
                 x[i] -= a.matrix[i][j] * x[j];
             }
@@ -75,7 +137,7 @@ public class Main {
         }
     }
 
-    public static void QR (Matrix a, double[] b, double[] x) {
+    public static void QR (Matrix a, VectorOfFreeMembers b, double[] x) {
         Arrays.fill(x,0);
 
         for (int j = 0; j < a.matrix.length - 1; j++) {
@@ -101,16 +163,16 @@ public class Main {
             }
             t = 0;
             for (int i = j; i < a.matrix.length; i++) {
-                t += a.matrix[i][j] * b[i];
+                t += a.matrix[i][j] * b.vector[i];
             }
             for (int i = j; i < a.matrix.length; i++) {
-                b[i] -= k * a.matrix[i][j] * t;
+                b.vector[i] -= k * a.matrix[i][j] * t;
             }
             a.matrix[j][j] = alpha;
         }
 
         for (int i = a.matrix.length - 1; i >= 0; i--) {
-            x[i] = b[i];
+            x[i] = b.vector[i];
             for (int j = i + 1; j < a.matrix.length; j++) {
                 x[i] -= a.matrix[i][j] * x[j];
             }
@@ -118,7 +180,7 @@ public class Main {
         }
     }
 
-    public static void Hales (Matrix a, double[] b, double[] x) {
+    public static void Hales (Matrix a, VectorOfFreeMembers b, double[] x) {
         Arrays.fill(x,0);
 
         for (int j = 0; j < a.matrix.length; j++) {
@@ -139,7 +201,7 @@ public class Main {
 
         for (int i = 0; i < a.matrix.length; i++) {
 
-            x[i] = b[i];
+            x[i] = b.vector[i];
 
             for (int j = 0; j < i; j++) {
                 x[i] -= a.matrix[i][j] * x[j];
@@ -158,26 +220,26 @@ public class Main {
         }
     }
 
-    public static String getFilenameFromConsole () {
+    public static String getFilenameFromConsole (BufferedReader reader) {
         String filename = null;
-        System.out.println("Enter file with matrix");
-        try (BufferedReader consoleReader = new BufferedReader(new InputStreamReader(System.in))){
-            filename = consoleReader.readLine();
+        System.out.println("Enter file with data");
+        try {
+            filename = reader.readLine();
         } catch (IOException ignored) {
             System.out.println("E0");
         }
         return filename;
     }
 
-    public static double[] vectorR (double[][]matrix, double[] arrayOfX, double[] arrayOfB) {
+    public static double[] residualVector(Matrix matrix, double[] arrayOfX, VectorOfFreeMembers arrayOfB) {
         double[] returnedArray = new double[arrayOfX.length];
-        for (int i = 0; i < matrix.length; i++) {
+        for (int i = 0; i < matrix.matrix.length; i++) {
 
-            for (int j = 0; j < matrix.length; j++) {
-                returnedArray[i] += matrix[i][j] * arrayOfX[j];
+            for (int j = 0; j < matrix.matrix.length; j++) {
+                returnedArray[i] += matrix.matrix[i][j] * arrayOfX[j];
             }
         }
-        subtractVectors(returnedArray, arrayOfB);
+        subtractVectors(returnedArray, arrayOfB.vector);
         return returnedArray;
     }
 

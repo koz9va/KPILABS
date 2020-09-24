@@ -34,4 +34,5 @@ public class Matrix {
             System.arraycopy(matrix.matrix[i], 0, this.matrix[i], 0, matrix.matrix.length);
         }
     }
+
 }
