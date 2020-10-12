@@ -109,7 +109,7 @@ ublas::matrix<point> InterpolateMatrix( ublas::matrix<point> &input, double *Uds
 		for(j = 0; j < out.size2(); ++j) {
 			//out(i, j).x = GaussInter(Ugs, Uds, Lgs, Lds, input, Ugs[i], value);
 			AsyncMatrix[i].emplace_back(std::async(
-					std::launch::any, GaussInter, Ugs, Uds, Lgs, Lds, input, Ugs[i], value)
+					std::launch::async, GaussInter, Ugs, Uds, Lgs, Lds, input, Ugs[i], value)
 					);
 			out(i, j).y = input(i, 0).y;
 			value += dUds;
@@ -123,7 +123,7 @@ ublas::matrix<point> InterpolateMatrix( ublas::matrix<point> &input, double *Uds
 	for(i = 0; i < out.size2(); ++i) {
 		//out(input.size1(), i).x = GaussInter(Ugs, Uds, Lgs, Lds, input, dUgs, value);
 		AsyncMatrix[out.size1() - 1].emplace_back(
-				std::async(std::launch::any, GaussInter, Ugs, Uds, Lgs, Lds, input, dUgs, value)
+				std::async(std::launch::async, GaussInter, Ugs, Uds, Lgs, Lds, input, dUgs, value)
 				);
 		out(input.size1(), i).y = input(0, 0).y + dUds;
 		value += dUds;
