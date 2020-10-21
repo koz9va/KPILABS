@@ -1,0 +1,9 @@
+Bisection method:
+The root is: 1.732051e+00
+Iterations count: 20
+Newton method:
+The root is: 1.732051e+00
+Iterations count: 14
+Secant method:
+The root is: 1.732051e+00
+Iterations count: 21

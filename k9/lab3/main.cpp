@@ -1,4 +1,4 @@
-#include <iostream>
+#include <cstdio>
 #include <cmath>
 #include <cfloat>
 double f1(double x, int *cnt) {
@@ -80,21 +80,29 @@ double Secant(double f(double, int*), double x0, double x1, double eps, int *cnt
 int main() {
 
 	int cnt;
+	double fx;
+	FILE* file;
 
-	std::cout << "Bisection:\nThe root is: " << Bisection(f1, 1.0, 2.0, 1e-6, &cnt)
-	<< "\nIterations count: " << cnt;
+	file = fopen("out.txt", "w");
+	if(!file) {
+		printf("Can't open file:(\n");
+		return 21;
+	}
+	cnt = 0;
+	fx = Bisection(f1, 1.0, 2.0, 1e-6, &cnt);
+	fprintf(file, "Bisection method:\nThe root is: %e\nIterations count: %d\n", fx, cnt);
 
 	cnt = 0;
+	fx = Newton(f1, 2.0, 2.0, 1e-6, &cnt);
 
-	std::cout << "\nNewton:\nThe root is: " << Newton(f1, 2.0, 2.0, 1e-6, &cnt)
-	<< "\nIteration cout: " << cnt;
-
-	cnt = 0;
-
-	std::cout << "\nSecant:\nThe root is: " << Secant(f1, 1.0, 2.0, 1e-6, &cnt)
-			  << "\nIteration cout: " << cnt;
+	fprintf(file, "Newton method:\nThe root is: %e\nIterations count: %d\n", fx, cnt);
 
 	cnt = 0;
+	fx = Secant(f1, 1.0, 2.0, 1e-6, &cnt);
+
+	fprintf(file, "Secant method:\nThe root is: %e\nIterations count: %d\n", fx, cnt);
+
+	fclose(file);
 
 	return 0;
 }

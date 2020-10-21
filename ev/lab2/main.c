@@ -28,7 +28,9 @@ double getVectorR(double **mat, size_t len, double *b, double *x, double *r) {
 	for(i = 0; i < len; ++i) {
 		r[i] -= b[i];
 		sum += r[i] * r[i];
+		printf("%e\n", r[i]);
 	}
+
 
 	if(wasNULL == 1) {
 		free(r);
