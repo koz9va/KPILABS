@@ -1,9 +1,14 @@
 Bisection method:
 The root is: 1.732051e+00
-Iterations count: 20
+Iterations count: 22
+1.000000e+00
+2.119633e+00
+1.736484e+00
+1.639508e+00
+1.633546e+00
 Newton method:
-The root is: 1.732051e+00
-Iterations count: 14
+The root is: 1.633524e+00
+Iterations count: 12
 Secant method:
-The root is: 1.732051e+00
-Iterations count: 21
+The root is: 3.210814e+10
+Iterations count: 16
