@@ -1,14 +1,34 @@
+Precision: 1.000000e-06
 Bisection method:
-The root is: 1.732051e+00
-Iterations count: 22
 1.000000e+00
-2.119633e+00
-1.736484e+00
-1.639508e+00
-1.633546e+00
+1.500000e+00
+1.750000e+00
+1.875000e+00
+1.937500e+00
+1.968750e+00
+1.984375e+00
+1.992188e+00
+1.996094e+00
+1.998047e+00
+1.999023e+00
+1.999512e+00
+1.999756e+00
+1.999878e+00
+1.999939e+00
+1.999969e+00
+1.999985e+00
+1.999992e+00
+1.999996e+00
+1.999998e+00
+Result: 1.999998e+00
+Iterations count: 22
+Precision: 1.000000e-06
 Newton method:
-The root is: 1.633524e+00
-Iterations count: 12
+0.000000e+00
+Result: 0.000000e+00
+Iterations count: 4
+Precision: 1.000000e-06
 Secant method:
-The root is: 3.210814e+10
-Iterations count: 16
+0.000000e+00
+Result: 0.000000e+00
+Iterations count: 3
