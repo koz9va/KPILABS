@@ -8,7 +8,9 @@ int main() {
     char outFileName[] = "out.txt";
     config = "params.xml";
 
-    Calc(outFileName, config);
+    if(Calc(outFileName, config) != 0) {
+    	printf("Something went wrong\n");
+    }
 
 
 

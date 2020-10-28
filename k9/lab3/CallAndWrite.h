@@ -15,4 +15,13 @@
 namespace pt = boost::property_tree;
 
 int Calc(char *fileName, std::string &configName);
+void CallFunc(pt::ptree &params,
+			  FILE *file,
+			  std::string &method,
+			  std::string &param0,
+			  std::string &param1,
+			  double eps,
+			  double func(double f(double), double, double, double, FILE*),
+			  double fx(double)
+);
 #endif //LAB3_CALLANDWRITE_H

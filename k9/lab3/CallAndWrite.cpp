@@ -11,7 +11,7 @@ int Calc(char *fileName, std::string &configName) {
 	double eps, result;
     pt::ptree params;
     FILE *outFile;
-
+	std::string method, param0, param1;
     outFile = fopen(fileName, "w");
     if(!outFile) {
         return 21;
@@ -21,43 +21,53 @@ int Calc(char *fileName, std::string &configName) {
 
     eps = params.get<double>("params.eps");
 
-    fprintf(outFile, "Precision: %e\nBisection method:\n", eps);
-    cnt = 0;
+    fprintf(outFile, "Precision: %e\n", eps);
 
-    result = Bisection(
-    		f4,
-    		params.get<double>("params.Bisection.a"),
-    		params.get<double>("params.Bisection.b"),
-    		eps,
-    		outFile
-    		);
+    method = "Bisection";
+    param0 = "a";
+    param1 = "b";
 
-	fprintf(outFile, "Result: %e\nIterations count: %d\n", result, cnt);
+    CallFunc(params, outFile, method, param0, param1, eps, Bisection, f4);
 
-	fprintf(outFile, "Precision: %e\nNewton method:\n", eps);
-	cnt = 0;
-	result = Newton(
-			f4,
-			params.get<double>("params.Newton.x0"),
-			params.get<double>("params.Newton.xt"),
-			eps,
-			outFile
-			);
-	fprintf(outFile, "Result: %e\nIterations count: %d\n", result, cnt);
+	method = "Newton";
+	param0 = "x0";
+	param1 = "xt";
 
-	fprintf(outFile, "Precision: %e\nSecant method:\n", eps);
-	cnt = 0;
+	CallFunc(params, outFile, method, param0, param1, eps, Bisection, f4);method = "Bisection";
 
-	result = Secant(
-			f4,
-			params.get<double>("params.Secant.x0"),
-			params.get<double>("params.Secant.x1"),
-			eps,
-			outFile
-			);
-	fprintf(outFile, "Result: %e\nIterations count: %d\n", result, cnt);
+	method = "Secant";
+	param0 = "x0";
+	param1 = "x1";
+
+	CallFunc(params, outFile, method, param0, param1, eps, Bisection, f4);
 
     fclose(outFile);
     return 0;
 }
 
+
+void CallFunc(pt::ptree &params,
+			  FILE *file,
+			  std::string &method,
+			  std::string &param0,
+			  std::string &param1,
+			  double eps,
+			  double func(double f(double), double, double, double, FILE*),
+			  double fx(double)
+			  )
+{
+	double result;
+	cnt = 0;
+
+	fprintf(file, "%s method:\n", method.c_str());
+
+	result = func(
+			fx,
+			params.get<double>("params." + method + "." + param0),
+			params.get<double>("params." + method + "." + param1),
+			eps,
+			file
+	);
+
+	fprintf(file, "Result: %e\nIterations count: %d\n", result, cnt);
+}

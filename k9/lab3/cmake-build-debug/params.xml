@@ -5,11 +5,11 @@
         <b>2.0</b>
     </Bisection>
     <Newton>
-        <x0>0.0</x0>
+        <x0>3.0</x0>
         <xt>1.0</xt>
     </Newton>
     <Secant>
-        <x0>0.0</x0>
+        <x0>-1.0</x0>
         <x1>1.0</x1>
     </Secant>
 </params>
