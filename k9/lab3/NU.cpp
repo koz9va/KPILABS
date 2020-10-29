@@ -11,7 +11,7 @@ double Bisection(double f(double), double a, double b, double eps, FILE *file) {
 		exit(21);
 	}
     do {
-        xi = (a+b)/2;
+        xi = (a+b)/2.0;
 
         fprintf(file, "%e\n", xi);
 
@@ -20,7 +20,11 @@ double Bisection(double f(double), double a, double b, double eps, FILE *file) {
         }else {
             a = xi;
         }
-    }while (fabs(b - a) > eps * fabs(a));
+
+        if(cnt > 100)
+			break;
+
+    } while (fabs(b - a) >= eps);
 
     return xi;
 }
@@ -45,6 +49,8 @@ double Newton(double f(double), double x0, double xt, double eps, FILE *file) {
 
         x1 = x0 - (fx * h)/(f(x0+h) - fx);
 		fprintf(file, "%e\n", x1);
+		if(cnt > 20)
+			break;
 
     } while (fabs((x1 - x0) / x0) > eps);
 
@@ -75,6 +81,9 @@ double Secant(double f(double), double x0, double x1, double eps, FILE *file) {
             x0 = x2;
         else
             x1 = x2;
+
+        if(cnt > 20)
+			return x2;
 
 
 

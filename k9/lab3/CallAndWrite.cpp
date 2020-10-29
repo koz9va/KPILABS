@@ -8,10 +8,12 @@ int cnt;
 
 int Calc(char *fileName, std::string &configName) {
 
-	double eps, result;
+	double eps;
+
     pt::ptree params;
     FILE *outFile;
 	std::string method, param0, param1;
+
     outFile = fopen(fileName, "w");
     if(!outFile) {
         return 21;
@@ -33,13 +35,13 @@ int Calc(char *fileName, std::string &configName) {
 	param0 = "x0";
 	param1 = "xt";
 
-	CallFunc(params, outFile, method, param0, param1, eps, Bisection, f4);method = "Bisection";
+	CallFunc(params, outFile, method, param0, param1, eps, Newton, f4);method = "Bisection";
 
 	method = "Secant";
 	param0 = "x0";
 	param1 = "x1";
 
-	CallFunc(params, outFile, method, param0, param1, eps, Bisection, f4);
+	CallFunc(params, outFile, method, param0, param1, eps, Secant, f4);
 
     fclose(outFile);
     return 0;
