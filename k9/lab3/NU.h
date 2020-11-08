@@ -14,5 +14,5 @@ double Newton(double f(double), double x0, double xt, double eps, FILE *file);
 double Secant(double f(double), double x0, double x1, double eps, FILE *file);
 
 
-double f4(double x);
+double f4(double ud);
 #endif //LAB3_NU_H

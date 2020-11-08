@@ -49,58 +49,56 @@ double Newton(double f(double), double x0, double xt, double eps, FILE *file) {
 
         x1 = x0 - (fx * h)/(f(x0+h) - fx);
 		fprintf(file, "%e\n", x1);
-		if(cnt > 20)
-			break;
 
-    } while (fabs((x1 - x0) / x0) > eps);
+
+    } while (fabs((x1 - x0) / x0) > eps * fabs(x1));
 
 
     return x1;
 }
 
 double Secant(double f(double), double x0, double x1, double eps, FILE *file) {
-    double fx0, fx1, fx2, x2;
+    double fx0, fx1, fx2, x2, h;
+
 	if(!file) {
 		exit(21);
 	}
-    fx0 = f(x0);
-    fx1 = f(x1);
-    while(true) {
 
-        x2 = (x0 - (((x1-x0)/(fx1 - fx0)) * fx0));
+	h = sqrt(DBL_EPSILON) * x0;
+	fx1 = f(x1);
+	x2 = x1 - (h * fx1) / (f(x0 + h) - fx1);
+	fx2 = f(x2);
+    do {
+		x0 = x1;
+		x1 = x2;
+		fx0 = fx1;
+		fx1 = fx2;
+		x2 = x1 - (((x1 - x0) * fx1) / (fx1 - fx0));
+		fx2 = f(x2);
 
-		fprintf(file, "%e\n", x2);
-
-        fx2 = f(x2);
-        if(fx2 == 0)
-            return x2;
-        if(fabs(x0 - x2) <= eps)
-            return x2;
-
-        if((fx0)/fabs(fx0) == fx2/fabs(fx2))
-            x0 = x2;
-        else
-            x1 = x2;
-
-        if(cnt > 20)
-			return x2;
-
-
-
-        fx0 = fx1;
-        fx1 = fx2;
-
-    }
+    } while(fabs(x2 - x1) > eps * fabs(x1));
+	return x2;
 
 }
 
 
-double f4(double x) {
+double f4(double ud) {
     ++cnt;
-    if(fabs(x) < 1.5) {
-        return 2e-3 * (-6.0 - x ) * x + 1e-4*x;
+    double egs = 1.5,
+    eds = 10.0,
+    R = 3e3,
+    u0 = -3.0,
+    Beta = 2e-3,
+    g22 = 1e-4,
+    id;
+
+    if(egs <= u0) {
+    	id = g22 * ud;
+    } else if(fabs(ud) < -(egs + u0)) {
+    	id = Beta * (-2.0 * (egs + u0) - ud) * ud + g22 * ud;
     } else {
-        return 45e-4 + 1e-4 * x;
+    	id = Beta * (egs + u0) * (egs + u0) + g22 * ud;
     }
+	return eds - ud - R * id;
 }
 
