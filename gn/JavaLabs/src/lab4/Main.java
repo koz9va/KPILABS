@@ -32,17 +32,18 @@ public class Main {
         catch (IOException ignored){}
     }
 
-    private static double Bis(Function<Double, Double> func,
+    public static double Bis(Function<Double, Double> func,
                               double a,
                               double b,
                               double eps,
                               FileWriter writer) throws IOException {
-        double aSign, xi;
+        double aSign, xi, fx;
         aSign = func.apply(a)/Math.abs(func.apply(a));
         do {
             xi = (a + b) / 2;
-            writer.write(xi + "\n");
-            if (aSign * func.apply(xi) < 0)
+            fx = func.apply(xi);
+            writer.write("x = " + xi + " f(x) = " + fx + "\n");
+            if (aSign * fx < 0)
                 b = xi;
             else
                 a = xi;
@@ -51,7 +52,7 @@ public class Main {
         return xi;
     }
 
-    private static double Newton(Function<Double, Double> func,
+    public static double Newton(Function<Double, Double> func,
                               double x0,
                               double xt,
                               double eps,
@@ -64,13 +65,13 @@ public class Main {
             h = Math.sqrt(Math.ulp(1.0)) * Math.max(Math.abs(x0), Math.abs(xt));
             fx = func.apply(x0);
             x1 = x0 - (fx * h) / (func.apply(x0 + h) - fx);
-            writer.write(x1 + "\n");
+            writer.write("x = " + x0 + " f(x) = " + fx + "\n");
         }
         while (Math.abs((x1 - x0) / x0) > eps * Math.abs(x1));
         return x1;
     }
 
-    private static double Secant(Function<Double, Double> func,
+    public static double Secant(Function<Double, Double> func,
                                  double x0,
                                  double x1,
                                  double eps,
@@ -81,7 +82,7 @@ public class Main {
         x2 = x1 - (h * fx1) / (func.apply(x0 + h) - fx1);
         fx2 = func.apply(x2);
         do {
-            writer.write(x2 + "\n");
+            writer.write("x = " + x2 + " f(x) = " + fx2 + "\n");
             x0 = x1;
             x1 = x2;
             fx0 = fx1;
