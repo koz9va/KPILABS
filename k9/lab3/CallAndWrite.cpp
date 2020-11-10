@@ -71,5 +71,5 @@ void CallFunc(pt::ptree &params,
 			file
 	);
 
-	fprintf(file, "Result: %e\nIterations count: %d\n", result, cnt);
+	fprintf(file, "Result: %e\nFunctions calls count: %d\n", result, cnt);
 }

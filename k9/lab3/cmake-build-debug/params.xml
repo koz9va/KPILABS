@@ -5,7 +5,7 @@
         <b>1</b>
     </Bisection>
     <Newton>
-        <x0>0</x0>
+        <x0>0.1</x0>
         <xt>1</xt>
     </Newton>
     <Secant>
