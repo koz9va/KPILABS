@@ -51,7 +51,7 @@ double Newton(double f(double), double x0, double xt, double eps, FILE *file) {
 		fprintf(file, "x: %e\t fx: %e\n", x0, fx);
 
 
-    } while (fabs((x1 - x0) / x0) >= eps);
+    } while (fabs((x1 - x0)) >= eps * fabs(x0));
 	fprintf(file, "Iterations count: %d\n", i);
 
     return x1;
@@ -78,7 +78,7 @@ double Secant(double f(double), double x0, double x1, double eps, FILE *file) {
 		fx2 = f(x2);
 		fprintf(file, "x: %e\t fx: %e\n", x2, fx2);
 
-    } while(fabs((x2 - x1)/x1) >= eps);
+    } while(fabs(x2 - x1) >= eps * fabs(x1));
     fprintf(file, "Iterations count: %d\n", i);
 
 	return x2;
