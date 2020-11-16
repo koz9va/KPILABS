@@ -94,11 +94,12 @@ public class Main {
         return x2;
     }
 
+
     private static Double function(Double Ube) {
         count++;
         double Ie, Eb = 4, Ec = 10, R = 5e3, Ie0 = 1e-9, Me = 1.01, Fit = 26e-3, h21 = 2e-3;
-        Ie = Ie0 * (Math.exp((Ube + h21 * (Ec - (Eb - Ube)))/(Me * Fit)) - 1);
-        return Ie * R;
+        Ie = Ie0 * (Math.exp((Ube + h21 * (Ec - Eb + Ube))/(Me * Fit)) - 1);
+        return Eb - R * Ie;
     }
 
 }
