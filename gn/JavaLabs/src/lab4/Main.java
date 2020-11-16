@@ -48,7 +48,7 @@ public class Main {
             else
                 a = xi;
         }
-        while (Math.abs(b - a) >= eps);
+        while (Math.abs(b - a) >= eps * Math.abs(a));
         return xi;
     }
 
@@ -67,7 +67,7 @@ public class Main {
             x1 = x0 - (fx * h) / (func.apply(x0 + h) - fx);
             writer.write("x = " + x0 + " f(x) = " + fx + "\n");
         }
-        while (Math.abs((x1 - x0) / x0) > eps * Math.abs(x1));
+        while (Math.abs((x1 - x0) / x0) >= eps);
         return x1;
     }
 
@@ -90,7 +90,7 @@ public class Main {
             x2 = x1 - (((x1 - x0) * fx1) / (fx1 - fx0));
             fx2 = func.apply(x2);
         }
-        while (Math.abs(x2 - x1) > eps * Math.abs(x1));
+        while (Math.abs((x2 - x1) / x1) >= eps);
         return x2;
     }
 
