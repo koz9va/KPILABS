@@ -25,7 +25,7 @@ double Bisection(double f(double), double a, double b, double eps, FILE *file) {
 
 
 
-    } while (fabs(b - a) >= eps * fabs(a));
+    } while (fabs(b - a) >= eps * fabs((a+b)/2));
 	fprintf(file, "Iterations count: %d\n", i);
     return xi;
 }
@@ -33,28 +33,25 @@ double Bisection(double f(double), double a, double b, double eps, FILE *file) {
 double Newton(double f(double), double x0, double xt, double eps, FILE *file) {
     double x1, fx, h;
     int i;
-	if(!file) {
+    	if(!file) {
 		exit(21);
 	}
-
-	i = 0;
+    i = 0;
     x1 = x0;
 
-    do {
-		++i;
-        x0 = x1;
-        h = sqrt(DBL_EPSILON) * fmax(fabs(x0), fabs(xt));
+	do {
+		x0 = x1;
+		h = sqrt(DBL_EPSILON) * fmax(fabs(x0), fabs(xt));
+		fx = f(x0);
+		fprintf(file, "x: %e\tfx: %e\n", x0, fx);
+		x1 = x0 - (fx * h) / (f(x0 + h) - fx);
+		if(i++ > 8)
+			break;
+	}while(fabs(x1 - x0) >= eps * fabs(x0));
 
-        fx = f(x0);
-
-        x1 = x0 - (fx * h)/(f(x0+h) - fx);
-		fprintf(file, "x: %e\t fx: %e\n", x0, fx);
-
-
-    } while (fabs((x1 - x0)) >= eps * fabs(x0));
 	fprintf(file, "Iterations count: %d\n", i);
 
-    return x1;
+	return x1;
 }
 
 double Secant(double f(double), double x0, double x1, double eps, FILE *file) {
@@ -64,21 +61,19 @@ double Secant(double f(double), double x0, double x1, double eps, FILE *file) {
 		exit(21);
 	}
 	i = 0;
-	h = sqrt(DBL_EPSILON) * x0;
+	x2 = x1;
 	fx1 = f(x1);
-	x2 = x1 - (h * fx1) / (f(x0 + h) - fx1);
-	fx2 = f(x2);
-    do {
-    	++i;
+	do {
 		x0 = x1;
 		x1 = x2;
-		fx0 = fx1;
-		fx1 = fx2;
-		x2 = x1 - (((x1 - x0) * fx1) / (fx1 - fx0));
+		h = sqrt(DBL_EPSILON) * fabs(x0);
+		x2 = x1 - (fx1 * h) / (f(x1 + h) - fx1);
 		fx2 = f(x2);
-		fprintf(file, "x: %e\t fx: %e\n", x2, fx2);
+		fprintf(file, "x: %e\tfx: %e\n", x2, fx2);
+		fx1 = fx2;
 
-    } while(fabs(x2 - x1) >= eps * fabs(x1));
+	} while(fabs(x2 - x1) >= eps * fabs(x1));
+
     fprintf(file, "Iterations count: %d\n", i);
 
 	return x2;
@@ -104,5 +99,9 @@ double f4(double ud) {
     	id = Beta * (egs + u0) * (egs + u0) + g22 * ud;
     }
 	return eds - ud - R * id;
+}
+double rgr(double x) {
+	++cnt;
+	return (x * x * x) - (2 * (x * x)) - (3 * x) + 5;
 }
 

@@ -1,15 +1,15 @@
 <params>
-    <eps>1e-6</eps>
+    <eps>1e-2</eps>
     <Bisection>
-        <a>-1</a>
-        <b>1</b>
+        <a>-50</a>
+        <b>50</b>
     </Bisection>
     <Newton>
-        <x0>0.1</x0>
-        <xt>1</xt>
+        <x0>-1</x0>
+        <xt>-2</xt>
     </Newton>
     <Secant>
-        <x0>0.1</x0>
-        <x1>1</x1>
+        <x0>-1</x0>
+        <x1>-2</x1>
     </Secant>
 </params>

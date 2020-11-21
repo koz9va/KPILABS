@@ -15,4 +15,5 @@ double Secant(double f(double), double x0, double x1, double eps, FILE *file);
 
 
 double f4(double ud);
+double rgr(double x);
 #endif //LAB3_NU_H

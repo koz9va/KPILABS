@@ -29,19 +29,19 @@ int Calc(char *fileName, std::string &configName) {
     param0 = "a";
     param1 = "b";
 
-    CallFunc(params, outFile, method, param0, param1, eps, Bisection, f4);
+    CallFunc(params, outFile, method, param0, param1, eps, Bisection, rgr);
 
 	method = "Newton";
 	param0 = "x0";
 	param1 = "xt";
 
-	CallFunc(params, outFile, method, param0, param1, eps, Newton, f4);method = "Bisection";
+	CallFunc(params, outFile, method, param0, param1, eps, Newton, rgr);
 
 	method = "Secant";
 	param0 = "x0";
 	param1 = "x1";
 
-	CallFunc(params, outFile, method, param0, param1, eps, Secant, f4);
+	CallFunc(params, outFile, method, param0, param1, eps, Secant, rgr);
 
     fclose(outFile);
     return 0;
