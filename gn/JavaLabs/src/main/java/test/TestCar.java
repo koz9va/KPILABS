@@ -34,4 +34,13 @@ public class TestCar {
         this.weight = weight;
         this.name = name;
     }
+
+    @Override
+    public String toString() {
+        return "TestCar{" +
+                "year=" + year +
+                ", weight=" + weight +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

@@ -1,13 +1,25 @@
 package lab3;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class VectorOfFreeMembers {
+@Setter
+@Getter
+@NoArgsConstructor
+public class Vector {
     double[] vector;
 
-    public VectorOfFreeMembers (String filename) {
+    public Vector(int capacity) {
+        this.vector = new double[capacity];
+    }
+
+    public Vector(String filename) {
         try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
             String[] data = reader.readLine().split(" ");
             this.vector = new double[data.length];
@@ -20,9 +32,9 @@ public class VectorOfFreeMembers {
         }
     }
 
-    public VectorOfFreeMembers (VectorOfFreeMembers vectorOfFreeMembers) {
-        this.vector = new double[vectorOfFreeMembers.vector.length];
-        System.arraycopy(vectorOfFreeMembers.vector, 0, this.vector,0, vectorOfFreeMembers.vector.length);
+    public Vector(Vector vector) {
+        this.vector = new double[vector.vector.length];
+        System.arraycopy(vector.vector, 0, this.vector,0, vector.vector.length);
     }
 
 }

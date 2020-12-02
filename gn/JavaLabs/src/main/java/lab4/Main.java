@@ -49,6 +49,7 @@ public class Main {
                 a = xi;
         }
         while (Math.abs(b - a) >= eps * Math.abs(a));
+
         return xi;
     }
 
@@ -96,10 +97,10 @@ public class Main {
 
 
     private static Double function(Double Ube) {
-        count++;
-        double Ie, Eb = 4, Ec = 10, R = 5e3, Ie0 = 1e-9, Me = 1.01, Fit = 26e-3, h21 = 2e-3;
-        Ie = Ie0 * (Math.exp((Ube + h21 * (Ec - Eb + Ube))/(Me * Fit)) - 1);
-        return Eb - R * Ie;
+//        count++;
+//        double Ie, Eb = 4, Ec = 10, R = 5e3, Ie0 = 1e-9, Me = 1.01, Fit = 26e-3, h21 = 2e-3;
+//        Ie = Ie0 * (Math.exp((Ube + h21 * (Ec - Eb + Ube))/(Me * Fit)) - 1);
+//        return Eb - Ube - R * Ie;
+        return 4 - 3 * Ube - Math.exp(Ube) + 1;
     }
-
 }
