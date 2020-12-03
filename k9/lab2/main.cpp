@@ -2,6 +2,9 @@
 #include <cmath>
 #include <cstdio>
 #include <cstring>
+#include <cstdlib>
+
+
 
 class matrix {
 public:
@@ -284,7 +287,7 @@ int main() {
 	matrix test(3);
 
 
-	double B[3] = {-14, 5, 12};
+	double B[3] = {2, -6, 0};
 	double X[3];
 	double R[3];
 
