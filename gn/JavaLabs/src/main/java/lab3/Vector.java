@@ -13,6 +13,10 @@ import java.io.IOException;
 @Getter
 @NoArgsConstructor
 public class Vector {
+    public void setVector(int i, double j) {
+        this.vector[i] = j;
+    }
+
     double[] vector;
 
     public Vector(int capacity) {
