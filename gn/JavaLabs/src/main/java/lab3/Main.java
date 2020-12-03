@@ -9,14 +9,14 @@ public class Main {
 
         double[] x = new double[3];
         Matrix matrix;
-        VectorOfFreeMembers vectorOfFreeMembers;
+        Vector vector;
 
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
             System.out.println("Matrix");
             matrix = new Matrix(getFilenameFromConsole(reader));
 
             System.out.println("Vector");
-            vectorOfFreeMembers = new VectorOfFreeMembers(getFilenameFromConsole(reader));
+            vector = new Vector(getFilenameFromConsole(reader));
 
             System.out.println("Enter file to write Main Matrix");
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(reader.readLine()))) {
@@ -32,7 +32,7 @@ public class Main {
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(reader.readLine()))) {
 
                 Matrix LUMatrix = new Matrix(matrix);
-                VectorOfFreeMembers vec = new VectorOfFreeMembers(vectorOfFreeMembers);
+                Vector vec = new Vector(vector);
 
                 LU(LUMatrix, vec, x);
 
@@ -43,14 +43,14 @@ public class Main {
                     }
                     writer.write("\n");
                 }
-                PrintInfoOfFact(x, matrix, vectorOfFreeMembers, writer);
+                PrintInfoOfFact(x, matrix, vector, writer);
             }
 
             System.out.println("Enter file to write QR fact");
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(reader.readLine()))) {
 
                 Matrix QRMatrix = new Matrix(matrix);
-                VectorOfFreeMembers vec = new VectorOfFreeMembers(vectorOfFreeMembers);
+                Vector vec = new Vector(vector);
 
                 QR(QRMatrix, vec, x);
 
@@ -61,14 +61,14 @@ public class Main {
                     }
                     writer.write("\n");
                 }
-                PrintInfoOfFact(x, matrix, vectorOfFreeMembers, writer);
+                PrintInfoOfFact(x, matrix, vector, writer);
             }
 
             System.out.println("Enter file to write Holes fact");
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(reader.readLine()))) {
 
                 Matrix HolesMatrix = new Matrix(matrix);
-                VectorOfFreeMembers vec = new VectorOfFreeMembers(vectorOfFreeMembers);
+                Vector vec = new Vector(vector);
 
                 Hales(HolesMatrix, vec, x);
 
@@ -79,7 +79,7 @@ public class Main {
                     }
                     writer.write("\n");
                 }
-                PrintInfoOfFact(x, matrix, vectorOfFreeMembers, writer);
+                PrintInfoOfFact(x, matrix, vector, writer);
             }
         }
         catch(IOException ignored){
@@ -87,20 +87,20 @@ public class Main {
         }
     }
 
-    private static void PrintInfoOfFact(double[] x, Matrix matrix, VectorOfFreeMembers vectorOfFreeMembers, BufferedWriter writer) throws IOException {
+    private static void PrintInfoOfFact(double[] x, Matrix matrix, Vector vector, BufferedWriter writer) throws IOException {
         writer.write("\nUnknown_Vector\n");
         for (double v : x) {
             writer.write(v + " ");
         }
         writer.write("\nResidual_Vector\n");
-        double[] arr = residualVector(new Matrix(matrix), x, new VectorOfFreeMembers(vectorOfFreeMembers));
+        double[] arr = residualVector(new Matrix(matrix), x, new Vector(vector));
         writer.write(Arrays.toString(arr) + " ");
         writer.write("\nNormal_Residual_Vector\n");
         writer.write(normVec(arr) + " ");
         writer.write("\n");
     }
 
-    public static void LU (Matrix a, VectorOfFreeMembers b, double[] x) {
+    public static void LU (Matrix a, Vector b, double[] x) {
         Arrays.fill(x,0);
 
         for (int j = 0; j < a.matrix.length; j++) {
@@ -137,7 +137,7 @@ public class Main {
         }
     }
 
-    public static void QR (Matrix a, VectorOfFreeMembers b, double[] x) {
+    public static void QR (Matrix a, Vector b, double[] x) {
         Arrays.fill(x,0);
 
         for (int j = 0; j < a.matrix.length - 1; j++) {
@@ -180,7 +180,7 @@ public class Main {
         }
     }
 
-    public static void Hales (Matrix a, VectorOfFreeMembers b, double[] x) {
+    public static void Hales (Matrix a, Vector b, double[] x) {
         Arrays.fill(x,0);
 
         for (int j = 0; j < a.matrix.length; j++) {
@@ -231,7 +231,7 @@ public class Main {
         return filename;
     }
 
-    public static double[] residualVector(Matrix matrix, double[] arrayOfX, VectorOfFreeMembers arrayOfB) {
+    public static double[] residualVector(Matrix matrix, double[] arrayOfX, Vector arrayOfB) {
         double[] returnedArray = new double[arrayOfX.length];
         for (int i = 0; i < matrix.matrix.length; i++) {
 
