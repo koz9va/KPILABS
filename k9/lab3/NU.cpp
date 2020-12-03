@@ -105,3 +105,4 @@ double rgr(double x) {
 	return (x * x * x) - (2 * (x * x)) - (3 * x) + 5;
 }
 
+

@@ -4,6 +4,11 @@
 
 int counter;
 
+double rgr42(double x) {
+	++counter;
+	return (10.0/7.0) - (x/2.8) - exp(x) + 1.0;
+}
+
 double f2(double ua) {
 	double g = 1e-4;
 	double ea = 180;
@@ -26,7 +31,7 @@ double NEBis(double a, double b, double eps, FILE *out, double f(double)) {
 	double aDiff;
 	double x;
 	double fx;
-	aDiff = f(a)/fabs(a);
+	aDiff = f(a)/fabs(f(a));
 	do {
 		x = (a + b)/2;
 		fx = f(x);
@@ -53,29 +58,33 @@ double NENew(double x0, double eps, FILE *out, double f(double)) {
 		fx = f(x0);
 		fprintf(out, "x = %lf fx = %lf\n", x0, fx);
 		x1 = x0 - (fx * h) / (f(x0 + h) - fx);
+		if(fabs(x1 - x0) == 0 && x0 == 0)
+			continue;
 	}while(fabs(x1 - x0) >= eps * fabs(x0));
 	return x1;
 }
 
 double NESec(double x0, double x1, double eps, FILE *out, double f(double)) {
-	double fx0;
+//	double fx0;
 	double fx1;
 	double fx2;
 	double x2;
-
-	fx0 = f(x0);
+	double h;
+	x2 = x1;
+//	fx0 = f(x0);
 	fx1 = f(x1);
-	while(1) {
-		x2 = x1 - (((x1 - x0) * fx1) / (fx1 - fx0));
-		fx2 = f(x2);
-		fprintf(out, "x = %lf fx = %lf\n", x2, fx2);
-		if(fabs(x2 - x1) < eps * fabs(x1))
-			break;
+	do {
+
+		//	fx0 = fx1;
 		x0 = x1;
 		x1 = x2;
-		fx0 = fx1;
+		h = sqrt(DBL_EPSILON) * fabs(x0);
+		x2 = x1 - (fx1 * h) / (f(x1 + h) - fx1);
+		fx2 = f(x2);
+		fprintf(out, "x = %lf fx = %lf\n", x2, fx2);
 		fx1 = fx2;
-	}
+
+	} while(fabs(x2 - x1) >= eps * fabs(x1));
 	return x2;
 }
 
@@ -86,12 +95,12 @@ int main() {
 
 	counter = 0;
 	fprintf(outFile, "Метод Бісекції:\n");
-	NEBis(100, 200, 1e-6, outFile, f2);
+	NEBis(-0.1, 1, 1e-6, outFile, rgr42);
 	fprintf(outFile, "Виклики функції: %d\n", counter);
 
 	counter = 0;
 	fprintf(outFile, "Метод Ньютона\n");
-	NENew(120, 1e-6, outFile, f2);
+	NENew(1e-6, 1e-2, outFile, rgr42);
 	fprintf(outFile, "Виклики функції: %d\n", counter);
 
 	counter = 0;
@@ -102,3 +111,4 @@ int main() {
 	fclose(outFile);
 	return 0;
 }
+
