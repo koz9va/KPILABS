@@ -48,4 +48,16 @@ public class Matrix {
     public Matrix(int i) {
         this.matrix = new double[i][i];
     }
+
+    public static void copyMatrix (Matrix A, Matrix B) {
+
+        if (A.matrix.length != B.matrix.length){
+            System.out.println("Error");
+        }
+        else {
+            for (int i = 0; i < A.matrix.length; i++) {
+                System.arraycopy(B.matrix[i], 0, A.matrix[i], 0, A.matrix.length);
+            }
+        }
+    }
 }
