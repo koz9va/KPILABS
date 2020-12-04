@@ -27,12 +27,12 @@ public class Main {
         Function function = (X, Y) -> {
             //X[0] = Id, X[1] = Ud
 
-            Rb.set(rb0 / (1 + X.getVector()[0] / iv));
-            Y.getVector()[0] = X.getVector()[0] - i0 * Math.exp((X.getVector()[1] - X.getVector()[0] * Rb.get()) / (m * Fi)) + 1.0;
-            Y.getVector()[1] = E - X.getVector()[1] - X.getVector()[0] * R;
+//            Rb.set(rb0 / (1 + X.getVector()[0] / iv));
+//            Y.getVector()[0] = X.getVector()[0] - i0 * Math.exp((X.getVector()[1] - X.getVector()[0] * Rb.get()) / (m * Fi)) + 1.0;
+//            Y.getVector()[1] = E - X.getVector()[1] - X.getVector()[0] * R;
 
-//            Y.getVector()[0] = Math.sin(X.getVector()[0]) * Math.sin(X.getVector()[0]) + Math.sqrt(X.getVector()[1]) - 1.0;
-//            Y.getVector()[1] = Math.sin(X.getVector()[0]) - 2.0 * Math.sqrt(X.getVector()[1]) + 1.0;
+            Y.getVector()[0] = Math.sin(X.getVector()[0]) * Math.sin(X.getVector()[0]) + Math.sqrt(X.getVector()[1]) - 1.0;
+            Y.getVector()[1] = Math.sin(X.getVector()[0]) - 2.0 * Math.sqrt(X.getVector()[1]) + 1.0;
 
         };
 
@@ -57,12 +57,16 @@ public class Main {
         double nX, ndX;
 
         Matrix J = new Matrix(X.getVector().length);
+        Matrix J1 = new Matrix(X.getVector().length);
         Vector Dx = new Vector(X.getVector().length);
         Vector Y = new Vector(X.getVector().length);
         Vector Yp = new Vector(X.getVector().length);
 
+        calcJacobi(function, X, J, Y, Yp);
+
         do {
-            calcJacobiAndSolveSLAU(function, X, J, Dx, Y, Yp);
+            Matrix.copyMatrix(J1, J);
+            lab3.Main.QR(J1, Y, Dx.getVector());
 
             nX = 0.0;
             ndX = 0.0;
@@ -94,18 +98,18 @@ public class Main {
         Vector Yp = new Vector(X.getVector().length);
 
         do {
-            calcJacobiAndSolveSLAU(function, X, J, Dx, Y, Yp);
+            calcJacobi(function, X, J, Y, Yp);
+            lab3.Main.QR(J, Y, Dx.getVector());
             subtractVectors(X, Dx);
         }
         while (norm(Dx) > eps * norm(X));
     }
 
-    private static void calcJacobiAndSolveSLAU(@NonNull Function function,
-                                               @NonNull Vector X,
-                                               @NonNull Matrix J,
-                                               @NonNull Vector dx,
-                                               @NonNull Vector y,
-                                               @NonNull Vector yp) {
+    private static void calcJacobi(@NonNull Function function,
+                                   @NonNull Vector X,
+                                   @NonNull Matrix J,
+                                   @NonNull Vector y,
+                                   @NonNull Vector yp) {
         double h;
         function.calculateFunction(X, y);
 
@@ -119,7 +123,6 @@ public class Main {
             }
             X.setVector(j, X.getVector()[j] - h);
         }
-        lab3.Main.QR(J, y, dx.getVector());
     }
 
     public static void subtractVectors (@NonNull Vector a, @NonNull Vector d) {
