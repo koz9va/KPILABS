@@ -122,6 +122,7 @@ public class Main {
                     J.matrix[i][j] = (Yp.getVector()[i] - Y.getVector()[i]) / h;
                 }
                 X.getVector()[j] -= h;
+                X.setVector()[j] = X.getVector()[j] - h;
             }
             lab3.Main.QR(J, Y, Dx.getVector());
 

@@ -50,8 +50,8 @@ double lin::vector::normalize() const {
 	return sqrt(sum);
 }
 
-lin::vector::vector(lin::vector &ref) {
-	ptr = new double [ref.n];
+lin::vector::vector(lin::vector &ref) : n(ref.n) {
+	ptr = new double [n];
 	memcpy(ptr, ref.ptr, sizeof(double) * n);
 }
 
@@ -103,3 +103,19 @@ void lin::matrix::QR(lin::vector &B, lin::vector &X) const {
 
 
 }
+
+lin::matrix &lin::matrix::operator = (const lin::matrix &ref) {
+	if(&ref == this)
+		return *this;
+
+	if(ref.n != this->n) {
+		printf("Not the same sizes of matrixes:(\n");
+		return *this;
+	}
+
+	for(int i = 0; i < ref.n; ++i) {
+		memcpy(this->ptr[i], ref.ptr[i], sizeof(double ) * this->n);
+	}
+	return *this;
+}
+

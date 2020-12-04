@@ -21,7 +21,6 @@ void NewtonSNE(void FUN(lin::vector&, lin::vector&), lin::vector &X,  double eps
 	lin::vector dX(X.n);
 	lin::vector Y(X.n);
 	lin::vector Yp(X.n);
-	lin::vector F(X.n);
 
 	do {
 		FUN(X, Y);
@@ -38,20 +37,66 @@ void NewtonSNE(void FUN(lin::vector&, lin::vector&), lin::vector &X,  double eps
 
 		X -= dX;
 
-	}while (dX.normalize() >= eps * X.normalize());
+	}while (dX.normalize() > eps * X.normalize());
 
 }
 
+void BroadenSNE(void FUN(lin::vector&, lin::vector&), lin::vector &X, double eps) {
+	int i, j;
+	double h, ndX;
+	lin::matrix J(X.n);
+	lin::matrix J1(X.n);
+	lin::vector dX(X.n);
+	lin::vector Y(X.n);
+	lin::vector Yp(X.n);
+
+	FUN(X, Y);
+
+	for(j = 0; j < X.n; ++j) {
+		h = sqrt(DBL_EPSILON) * X[j];
+		X[j] += h;
+		FUN(X, Yp);
+		for(i = 0; i < X.n; ++i) {
+			J.ptr[i][j] = (Yp[i] - Y[i])/h;
+		}
+
+		X[j] -= h;
+	}
+
+
+	do {
+
+		J1 = J;
+		J1.QR(Y, dX);
+
+		X -= dX;
+
+		ndX = dX.normalize();
+		ndX = ndX * ndX;
+
+		FUN(X, Y);
+
+
+		for(i = 0; i < X.n; ++i) {
+			for(j = 0; j < X.n; ++j) {
+				J.ptr[i][j] -= (Y[i] * dX[j])/ndX;
+			}
+		}
+	} while(sqrt(ndX) > eps * X.normalize());
+
+
+}
 
 
 int main() {
 
 	lin::vector X(2);
 
-	X[0] = 2.5;
-	X[1] = 0.5;
+	X[0] = 5.0;
+	X[1] = 10.0;
 
-	NewtonSNE(gnida, X, 1e-6);
+	BroadenSNE(test, X, 1e-6);
+
 
 	for(int i = 0; i < X.n; ++i) {
 		printf("%e ", X[i]);

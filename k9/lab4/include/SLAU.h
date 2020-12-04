@@ -14,7 +14,7 @@ namespace lin {
 		double *ptr;
 		int n;
 		explicit vector(int N);
-		explicit vector(vector &ref);
+		vector(vector &ref);
 		~vector();
 		vector& operator -= (const  vector& rhs);
 		double& operator [] (int index) const;
@@ -26,6 +26,7 @@ namespace lin {
 		int n;
 		explicit matrix(int N);
 		~matrix();
+		matrix& operator = (const matrix &ref);
 		void QR(lin::vector &B, lin::vector &X) const;
 	};
 
