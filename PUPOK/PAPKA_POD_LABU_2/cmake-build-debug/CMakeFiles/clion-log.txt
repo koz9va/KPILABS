@@ -1,0 +1,4 @@
+C:\Users\shark\AppData\Local\JetBrains\CLion2020.2\cygwin_cmake\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /cygdrive/d/PROGA_NAHUY_2.0/PUPOK/PAPKA_POD_LABU_2
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /cygdrive/d/PROGA_NAHUY_2.0/PUPOK/PAPKA_POD_LABU_2/cmake-build-debug
