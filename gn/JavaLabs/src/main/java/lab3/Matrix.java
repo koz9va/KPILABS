@@ -6,16 +6,11 @@ import lombok.Setter;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
 
 @Setter
 @NoArgsConstructor
 public class Matrix {
     public double[][] matrix;
-
-    public Matrix (ArrayList<ArrayList<Double>> mat) {
-
-    }
 
     public Matrix (String filename) {
         try (BufferedReader reader = new BufferedReader(new FileReader(filename))){

@@ -1,22 +1,15 @@
 package lab5;
 
-public class Bus {
-    public  double[] X;
-    public  double[] Y;
+public class Bus implements Driveble {
 
-    public void setX(double[] x) {
-        X = x;
+
+    @java.lang.Override
+    public void drive() {
+        System.out.println("їду на бусі");
     }
 
-    public void setY(double[] y) {
-        Y = y;
+    @java.lang.Override
+    public void sitZaRul() {
+        System.out.println("сів за руль буса");
     }
-
-    public Bus(double[] X, double[] Y) {
-        this.X = X;
-        this.Y = Y;
-
-
-    }
-
 }
