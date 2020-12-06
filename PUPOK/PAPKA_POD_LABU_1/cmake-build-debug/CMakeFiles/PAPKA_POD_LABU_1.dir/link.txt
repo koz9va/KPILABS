@@ -1,0 +1,1 @@
+/usr/bin/c++.exe -g  -Wl,--enable-auto-import CMakeFiles/PAPKA_POD_LABU_1.dir/main.cpp.o  -o PAPKA_POD_LABU_1.exe -Wl,--out-implib,libPAPKA_POD_LABU_1.dll.a -Wl,--major-image-version,0,--minor-image-version,0 
