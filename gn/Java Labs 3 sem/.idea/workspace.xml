@@ -19,47 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ad0f453b-ed39-46b9-9fd7-4e0f3f191a30" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../../PUPOK/PAPKA_POD_LABU_2/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../PUPOK/PAPKA_POD_LABU_2/.idea/PAPKA_POD_LABU_2.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../PUPOK/PAPKA_POD_LABU_2/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../PUPOK/PAPKA_POD_LABU_2/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../PUPOK/PAPKA_POD_LABU_2/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../PUPOK/PAPKA_POD_LABU_2/cmake-build-debug/CMakeCache.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../PUPOK/PAPKA_POD_LABU_2/cmake-build-debug/CMakeFiles/3.17.3/CMakeCCompiler.cmake" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../PUPOK/PAPKA_POD_LABU_2/cmake-build-debug/CMakeFiles/3.17.3/CMakeCXXCompiler.cmake" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../PUPOK/PAPKA_POD_LABU_2/cmake-build-debug/CMakeFiles/3.17.3/CMakeDetermineCompilerABI_C.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../PUPOK/PAPKA_POD_LABU_2/cmake-build-debug/CMakeFiles/3.17.3/CMakeDetermineCompilerABI_CXX.bin" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../PUPOK/PAPKA_POD_LABU_2/cmake-build-debug/CMakeFiles/3.17.3/CMakeRCCompiler.cmake" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../PUPOK/PAPKA_POD_LABU_2/cmake-build-debug/CMakeFiles/3.17.3/CMakeSystem.cmake" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../PUPOK/PAPKA_POD_LABU_2/cmake-build-debug/CMakeFiles/3.17.3/CompilerIdC/CMakeCCompilerId.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../PUPOK/PAPKA_POD_LABU_2/cmake-build-debug/CMakeFiles/3.17.3/CompilerIdC/a.exe" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../PUPOK/PAPKA_POD_LABU_2/cmake-build-debug/CMakeFiles/3.17.3/CompilerIdCXX/CMakeCXXCompilerId.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../PUPOK/PAPKA_POD_LABU_2/cmake-build-debug/CMakeFiles/3.17.3/CompilerIdCXX/a.exe" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../PUPOK/PAPKA_POD_LABU_2/cmake-build-debug/CMakeFiles/CMakeDirectoryInformation.cmake" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../PUPOK/PAPKA_POD_LABU_2/cmake-build-debug/CMakeFiles/CMakeOutput.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../PUPOK/PAPKA_POD_LABU_2/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../PUPOK/PAPKA_POD_LABU_2/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../PUPOK/PAPKA_POD_LABU_2/cmake-build-debug/CMakeFiles/PAPKA_POD_LABU_2.dir/CXX.includecache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../PUPOK/PAPKA_POD_LABU_2/cmake-build-debug/CMakeFiles/PAPKA_POD_LABU_2.dir/DependInfo.cmake" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../PUPOK/PAPKA_POD_LABU_2/cmake-build-debug/CMakeFiles/PAPKA_POD_LABU_2.dir/build.make" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../PUPOK/PAPKA_POD_LABU_2/cmake-build-debug/CMakeFiles/PAPKA_POD_LABU_2.dir/cmake_clean.cmake" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../PUPOK/PAPKA_POD_LABU_2/cmake-build-debug/CMakeFiles/PAPKA_POD_LABU_2.dir/depend.internal" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../PUPOK/PAPKA_POD_LABU_2/cmake-build-debug/CMakeFiles/PAPKA_POD_LABU_2.dir/depend.make" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../PUPOK/PAPKA_POD_LABU_2/cmake-build-debug/CMakeFiles/PAPKA_POD_LABU_2.dir/flags.make" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../PUPOK/PAPKA_POD_LABU_2/cmake-build-debug/CMakeFiles/PAPKA_POD_LABU_2.dir/link.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../PUPOK/PAPKA_POD_LABU_2/cmake-build-debug/CMakeFiles/PAPKA_POD_LABU_2.dir/main.cpp.o" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../PUPOK/PAPKA_POD_LABU_2/cmake-build-debug/CMakeFiles/PAPKA_POD_LABU_2.dir/progress.make" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../PUPOK/PAPKA_POD_LABU_2/cmake-build-debug/CMakeFiles/TargetDirectories.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../PUPOK/PAPKA_POD_LABU_2/cmake-build-debug/CMakeFiles/clion-environment.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../PUPOK/PAPKA_POD_LABU_2/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../PUPOK/PAPKA_POD_LABU_2/cmake-build-debug/CMakeFiles/cmake.check_cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../PUPOK/PAPKA_POD_LABU_2/cmake-build-debug/CMakeFiles/progress.marks" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../PUPOK/PAPKA_POD_LABU_2/cmake-build-debug/Makefile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../PUPOK/PAPKA_POD_LABU_2/cmake-build-debug/PAPKA_POD_LABU_2.cbp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../PUPOK/PAPKA_POD_LABU_2/cmake-build-debug/PAPKA_POD_LABU_2.exe" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../PUPOK/PAPKA_POD_LABU_2/cmake-build-debug/cmake_install.cmake" afterDir="false" />
-    </list>
+    <list default="true" id="ad0f453b-ed39-46b9-9fd7-4e0f3f191a30" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -76,6 +36,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../JavaLabs" />
@@ -112,6 +73,7 @@
       <workItem from="1600899003376" duration="27000" />
       <workItem from="1602609027687" duration="319000" />
       <workItem from="1602625201477" duration="13000" />
+      <workItem from="1607279708977" duration="17000" />
     </task>
     <servers />
   </component>
@@ -128,31 +90,6 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="499" y="171" key="FileChooserDialogImpl" timestamp="1602625213223">
-      <screen x="0" y="0" width="1440" height="860" />
-    </state>
-    <state x="499" y="171" key="FileChooserDialogImpl/0.0.1440.860@0.0.1440.860" timestamp="1602625213223" />
-    <state width="1340" height="206" key="GridCell.Tab.0.bottom" timestamp="1600766227049">
-      <screen x="0" y="0" width="1440" height="860" />
-    </state>
-    <state width="1340" height="206" key="GridCell.Tab.0.bottom/0.0.1440.860@0.0.1440.860" timestamp="1600766227049" />
-    <state width="1340" height="206" key="GridCell.Tab.0.center" timestamp="1600766227049">
-      <screen x="0" y="0" width="1440" height="860" />
-    </state>
-    <state width="1340" height="206" key="GridCell.Tab.0.center/0.0.1440.860@0.0.1440.860" timestamp="1600766227049" />
-    <state width="1340" height="206" key="GridCell.Tab.0.left" timestamp="1600766227049">
-      <screen x="0" y="0" width="1440" height="860" />
-    </state>
-    <state width="1340" height="206" key="GridCell.Tab.0.left/0.0.1440.860@0.0.1440.860" timestamp="1600766227049" />
-    <state width="1340" height="206" key="GridCell.Tab.0.right" timestamp="1600766227049">
-      <screen x="0" y="0" width="1440" height="860" />
-    </state>
-    <state width="1340" height="206" key="GridCell.Tab.0.right/0.0.1440.860@0.0.1440.860" timestamp="1600766227049" />
-    <state x="102" y="50" key="new project wizard" timestamp="1600766223726">
-      <screen x="0" y="0" width="1440" height="860" />
-    </state>
-    <state x="102" y="50" key="new project wizard/0.0.1440.860@0.0.1440.860" timestamp="1600766223726" />
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
