@@ -12,6 +12,9 @@ import java.util.concurrent.atomic.AtomicReference;
 @Slf4j
 public class Main {
 
+    private static int countOfFuncCall = 0;
+    private static int countIteration = 0;
+
     private static final double
             i0 = 10e-9,
             iv = 1e-3,
@@ -25,30 +28,40 @@ public class Main {
         var Rb = new AtomicReference<>((double) 0);
 
         Function function = (X, Y) -> {
-            //X[0] = Id, X[1] = Ud
 
-//            Rb.set(rb0 / (1 + X.getVector()[0] / iv));
-//            Y.getVector()[0] = X.getVector()[0] - i0 * Math.exp((X.getVector()[1] - X.getVector()[0] * Rb.get()) / (m * Fi)) + 1.0;
-//            Y.getVector()[1] = E - X.getVector()[1] - X.getVector()[0] * R;
+            countOfFuncCall++;
 
-            Y.getVector()[0] = Math.sin(X.getVector()[0]) * Math.sin(X.getVector()[0]) + Math.sqrt(X.getVector()[1]) - 1.0;
-            Y.getVector()[1] = Math.sin(X.getVector()[0]) - 2.0 * Math.sqrt(X.getVector()[1]) + 1.0;
-
+            Rb.set(rb0 / (1 + X.getVector()[0] / iv));
+            Y.getVector()[0] = X.getVector()[0] - i0 * (Math.exp((X.getVector()[1] - X.getVector()[0] * Rb.get()) / (m * Fi)) + 1.0);
+            Y.getVector()[1] = E - X.getVector()[1] - X.getVector()[0] * R;
         };
 
         Vector X = new Vector(2);
-        X.getVector()[0] = 2.5;
-        X.getVector()[1] = 0.5;
+        Vector tmpArr = new Vector(X.getVector().length);
 
+
+        X.getVector()[0] = 0.001;
+        X.getVector()[1] = 1.4;
+        System.arraycopy(X.getVector(), 0, tmpArr.getVector(), 0, X.getVector().length);
         Broaden(function, X, 1e-7);
 
-        System.out.println("Broaden : " + Arrays.toString(X.getVector()));
+        System.out.println("Broaden: for " +
+                Arrays.toString(tmpArr.getVector()) +
+                " -> " + Arrays.toString(X.getVector()) +
+                " Count of function call: " + countOfFuncCall);
 
-        X.getVector()[0] = 3;
-        X.getVector()[1] = 1;
+
+
+        X.getVector()[0] = 0.001;
+        X.getVector()[1] = 1.4;
+        nullCount();
+        System.arraycopy(X.getVector(), 0, tmpArr.getVector(), 0, X.getVector().length);
         Newton(function, X, 1e-7);
 
-        System.out.println("Newton : " + Arrays.toString(X.getVector()));
+        System.out.println("Newton : for " +
+                Arrays.toString(tmpArr.getVector()) +
+                " -> " + Arrays.toString(X.getVector()) +
+                " Count of function call: " + countOfFuncCall);
     }
 
     public static void Broaden(@NonNull Function function,
@@ -84,6 +97,8 @@ public class Main {
                     J.matrix[i][j] -= Y.getVector()[i] * Dx.getVector()[j] / ndX;
                 }
             }
+            countIteration++;
+            System.out.println(countIteration + ": " + Arrays.toString(X.getVector()));
         }
         while(Math.sqrt(ndX) > eps * Math.sqrt(nX));
     }
@@ -101,6 +116,8 @@ public class Main {
             calcJacobi(function, X, J, Y, Yp);
             lab3.Main.QR(J, Y, Dx.getVector());
             subtractVectors(X, Dx);
+            countIteration++;
+            System.out.println(countIteration + ": " + Arrays.toString(X.getVector()));
         }
         while (norm(Dx) > eps * norm(X));
     }
@@ -137,5 +154,10 @@ public class Main {
             sum += aDouble * aDouble;
         }
         return Math.sqrt(sum);
+    }
+
+    public static void nullCount() {
+        countIteration = 0;
+        countOfFuncCall = 0;
     }
 }
