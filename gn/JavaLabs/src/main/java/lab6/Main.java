@@ -19,6 +19,7 @@ public class Main {
         getValues(src);
 
         System.out.println(Arrays.toString(src));
+        System.out.println("Fi, N");
     }
 
     public static double[] func (double[] arrayOfC, double[] arrayOfU, int powerOfPol) {
@@ -50,9 +51,9 @@ public class Main {
     }
 
     public static void createTable(double[] src1, double[] src2, double[] dest1, double[] dest2) {
-        for (int i = 6; i < src1.length; i++) {
-            dest1[i - 6] = Math.log(src1[i]);
-            dest2[i - 6] = Math.log(src2[0] / src2[i]);
+        for (int i = 5; i < src1.length; i++) {
+            dest1[i - 5] = Math.log(src1[i]);
+            dest2[i - 5] = Math.log(src2[0] / src2[i]);
         }
     }
 
