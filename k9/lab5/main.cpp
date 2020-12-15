@@ -90,7 +90,6 @@ int main() {
 
 	fprintf(output, "fi = %e\tN = %e\n", out[0], out[1]);
 
-	fprintf(output, "\n");
 
 	fclose(output);
 	return 0;
