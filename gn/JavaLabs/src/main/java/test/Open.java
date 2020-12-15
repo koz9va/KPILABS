@@ -8,8 +8,21 @@ public class Open {
     private TestCar car;
 
 
+
     public TestCar getCar() {
         return car;
+    }
+
+    public void hello () {
+        System.out.println(age);
+    }
+
+    public void bye() {
+        System.out.println("bye");
+    }
+
+    public static void helloS () {
+        System.out.println("Romeo");
     }
 
     public int getAge() {

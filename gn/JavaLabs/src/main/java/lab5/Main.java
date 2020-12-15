@@ -98,7 +98,7 @@ public class Main {
                 }
             }
             countIteration++;
-            System.out.println(countIteration + ": " + Arrays.toString(X.getVector()));
+            System.out.println(countIteration + ": " + Arrays.toString(X.getVector()) + " " + Arrays.toString(Y.getVector()));
         }
         while(Math.sqrt(ndX) > eps * Math.sqrt(nX));
     }
@@ -117,7 +117,7 @@ public class Main {
             lab3.Main.QR(J, Y, Dx.getVector());
             subtractVectors(X, Dx);
             countIteration++;
-            System.out.println(countIteration + ": " + Arrays.toString(X.getVector()));
+            System.out.println(countIteration + ": " + Arrays.toString(X.getVector()) + " " + Arrays.toString(Y.getVector()));
         }
         while (norm(Dx) > eps * norm(X));
     }
