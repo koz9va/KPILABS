@@ -17,15 +17,13 @@ public class Main {
 
 		System.out.println(Arrays.toString(arr));
 		System.out.println("Fi " + "N" );
-
-
 	}
 
 	public static void cutTable(double[] U1, double[] C1, double[] U2, double[] C2) {
 
 		for (int i = 5; i < U1.length; i++) {
 			U2[i - 5] = Math.log(U1[i]);
-			C2[i - 5] = Math.log(C1[0]/C1[i]);
+			C2[i - 5] = Math.log(C1[0] / C1[i]);
 
 		}
 	}
@@ -39,17 +37,17 @@ public class Main {
 		for (int i = 0; i < matrix.length; i++) {
 			for (int k = 0; k < U.length; k++) {
 				pow = 1.0;
-				for (int l= 0; l < i; l++) {
-					pow *= C[k];
+				for (int l = 0; l < i; l++) {
+					pow *= U[k];
 				}
-				B[i] += pow * U[k];
+				B[i] += pow * C[k];
 			}
 
 			for (int j = 0; j < matrix.length; j++) {
-				for (int k = 0; k < U.length; k++) {
+				for (double v : U) {
 					pow = 1.0;
-					for (int l = 0; l < i + j ; l++) {
-						pow *= C[k];
+					for (int l = 0; l < i + j; l++) {
+						pow *= v;
 					}
 					matrix[i][j] += pow;
 				}
@@ -61,11 +59,7 @@ public class Main {
 	}
 
 	public static void returnUnknown (double[] arr) {
-		arr[1] = 1/arr[1];
+		arr[1] = 1 / arr[1];
 		arr[0] = Math.exp(arr[0]);
 	}
-
-
-
-
 }
