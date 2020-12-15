@@ -16,7 +16,7 @@ public class Vector {
         this.vector[i] = j;
     }
 
-    double[] vector;
+    public double[] vector;
 
     public Vector(int capacity) {
         this.vector = new double[capacity];
@@ -33,6 +33,10 @@ public class Vector {
         catch (IOException ignored) {
             System.out.println("Something wrong with file");
         }
+    }
+
+    public Vector (double[] vec) {
+        System.arraycopy(vec, 0, this.vector, 0, vec.length);
     }
 
     public Vector(Vector vector) {

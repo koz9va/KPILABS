@@ -220,6 +220,46 @@ public class Main {
         }
     }
 
+    public static void Hales (double[][] matrix, double[] vector, double[] x) {
+        Arrays.fill(x,0);
+
+        for (int j = 0; j < matrix.length; j++) {
+
+            for (int k = 0; k < j; k++) {
+                matrix[j][j] -= matrix[j][k] * matrix[j][k] * matrix[k][k];
+            }
+
+            for (int i = j + 1; i < matrix.length; i++) {
+
+                for (int k = 0; k < j; k++) {
+                    matrix[i][j] -= matrix[i][k] * matrix[k][k] * matrix[j][k];
+                }
+
+                matrix[i][j] /= matrix[j][j];
+            }
+        }
+
+        for (int i = 0; i < matrix.length; i++) {
+
+            x[i] = vector[i];
+
+            for (int j = 0; j < i; j++) {
+                x[i] -= matrix[i][j] * x[j];
+            }
+        }
+
+        for (int i = 0; i < matrix.length; i++) {
+            x[i] = x[i] / matrix[i][i];
+        }
+
+        for (int i = matrix.length - 1; i >= 0; i--) {
+
+            for (int j = i + 1; j <matrix.length; j++) {
+                x[i] -= matrix[j][i] * x[j];
+            }
+        }
+    }
+
     public static String getFilenameFromConsole (BufferedReader reader) {
         String filename = null;
         System.out.println("Enter file with data");
