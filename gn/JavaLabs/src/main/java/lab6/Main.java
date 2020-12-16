@@ -1,25 +1,21 @@
 package lab6;
 
-import java.util.Arrays;
-
 public class Main {
-
-
+    public static int lengthToSkip = 6, powerOfInputFunction = 1;
     public static void main(String[] args) {
         double[] fakeArrU = new double[]{0.0, 0.5, 1.0, 3.0, 4.5, 6.0, 7.5, 9.5, 12.0, 16.0, 20.0, 25.0, 30.0};
         double[] fakeArrC = new double[]{15.5e-12, 14.0e-12, 12.2e-12, 10.5e-12, 9.7e-12, 9.0e-12, 8.6e-12, 8.1e-12, 7.6e-12, 7.1e-12, 6.7e-12, 6.4e-12, 6.1e-12};
 
-        double[] realArrayU = new double[8];
-        double[] realArrayC = new double[8];
+        double[] realArrayU = new double[fakeArrU.length - lengthToSkip];
+        double[] realArrayC = new double[fakeArrC.length - lengthToSkip];
 
-        createTable(fakeArrU, fakeArrC, realArrayU, realArrayC);
+        createTable(fakeArrU, fakeArrC, realArrayU, realArrayC,lengthToSkip);
 
-        double[] src = func(realArrayU, realArrayC, 1);
+        double[] src = func(realArrayU, realArrayC, powerOfInputFunction);
 
         getValues(src);
 
-        System.out.println(Arrays.toString(src));
-        System.out.println("Fi, N");
+        System.out.println("fi = [" + src[0] + "], n = [" + src[1] + "]");
     }
 
     public static double[] func (double[] arrayOfC, double[] arrayOfU, int powerOfPol) {
@@ -50,10 +46,10 @@ public class Main {
         return pow;
     }
 
-    public static void createTable(double[] src1, double[] src2, double[] dest1, double[] dest2) {
-        for (int i = 5; i < src1.length; i++) {
-            dest1[i - 5] = Math.log(src1[i]);
-            dest2[i - 5] = Math.log(src2[0] / src2[i]);
+    public static void createTable(double[] src1, double[] src2, double[] dest1, double[] dest2, int lengthToSkip) {
+        for (int i = lengthToSkip; i < src1.length; i++) {
+            dest1[i - lengthToSkip] = Math.log(src1[i]);
+            dest2[i - lengthToSkip] = Math.log(src2[0] / src2[i]);
         }
     }
 
