@@ -11,21 +11,21 @@ public class Main {
 
         createTable(fakeArrU, fakeArrC, realArrayU, realArrayC,lengthToSkip);
 
-        double[] src = func(realArrayU, realArrayC, powerOfInputFunction);
+        double[] src = ApproximateFunc(realArrayU, realArrayC, powerOfInputFunction);
 
         getValues(src);
 
         System.out.println("fi = [" + src[0] + "], n = [" + src[1] + "]");
     }
 
-    public static double[] func (double[] arrayOfC, double[] arrayOfU, int powerOfPol) {
+    public static double[] ApproximateFunc (double[] arrayOfC, double[] arrayOfU, int powerOfPol) {
         powerOfPol++;
         double [] B = new double[powerOfPol];
         double[][] matrix = new double[powerOfPol][powerOfPol];
 
         for (int i = 0; i < matrix.length; i++) {
-            for (int k = 0; k < arrayOfC.length; k++) {
-                B[i] += pow(i, arrayOfU[k]) * arrayOfC[k];
+            for (int j = 0; j < arrayOfC.length; j++) {
+                B[i] += pow(i, arrayOfU[j]) * arrayOfC[j];
             }
             for (int j = 0; j < matrix.length; j++) {
                 for (int k = 0; k < arrayOfC.length; k++) {
@@ -38,7 +38,7 @@ public class Main {
         return src;
     }
 
-    public static double pow(int i, double value) {
+    public static double pow (int i, double value) {
         double pow = 1.0;
         for (int j = 0; j < i; j++) {
             pow *= value;
@@ -46,14 +46,14 @@ public class Main {
         return pow;
     }
 
-    public static void createTable(double[] src1, double[] src2, double[] dest1, double[] dest2, int lengthToSkip) {
+    public static void createTable (double[] src1, double[] src2, double[] dest1, double[] dest2, int lengthToSkip) {
         for (int i = lengthToSkip; i < src1.length; i++) {
             dest1[i - lengthToSkip] = Math.log(src1[i]);
             dest2[i - lengthToSkip] = Math.log(src2[0] / src2[i]);
         }
     }
 
-    public static void getValues(double[] src) {
+    public static void getValues (double[] src) {
         src[1] = 1 / src[1];
         src[0] = Math.exp(src[0]);
     }
