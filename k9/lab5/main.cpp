@@ -4,7 +4,7 @@
 #include "include/SLAU.h"
 #include <cstdio>
 
-void calcTable(lin::vector &U1, lin::vector &C1, lin::vector &U2, lin::vector &C2, double sense) {
+void Recalculate_table(lin::vector &U1, lin::vector &C1, lin::vector &U2, lin::vector &C2, double sense) {
 	int i, j;
 
 	j = 0;
@@ -40,7 +40,7 @@ void Polynomial_approximation(lin::vector &U, lin::vector &C, lin::vector &X, in
 			B[i] += pow * U[k];
 		}
 
-		for(j = 0; j < m.n; ++j) {
+		for(j = 0; j <= i; ++j) {
 			for(k = 0; k < U.n; ++k) {
 				pow = 1.0;
 				for(p = 0; p < i + j; ++p) {
@@ -79,7 +79,7 @@ int main() {
 		fscanf(input, "%lf", &C1[i]);
 	}
 	fclose(input);
-	calcTable(U1, C1, U2, C2, 6.0);
+	Recalculate_table(U1, C1, U2, C2, 6.0);
 
 	lin::vector out(U2.n);
 
