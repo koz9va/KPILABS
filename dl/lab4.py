@@ -107,7 +107,7 @@ def sichnyh(func, x0, eps):
             f.write(f'|x{i} - x{i-1}| > eps * |x{i-1}|\n')
         i += int(1)
         if math.fabs(x2 - x1) < eps * math.fabs(x1):
-            f.write(f'|x{i-1} - x{i - 2}| < eps * |x{i - 2}|\n')
+            f.write(f'|x{i-1} - x{i - 2}| < eps * |x{i - 2}|\n\n')
             break
     return x2
 
