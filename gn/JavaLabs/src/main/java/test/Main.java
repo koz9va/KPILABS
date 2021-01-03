@@ -4,23 +4,24 @@ import java.util.ArrayList;
 
 public class Main {
 
-    private int a = 0;
-
     public static void main(String[] args) {
-        Math.max(1, 2);
-        Math.max(1.0, 2.0);
+        double x = -0.72;
+        double x2 = -0.54;
 
-        Open open = new Open(1, "asd", "asd");
+        double a = 2 * x + x2 / 2 + 2 + 4 * Math.pow(x + x2 + 1, 3);
+        double b = x2 / 8 + x / 2 + 0.5 + 4 * Math.pow(x + x2 + 1, 3);
 
-        System.out.println(open.getCar());
+        System.out.println(a);
+        System.out.println(b);
 
-        Open open1 = new Open();
+        System.out.println("------------------------------");
 
-        open.hello();
-
-
-
+        System.out.print(12 * (x + x2 + 1) * (x + x2 + 1) + 2);
+        System.out.print(" ");
+        System.out.println(12 * (x + x2 + 1) * (x + x2 + 1) + 0.5);
+        System.out.print(12 * (x + x2 + 1) * (x + x2 + 1) + 0.5);
+        System.out.print(" ");
+        System.out.println(12 * (x + x2 + 1) * (x + x2 + 1) + 1.0/8);
     }
-
 
 }
