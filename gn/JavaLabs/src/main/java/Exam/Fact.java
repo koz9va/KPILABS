@@ -96,7 +96,7 @@ public class Fact {
 
         System.out.println("A1 = {");
         printMat(mat);
-        System.out.println("} - " + k + " * " + Arrays.toString(S1TA) + " * (Tранспоноване) " + Arrays.toString(S1T) + " = ");
+        System.out.println("} - " + k + " * " + Arrays.toString(S1TA) + " * (Transponse) " + Arrays.toString(S1T) + " = ");
 
         double[][] A1 = VecAndVecToMat(S1TA, S1T);
         NumberOnMat(A1, k);
@@ -145,7 +145,7 @@ public class Fact {
 
         System.out.println("A2 = {");
         printMat(mat);
-        System.out.println("} - " + k1 + " * " + Arrays.toString(S1TA1) + " * (Tранспоноване) " + Arrays.toString(S1T1) + " = ");
+        System.out.println("} - " + k1 + " * " + Arrays.toString(S1TA1) + " * (Trans) " + Arrays.toString(S1T1) + " = ");
 
         double[][] A2 = VecAndVecToMat(S1TA1, S1T1);
         NumberOnMat(A2, k1);
@@ -192,12 +192,12 @@ public class Fact {
         double L32 = (mat[1][2] - L31 * L21)/(L22);
         double L33 = Math.sqrt(mat[2][2] - L31 * L31 - L32 * L32);
 
-        System.out.println("A = L*LT -> писать акуратно як множення двох матриць");
+        System.out.println("A = L*LT -> write as multiplying of two matrixes");
         System.out.println("[" + L11 + " " + 0 + " " + 0 + "]  [" + L11 + " " + L21 + " " + L31 + "]");
         System.out.println("[" + L21 + " " + L22 + " " + 0 + "] * [" + 0 + " " + L22 + " " + L32 + "]");
         System.out.println("[" + L31 + " " + L32 + " " + L33 + "]  [" + 0 + " " + 0 + " " + L33 + "]");
 
-        System.out.println("Ly = B -> писать акуратно як матричне рівняння");
+        System.out.println("Ly = B -> write as matrix equation");
         System.out.println("[" + L11 + " " + 0 + " " + 0 + "] y1 " + b[0]);
         System.out.println("[" + L21 + " " + L22 + " " + 0 + "] * y2 = " + b[1]);
         System.out.println("[" + L31 + " " + L32 + " " + L33 + "] y3 " + b[2]);
@@ -209,7 +209,7 @@ public class Fact {
         System.out.println("y2 = " + y2);
         System.out.println("y3 = " + y3);
 
-        System.out.println("LT * x = y -> матричне рівняння");
+        System.out.println("LT * x = y -> matrix equation");
         System.out.println("[" + L11 + " " + L21 + " " + L31 + "] x1 " + y1);
         System.out.println("[" + 0 + " " + L22 + " " + L32 + "] * x2 = " + y2);
         System.out.println("[" + 0 + " " + 0 + " " + L33 + "] x3 " + y3);
