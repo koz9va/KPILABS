@@ -15,8 +15,4 @@ EigVec = eig(inputMat, 'vector')
 
 writeLine(5, 1)
 
-fun = @root2d;
-x0 = [0, 0];
-x = fsolve(fun, x0);
-F = root2d(x);
-ans = norm(F)
+norm(root2d(fsolve('root2d', [0.001, 1.4])))

@@ -2,17 +2,18 @@ function writeLine(x, near)
     fh = figure();
     x = linspace(-x, x);
     qwe = zeros(size(x));
-    ah = axes(fh);
+    handler = axes(fh);
     y = nonLinealFunc(x);
-    lh = line('xdata', x,
-    'ydata', y,
-    'LineStyle', '--',
-    'parent', ah
-    );
-    lg = line('xdata', x,
-    'ydata', qwe,
-    'parent', ah
-    );
+    line(x,
+        y,
+        'LineStyle', '--',
+        'parent', handler
+        );
+    line(x,
+        qwe,
+        'parent', handler
+        );
+    set(handler, 'Xlabel', 'XValue', 'Ylabel', 'YValue');
     hold on
-    hs = scatter(fzero("nonLinealFunc", near), 0, 30, 'filled','parent', ah);
+    scatter(fzero("nonLinealFunc", near), 0, 30, 'filled','parent', handler);
 end

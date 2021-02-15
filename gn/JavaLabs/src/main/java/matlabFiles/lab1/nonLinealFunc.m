@@ -1,3 +1,3 @@
 function y = nonLinealFunc(x)
-    y = x .* x - 3;
+    y = 4 - 3 * x - exp(x) + 1;
 end
