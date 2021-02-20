@@ -1,6 +1,7 @@
 import sys
 from math import *
 from QR import QR
+from sympy import *
 
 
 def rgr(X, Y):
@@ -8,7 +9,7 @@ def rgr(X, Y):
     Y[1] = exp(X[0]) - 2 * X[1] - 1
 
 
-def lab(X, Y):
+'''def lab(X, Y):
     global count
     e = 6.0
     r = 1.5e3
@@ -24,18 +25,28 @@ def lab(X, Y):
     Y[0] = id1 - id2
     Y[1] = e - X[0] - X[1] - id1 * r
 
-    count += 1
+    count += 1'''
+
+def jakobi(file):
+    x1, x2 = symbols('x1, x2')
+    f1 = exp(2 * x1) + x2 - 2
+    f2 = exp(x1) - 2 * x2 - 1
+    dx1 = diff(f1, x1)
+    dx2 = diff(f2, x2)
+    dx3 = diff(f1, x2)
+    dx4 = diff(f2, x1)
+    F = [[dx1, dx3],
+         [dx4, dx2]]
+    file.write(f'J(X) = {F[0]}\n\t {F[1]}\n')
 
 
 def newton(fun, X, eps):
-    f.write(f'<----- Newton ----->\n')
     k = int(0)
     dX = [float() for x in range(len(X))]
     Y = [float() for x in range(len(X))]
     Yp = [float() for x in range(len(X))]
     J = [[float() for y in range(len(X))]
          for x in range(len(X))]
-
     while True:
         fun(X, Y)
         for j in range(len(X)):
@@ -45,6 +56,7 @@ def newton(fun, X, eps):
             for i in range(len(X)):
                 J[i][j] = (Yp[i] - Y[i]) / h
             X[j] -= h
+        f.write(f'JX{k} = {J[0]}\n\t {J[1]}\n')
         QR(J, Y, dX)
         nx = 0.0
         ndx = 0.0
@@ -100,12 +112,15 @@ def broiden(fun, X, eps):
 
 f = open('sne.txt', 'w')
 
+jakobi(f)
+
+
 count = 0
-X = [0.6, 0.6]
-newton(lab, X, 1e-6)
+X = [0.5, 0.3]
+newton(rgr, X, 1e-6)
 
 f.write(f'<----- Number of function calls: {str(count)}; X = {str(X)}  ----->\n\n')
 count = 0
-X = [0.6, 0.6]
-broiden(lab, X, 1e-6)
+X = [0.5, 0.3]
+broiden(rgr, X, 1e-6)
 f.write(f'<----- Number of function calls: {str(count)}; X = {str(X)}  ----->\n\n')
