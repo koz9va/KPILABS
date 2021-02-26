@@ -1,4 +1,4 @@
-function writeLine2(x, near)
+function x = writeLine2(x, near)
     fh = figure();
     x = linspace(-x, x);
     handler = axes(fh);
