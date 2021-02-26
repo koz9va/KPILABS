@@ -6,13 +6,15 @@ function writeLine(x, near)
     y = nonLinealFunc(x);
     line(x,
         y,
-        'LineStyle', '--',
-        'parent', handler
+        'parent', handler,
+        'color', 'red'
         );
     line(x,
         qwe,
-        'parent', handler
-        );
+        'LineStyle', '--',
+        'parent', handler,
+        'color', 'black'
+    );
     set(handler, 'Xlabel', 'XValue', 'Ylabel', 'YValue');
     hold on
     scatter(fzero("nonLinealFunc", near), 0, 30, 'filled','parent', handler);
