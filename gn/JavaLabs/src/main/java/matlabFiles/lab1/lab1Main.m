@@ -1,14 +1,14 @@
-inputMat = [5 2 3;2 6 1;3 1 7];
-inputB = [15;14;13];
+inputMat = [18 -6 -9;-6 15 -8;-9 -8 17];
+inputB = [-21;0;26];
 
-x = qr_fact(inputMat, inputB)
-x = lu_fact(inputMat, inputB)
-x = chol_fact(inputMat, inputB)
-[x, Cond] = svd_fact(inputMat, inputB)
+qr = qr_fact(inputMat, inputB)
+lu = lu_fact(inputMat, inputB)
+chol = chol_fact(inputMat, inputB)
+[svd, Cond] = svd_fact(inputMat, inputB)
 
 DetInputMat = det(inputMat)
 EigVec = eig(inputMat, 'vector')
 
 writeLine(5, 1)
-
-norm(root2d(fsolve('root2d', [0.001, 1.4])))
+x = fsolve('root2d', [0.001, 1.4])
+norm(root2d(x))
