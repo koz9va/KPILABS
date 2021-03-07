@@ -1,16 +1,26 @@
 package lab4MMFWithSpring;
 
 
-import org.springframework.beans.factory.annotation.Value;
+import lab4MMFWithSpring.model.Model4lab4MMF;
+import lab4MMFWithSpring.repository.Model4labRepository;
+import lombok.Data;
 import org.springframework.stereotype.Component;
 
 @Component
+@Data
 public class FunctionInfo {
 
-    @Value("${userBucket.path}")
-    private int someValue;
+    Model4labRepository model4labRepository;
+
+    private Integer id;
+    private Integer somevalue;
 
     public int getValue() {
-        return someValue;
+        return somevalue;
     }
+
+    public FunctionInfo returnData() {
+        return model4labRepository.getFunctionData();
+    }
+
 }

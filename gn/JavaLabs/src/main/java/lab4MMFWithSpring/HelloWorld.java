@@ -12,7 +12,7 @@ public class HelloWorld {
 
 
     public void hello() {
-        System.out.println(functionInfo.getValue());
+        System.out.println(functionInfo.returnData().getSomevalue());
     }
 
 
