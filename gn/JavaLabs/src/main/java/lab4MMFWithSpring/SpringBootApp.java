@@ -20,6 +20,6 @@ public class SpringBootApp implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        helloWorld.hello();
+        helloWorld.getValue();
     }
 }

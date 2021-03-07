@@ -13,8 +13,9 @@ public class Model4lab4MMF {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Integer id;
 
-    @Column(name = "somevalue")
-    private Integer someValue;
+    @Column
+    private Integer somevalue;
 }
