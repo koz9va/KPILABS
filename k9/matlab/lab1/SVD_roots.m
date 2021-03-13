@@ -8,8 +8,6 @@ function roots_svd = SVD_roots(A, B)
 	for i = 1:size(B, 1)
 		if(abs(S(i, i)) > tau)
 			Y(i) = C(i) / S(i, i);
-		else
-			Y(i) = 0;
 		end
 	end
 

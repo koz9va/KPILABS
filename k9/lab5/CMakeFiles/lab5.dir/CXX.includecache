@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/koz9va/Documents/KPILABS/k9/lab5/include/SLAU.h
+iostream
+-
+cmath
+-
+cstring
+-
+
+/home/koz9va/Documents/KPILABS/k9/lab5/main.cpp
+include/SLAU.h
+/home/koz9va/Documents/KPILABS/k9/lab5/include/SLAU.h
+cstdio
+-
+

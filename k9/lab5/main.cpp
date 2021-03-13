@@ -82,7 +82,14 @@ int main() {
 	Recalculate_table(U1, C1, U2, C2, 6.0);
 
 	lin::vector out(U2.n);
-
+    for(i = 0; i < U2.n; ++i) {
+        printf("%lf\n", U2[i]);
+    }
+    printf("\n--------\n");
+    for(i = 0; i < C2.n; ++i) {
+        printf("%lf\n ", C2[i]);
+    }
+    printf("\n");
 	Polynomial_approximation(U2, C2, out, 1);
 
 	out[0] = exp(out[0]);
