@@ -1,0 +1,7 @@
+Linear approximation
+n = 3.447623637137053e-01
+fi = 6.402506832714144e-01
+Nonlinear approximation
+n = 3.376502540092327e-01
+fi0 = 6.370589242527747e-01
+
