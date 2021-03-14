@@ -1,4 +1,4 @@
-package lab6;
+package sem1.lab6;
 
 public class Main {
     public static int lengthToSkip = 6, powerOfInputFunction = 1;
@@ -34,7 +34,7 @@ public class Main {
             }
         }
         double[] src = new double[powerOfPol];
-        lab3.Main.Hales(matrix, B, src);
+        sem1.lab3.Main.Hales(matrix, B, src);
         return src;
     }
 

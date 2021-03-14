@@ -1,4 +1,4 @@
-package lab4MMFWithSpring.model;
+package sem2.lab4MMFWithSpring.model;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,6 +16,6 @@ public class Model4lab4MMF {
     @Column(name = "id")
     private Integer id;
 
-    @Column
-    private Integer somevalue;
+    @Column(name = "somevalue")
+    private Integer someValue;
 }

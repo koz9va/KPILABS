@@ -1,4 +1,4 @@
-package Exam;
+package sem1.Exam;
 
 import java.util.Arrays;
 

@@ -1,6 +1,6 @@
-package lab4MMFWithSpring;
+package sem2.lab4MMFWithSpring.service;
 
-import lab4MMFWithSpring.repository.Model4lab4MMFRepository;
+import sem2.lab4MMFWithSpring.repository.Model4lab4MMFRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +18,7 @@ public class HelloWorld implements ServiceRepository {
     }
 
     @Override
-    public void getValue() {
-        logger.info(model4lab4MMFRepository.getSomeValue(3).toString());
+    public void getValue(Integer id) {
+        logger.info(model4lab4MMFRepository.getSomeValue(id).toString());
     }
 }

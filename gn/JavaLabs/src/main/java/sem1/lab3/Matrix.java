@@ -1,4 +1,4 @@
-package lab3;
+package sem1.lab3;
 
 import lombok.NoArgsConstructor;
 import lombok.Setter;

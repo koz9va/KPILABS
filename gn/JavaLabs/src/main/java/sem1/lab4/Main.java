@@ -1,4 +1,4 @@
-package lab4;
+package sem1.lab4;
 
 import java.io.FileWriter;
 import java.io.IOException;

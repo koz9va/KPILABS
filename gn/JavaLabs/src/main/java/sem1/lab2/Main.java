@@ -1,12 +1,12 @@
-package lab2;
+package sem1.lab2;
 
 import java.io.*;
 
 public class Main {
     public static void main(String[] args) {
-        double[] arrayOfUds = new double[lab1.Main.UdsLengthOfArray];
-        double[] arrayOfUgs = new double[lab1.Main.UgsLengthOfArray];
-        double[][] arrayOfCurrent = new double[lab1.Main.UgsLengthOfArray][lab1.Main.UdsLengthOfArray];
+        double[] arrayOfUds = new double[sem1.lab1.Main.UdsLengthOfArray];
+        double[] arrayOfUgs = new double[sem1.lab1.Main.UgsLengthOfArray];
+        double[][] arrayOfCurrent = new double[sem1.lab1.Main.UgsLengthOfArray][sem1.lab1.Main.UdsLengthOfArray];
         try (BufferedReader console_reader = new BufferedReader(new InputStreamReader(System.in))) {
 
             try (BufferedReader fileReader = new BufferedReader(new FileReader("Uds.txt"))) {
@@ -23,9 +23,9 @@ public class Main {
 
             try (BufferedReader fileReader = new BufferedReader(new FileReader("Current.txt"))) {
                 while(fileReader.ready()){//пока есть строки
-                    for (int i = 0; i < lab1.Main.UgsLengthOfArray; i++) {//проходим по строкам
+                    for (int i = 0; i < sem1.lab1.Main.UgsLengthOfArray; i++) {//проходим по строкам
                         String[] data = fileReader.readLine().split(" ");//читаем строку в массив через пробел
-                        for (int j = 0; j < lab1.Main.UdsLengthOfArray; j++) {//проходим по столбцам
+                        for (int j = 0; j < sem1.lab1.Main.UdsLengthOfArray; j++) {//проходим по столбцам
                             arrayOfCurrent[i][j] = Double.parseDouble(data[j]);//парсим елемент массива строк в елемент массива дабл
                         }
                     }
@@ -42,7 +42,7 @@ public class Main {
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename))) {
                 for (double arrayOfUg : arrayOfUgs) {
                     double value = 0;
-                    for (int i = 0; i < lab1.Main.UdsLengthOfArray * 2 - 1; i++) {
+                    for (int i = 0; i < sem1.lab1.Main.UdsLengthOfArray * 2 - 1; i++) {
                         writer.write(inter(arrayOfUgs, arrayOfUds, arrayOfCurrent, arrayOfUg, value) + " ");
                         value += stepUds;
                     }
@@ -51,7 +51,7 @@ public class Main {
 
 
                 double Uds = 0;
-                for (int i = 0; i < lab1.Main.UdsLengthOfArray * 2 - 1; i++) {
+                for (int i = 0; i < sem1.lab1.Main.UdsLengthOfArray * 2 - 1; i++) {
                     writer.write(inter(arrayOfUgs, arrayOfUds, arrayOfCurrent, stepUgs, Uds) + " ");
                     Uds += stepUds;
                 }

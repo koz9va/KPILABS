@@ -1,6 +1,6 @@
-package lab5;
+package sem1.lab5;
 
-import lab3.Vector;
+import sem1.lab3.Vector;
 
 public interface Function {
 

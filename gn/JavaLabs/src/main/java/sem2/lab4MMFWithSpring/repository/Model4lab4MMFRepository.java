@@ -1,6 +1,6 @@
-package lab4MMFWithSpring.repository;
+package sem2.lab4MMFWithSpring.repository;
 
-import lab4MMFWithSpring.model.Model4lab4MMF;
+import sem2.lab4MMFWithSpring.model.Model4lab4MMF;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

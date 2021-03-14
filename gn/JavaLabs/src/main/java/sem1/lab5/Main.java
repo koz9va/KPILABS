@@ -1,7 +1,7 @@
-package lab5;
+package sem1.lab5;
 
-import lab3.Matrix;
-import lab3.Vector;
+import sem1.lab3.Matrix;
+import sem1.lab3.Vector;
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 
@@ -79,7 +79,7 @@ public class Main {
 
         do {
             Matrix.copyMatrix(J1, J);
-            lab3.Main.QR(J1, Y, Dx.getVector());
+            sem1.lab3.Main.QR(J1, Y, Dx.getVector());
 
             nX = 0.0;
             ndX = 0.0;
@@ -114,7 +114,7 @@ public class Main {
 
         do {
             calcJacobi(function, X, J, Y, Yp);
-            lab3.Main.QR(J, Y, Dx.getVector());
+            sem1.lab3.Main.QR(J, Y, Dx.getVector());
             subtractVectors(X, Dx);
             countIteration++;
             System.out.println(countIteration + ": " + Arrays.toString(X.getVector()) + " " + Arrays.toString(Y.getVector()));

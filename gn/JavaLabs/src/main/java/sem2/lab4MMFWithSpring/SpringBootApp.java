@@ -1,5 +1,6 @@
-package lab4MMFWithSpring;
+package sem2.lab4MMFWithSpring;
 
+import sem2.lab4MMFWithSpring.service.HelloWorld;
 import lombok.AllArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -11,7 +12,7 @@ import java.io.IOException;
 @AllArgsConstructor
 public class SpringBootApp implements CommandLineRunner {
 
-    public HelloWorld helloWorld;
+    private final HelloWorld helloWorld;
 
     public static void main(String[] args) throws IOException {
         var ctx = SpringApplication.run(SpringBootApp.class, args);
@@ -20,6 +21,6 @@ public class SpringBootApp implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        helloWorld.getValue();
+        helloWorld.getValue(3);
     }
 }
