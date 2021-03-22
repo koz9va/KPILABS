@@ -14,3 +14,4 @@ public class LabServiceTest extends TestCase {
         assertEquals(expected, actual);
     }
 }
+
