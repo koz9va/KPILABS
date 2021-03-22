@@ -1,6 +1,5 @@
 package sem2.lab4MMFWithSpring;
 
-import lombok.Setter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +18,6 @@ import java.io.IOException;
  */
 
 @SpringBootApplication
-@Setter
 @PropertySource(value={"classpath:lab4MMF.properties"})
 public class SpringBootApp implements CommandLineRunner {
 
@@ -78,7 +76,7 @@ public class SpringBootApp implements CommandLineRunner {
         log.info("Point 5 done");
         log.info("Point 6 start");
 
-        //Point 6
+        //TODO:Point 6
 
     }
 
