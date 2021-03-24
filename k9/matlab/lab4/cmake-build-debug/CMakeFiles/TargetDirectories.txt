@@ -1,0 +1,3 @@
+/home/koz9va/Documents/KPILABS/k9/matlab/lab4/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/koz9va/Documents/KPILABS/k9/matlab/lab4/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/koz9va/Documents/KPILABS/k9/matlab/lab4/cmake-build-debug/CMakeFiles/lab4.dir
