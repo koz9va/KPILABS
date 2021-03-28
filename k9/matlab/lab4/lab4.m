@@ -89,7 +89,7 @@ tpm = pi ./ omg;
 
 y = y1;
 s = s1;
-tmax = pi ./omg;
+tmax = 1.0;
 
 x = linspace(0, tmax, length(x1));
 
@@ -104,7 +104,7 @@ disp('Difference between C++ and matlab data:')
 disp('S1:')
 norm(abs(y1 - y))
 
-tmax = 1.5;
+tmax = 10;
 x = linspace(0, tmax, length(x2));
 y = y2;
 for i = 1:length(x)
@@ -117,7 +117,7 @@ end
 disp('S2:')
 norm(abs(y2 - y))
 
-tmax = 3.5;
+tmax = 5;
 x = linspace(0, tmax, length(x3));
 y = y3;
 for i = 1:length(x)

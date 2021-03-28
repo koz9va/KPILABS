@@ -78,7 +78,7 @@ double funduam1(double t) {
 }
 
 int main() {
-	constexpr double tmax[] = {M_PI/omg, 1.5, 3.5};
+	constexpr double tmax[] = {1.0, 10.0, 5};
 	constexpr int p_len = 3;
 	constexpr int p[] = {4, 5, 8};
 	double t, dt, tpp, tpm, y;

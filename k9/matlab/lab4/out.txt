@@ -1,0 +1,27 @@
+<./lab4>
+Given function:
+p = 4, result = 2.60957, calls to function = 67
+p = 5, result = 2.60958, calls to function = 40
+p = 8, result = 2.60957, calls to function = 27
+Dependence of voltage over time are written to the x.txt y.txt and s.txt files
+
+<octave>
+quad:
+ans = 2.609566526046482e+00
+function calls:
+cnt = 21
+integral:
+ans = 2.609566526046482e+00
+function calls:
+cnt = 1
+quadl:
+ans = 2.609566526050619e+00
+function calls:
+cnt = 8
+Difference between C++ and matlab data:
+S1:
+ans = 0.061851
+S2:
+ans = 2.3692e-11
+S3:
+ans = 2.0214e-05
