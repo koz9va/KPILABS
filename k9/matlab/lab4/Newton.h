@@ -14,9 +14,9 @@
  *
  * =====================================================================================
  */
-#include <cmath>
-#include <cfloat>
-#define MAX_ITER 20
+#include <math.h>
+#include <float.h>
+#define MAX_ITER 10
 
 int const C[][10] = {
 	{1, 1, 2},

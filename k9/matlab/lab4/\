@@ -22,7 +22,7 @@
 int cnt;
 
 const double omg = M_PI * 2.0;
-const double A = 10.0;
+const double A = 1000000.0;
 const double fi = M_PI / 4.0;
 const double sigm = 1.0;
 const double t0 = 4.0;
@@ -60,6 +60,12 @@ double s3(double t) {
 	}
 
 }
+double U(double t, double (*s)(double)) {
+	const double Re = 4.0;
+	const double C = 1.0;
+
+	return s(t) * (1.0 - exp(t/Re * C));
+}
 double h(double t) {
 	const double Re = 4.0;
 	const double C = 1.0;
@@ -85,10 +91,9 @@ double funduam1(double t)
 
 int main() {
 	double tmax, t, dt, tpp, tpm, y;
-
-	s = &s1;
-	tmax = M_PI / omg;
-//	tmax = 0.5;
+	s = &s2;
+//	tmax = M_PI / omg;
+	tmax = 10;
 	dt = tmax / 100;
 	tpp = 0;
 	tpm = M_PI / omg;
@@ -119,8 +124,5 @@ int main() {
 	fclose(xFile);
 	fclose(yFile);
 	fclose(sFile);
-
-	
-
 	return 0;                                         
 }
