@@ -40,8 +40,7 @@ public class SpringBootApp implements CommandLineRunner {
     @Value("${const.xMin}")
     private double xMin;
 
-    @Value("${const.xMax}")
-    private double xMax;
+    private double xMax = Math.PI/2.5;
 
     @Value("${const.epsilon}")
     private double eps;
@@ -55,17 +54,17 @@ public class SpringBootApp implements CommandLineRunner {
     @Value("${const.sum8}")
     private int sum8;
 
-//    private final FunctionForNewton function = x -> {
-//        countFunctionCall++;
-//        if (x != 0) {
-//            return Math.sin(x * x * x * x) / (1 - Math.cos(Math.log(1 + x)));
-//        }
-//        else return 0;
-//    };
     private final FunctionForNewton function = x -> {
         countFunctionCall++;
-        return Math.pow(x, 4);
+        if (x != 0) {
+            return Math.log(2 - Math.sin(x)) / (0.1 + Math.tan(x) * Math.tan(x));
+        }
+        else return 0;
     };
+//    private final FunctionForNewton function = x -> {
+//        countFunctionCall++;
+//        return Math.pow(x, 4);
+//    };
 
     public static void main(String[] args) throws IOException {
         var ctx = SpringApplication.run(SpringBootApp.class, args);
@@ -91,7 +90,6 @@ public class SpringBootApp implements CommandLineRunner {
         log.info("Point 5 done");
         log.info("Point 6 start");
 
-        //TODO:Point 6
         double[] t = new double[numb + 1];
         t[0] = 0;
         try(BufferedWriter writer = new BufferedWriter(new FileWriter("t1.txt"))) {
