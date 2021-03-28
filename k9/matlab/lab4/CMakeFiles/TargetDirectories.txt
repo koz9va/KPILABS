@@ -1,3 +1,0 @@
-/home/koz9va/Documents/KPILABS/k9/matlab/lab4/CMakeFiles/rebuild_cache.dir
-/home/koz9va/Documents/KPILABS/k9/matlab/lab4/CMakeFiles/edit_cache.dir
-/home/koz9va/Documents/KPILABS/k9/matlab/lab4/CMakeFiles/lab4.dir
