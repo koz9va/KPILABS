@@ -22,7 +22,7 @@ const double A = 10.0;
 const double fi = M_PI / 4.0;
 const double sigm = 1.0;
 const double t0 = 4.0;
-const double tau = 4.0;
+double tau = 4.0;
 
 
 double v2(double x) {
@@ -71,10 +71,14 @@ double h(double t) {
 double funduam1(double t) {
 	++cnt;	
 	if(t < M_PI / omg) {
-		return A * omg * cos(omg * tau + fi) * h(t - tau);
+		return A * omg * cos(omg * t + fi) * h(tau - t);
 	}else {
 		return 0.0;
 	}
+}
+
+double ds2(double t) {
+	return ( -( (2.0 * A * (t - t0) * exp(-((t - t0) * (t - t0)) / (sigm * sigm) )) / (sigm * sigm) ) ) * h(t);
 }
 
 int main() {
@@ -85,7 +89,7 @@ int main() {
 	int i;
 	FILE *xFile[3], *yFile[3], *sFile[3];
 	double (*s_arr[3])(double) = {&s1, &s2, &s3};
-
+	double (*derr_arr[3])(double) = {&funduam1, };
 	char x_str[] = "data/x .txt";
 	char y_str[] = "data/y .txt";
 	char s_str[] = "data/s .txt";
@@ -114,6 +118,7 @@ int main() {
 		dt = tmax[i] / 100.0;
 		for(t = 0.0; t <= tmax[i]; t += dt) {
 			cnt = 0;
+			tau = t;
 			if(t < M_PI /omg) {
 				y = s_arr[i](tpp) * h(t - tpp)
 				+ Integral_calc(funduam1, tpp, t - s_arr[i](tpm), 8, 1e-6)
