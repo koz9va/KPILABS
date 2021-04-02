@@ -14,6 +14,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
+#include <float.h>
 #include "Newton.h"
 
 int cnt;
@@ -46,7 +47,7 @@ double s3(double t) {
 		return 0;
 	}
 	else {
-		if(t >= 0 && t <= 1) {
+		if(t <= 1) {
 			return -2.0 * t + 2.0;
 		}
 		else if(t > 1 && t < 3) {
@@ -60,7 +61,7 @@ double h(double t) {
 	const double Re = 4.0;
 	const double C = 1.0;
 
-	if(t >= 0) {
+	if(t > 0) {
 		return 0.5 * (1.0 - exp(t/Re / C));
 	} else{
 		return 0.0;
@@ -78,7 +79,20 @@ double funduam1(double t) {
 }
 
 double ds2(double t) {
-	return ( -( (2.0 * A * (t - t0) * exp(-((t - t0) * (t - t0)) / (sigm * sigm) )) / (sigm * sigm) ) ) * h(t);
+	return ( -( (2.0 * A * (t - t0) * exp(-((t - t0) * (t - t0)) / (sigm * sigm) )) / (sigm * sigm) ) ) * h(tau - t);
+}
+
+double ds3(double t){
+	if(t < 0) {
+		return 0.0;
+	} else if(t <= 1.0 - (2.0 * DBL_EPSILON)) {
+		return -2.0 * h(tau - t);
+	} else if(t >= 1.0 + (2.0 * DBL_EPSILON) && t < 3.0 - (2.0 * DBL_EPSILON)) {
+		return h(tau - t);
+	} else {
+
+		return 0.0;
+	}
 }
 
 int main() {
@@ -89,13 +103,13 @@ int main() {
 	int i;
 	FILE *xFile[3], *yFile[3], *sFile[3];
 	double (*s_arr[3])(double) = {&s1, &s2, &s3};
-	double (*derr_arr[3])(double) = {&funduam1, };
+	double (*derr_arr[3])(double) = {&funduam1, &ds2, &ds3};
 	char x_str[] = "data/x .txt";
 	char y_str[] = "data/y .txt";
 	char s_str[] = "data/s .txt";
 
 	tpp = 0;
-	tpm = M_PI / omg;
+
 
 	for(i = 0; i < 3; ++i) {
 		x_str[6] = 49 + i;
@@ -116,18 +130,15 @@ int main() {
 	}
 	for(i = 0; i < 3; ++i) {
 		dt = tmax[i] / 100.0;
+		tpm = tmax[i];
+//		tau = t;
 		for(t = 0.0; t <= tmax[i]; t += dt) {
 			cnt = 0;
 			tau = t;
-			if(t < M_PI /omg) {
-				y = s_arr[i](tpp) * h(t - tpp)
-				+ Integral_calc(funduam1, tpp, t - s_arr[i](tpm), 8, 1e-6)
-			       	* h(t) - s_arr[i](tpm) * h(t - tmax[i]);
-			}else {
-				y = s_arr[i](tpp) * h(t - tpp)
-				+ Integral_calc(funduam1, tpp, tpm - s_arr[i](tpm), 8, 1e-6)
-				* h(t - tpm) - s_arr[i](tpm) * h(t - tmax[i]);	
-			}
+			y = s_arr[i](tpp) * h(t - tpp)
+			+ Integral_calc(derr_arr[i], tpp, t, 8, 1e-6)
+			- s_arr[i](tpm) * h(t - tmax[i]);
+
 //			printf("t: %g U: %g,func calls: %d\n", t, y, cnt);
 			fprintf(xFile[i], "%g\n", t);
 			fprintf(yFile[i], "%g\n", y);

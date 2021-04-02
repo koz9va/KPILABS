@@ -25,7 +25,7 @@ double Integral_calc(double (*fun)(double), double a, double b, int m, double ep
 		h = (b - a)/n;
 		I2 = I1;
 		if(h < (DBL_EPSILON * 2))
-			break;
+			goto stop;
 		x = a;
 		I1 = (fun(a) - fun(b)) * C[m - 1][0];
 		for(i = 0; i < n; ++i) {
@@ -39,7 +39,8 @@ double Integral_calc(double (*fun)(double), double a, double b, int m, double ep
 		I1 *= h;
 		R = fabs((I1 - I2) ) / p;
 		if(fabs(R) < fabs(eps * I1)) {
-            I1 += R;
+			I1 += R;
+stop:
 			I1 /= C[m-1][m+1];
 			break;
 		}

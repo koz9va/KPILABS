@@ -16,8 +16,8 @@
  */
 #include <math.h>
 #include <float.h>
-#define MAX_ITER 10
 
+constexpr int MAX_ITER = 10;
 constexpr int C[][10] = {
 	{1, 1, 2},
 	{1, 4, 1, 6},
