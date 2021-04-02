@@ -5,7 +5,7 @@ function retval = h(t)
 	if(t >= 0)
 		retval = 0.5 .* (1.0 - exp(t ./ Re ./ C));
 	else
-		retval = 0;
+		retval = 0 .* t;
 	end
 end
 

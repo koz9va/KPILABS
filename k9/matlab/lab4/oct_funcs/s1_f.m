@@ -3,6 +3,6 @@ function retval = s1_f(t)
 	if(t >= 0 && t <= pi/omg)
 		retval = A .* sin(omg .* t + fi);
 	else
-		retval = 0;
+		retval = 0 .* t;
 	end
 end
