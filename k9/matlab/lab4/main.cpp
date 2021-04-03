@@ -46,7 +46,7 @@ double s3(double t) {
 	if(t < 0) {
 		return 0;
 	}
-<<<<<<< HEAD
+//<<<<<<< HEAD
 	else if(t < 1) {
 		return -2.0 * t + 2.0;
 	}
@@ -54,17 +54,17 @@ double s3(double t) {
 		return t - 1.0;
 	} else
 		return 0;
-=======
-	else {
+//=======
+/*  	else {
 		if(t <= 1) {
 			return -2.0 * t + 2.0;
 		}
 		else if(t > 1 && t < 3) {
 			return t - 1.0;
 		}else
-			return 0;
->>>>>>> cca08da58216cf91d474f29db63ee72be3f58124
-	}
+			return 0; */
+//>>>>>>> cca08da58216cf91d474f29db63ee72be3f58124
+//	}
 
 }
 double h(double t) {
@@ -95,20 +95,13 @@ double ds2(double t) {
 double ds3(double t){
 	if(t < 0) {
 		return 0.0;
-<<<<<<< HEAD
+//<<<<<<< HEAD
 	} else if(t < 1.0) {
 		return -2.0 * h(t - tau);
 	} else if(t < 3.0) {
 		return h(t - tau);
 	} else {
-=======
-	} else if(t <= 1.0 - (2.0 * DBL_EPSILON)) {
-		return -2.0 * h(tau - t);
-	} else if(t >= 1.0 + (2.0 * DBL_EPSILON) && t < 3.0 - (2.0 * DBL_EPSILON)) {
-		return h(tau - t);
-	} else {
-
->>>>>>> cca08da58216cf91d474f29db63ee72be3f58124
+//=======
 		return 0.0;
 	}
 }
@@ -137,6 +130,12 @@ int main() {
 		xFile[i] = fopen(x_str, "w");
 		yFile[i] = fopen(y_str, "w");
 		sFile[i] = fopen(s_str, "w");
+
+		if(!xFile[i] || !yFile[i] || !sFile[i]) {
+			printf("Error in opening files\n");
+			return -1;
+		}
+
 	}
 
 	printf("Given function:\n");

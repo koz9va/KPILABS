@@ -9,15 +9,15 @@ tau = 4.0;
 omg = pi .* 2.0;
 
 
-xFile1 = fopen('cmake-build-debug/data/x1.txt', 'r');
-xFile2 = fopen('cmake-build-debug/data/x2.txt', 'r');
-xFile3 = fopen('cmake-build-debug/data/x3.txt', 'r');
-yFile1 = fopen('cmake-build-debug/data/y1.txt', 'r');
-yFile2 = fopen('cmake-build-debug/data/y2.txt', 'r');
-yFile3 = fopen('cmake-build-debug/data/y3.txt', 'r');
-sFile1 = fopen('cmake-build-debug/data/s1.txt', 'r');
-sFile2 = fopen('cmake-build-debug/data/s2.txt', 'r');
-sFile3 = fopen('cmake-build-debug/data/s3.txt', 'r');
+xFile1 = fopen('data/x1.txt', 'r');
+xFile2 = fopen('data/x2.txt', 'r');
+xFile3 = fopen('data/x3.txt', 'r');
+yFile1 = fopen('data/y1.txt', 'r');
+yFile2 = fopen('data/y2.txt', 'r');
+yFile3 = fopen('data/y3.txt', 'r');
+sFile1 = fopen('data/s1.txt', 'r');
+sFile2 = fopen('data/s2.txt', 'r');
+sFile3 = fopen('data/s3.txt', 'r');
 y1 = fscanf(yFile1, '%lf', Inf);
 y2 = fscanf(yFile2, '%lf', Inf);
 y3 = fscanf(yFile3, '%lf', Inf);
@@ -42,27 +42,25 @@ fh_s1 = figure("name", "Signal one");
 fh_s2 = figure("name", "Signal two");
 fh_s3 = figure("name", "Signal three");
 ah_s1 = axes(fh_s1);
-<<<<<<< HEAD
-ah_s2 = axes(fh_s2);
-ah_s3 = axes(fh_s3);
-=======
+%<<<<<<< HEAD
+%ah_s2 = axes(fh_s2);
+%ah_s3 = axes(fh_s3);
+%=======
 ah_s12 = axes(fh_s1);
 
 set(ah_s12, 'YAxisLocation', 'right');
 ah_s2 = axes(fh_s2);
 ah_s22 = axes(fh_s2);
-
 set(ah_s22, 'YAxisLocation', 'right');
 
 ah_s3 = axes(fh_s3);
 ah_s32 = axes(fh_s3);
 set(ah_s3, 'YAxisLocation', 'right');
 
-
 set(ah_s22, 'Color', 'none');
 set(ah_s32, 'Color', 'none');
 set(ah_s12, 'Color', 'none');
->>>>>>> cca08da58216cf91d474f29db63ee72be3f58124
+%>>>>>>> cca08da58216cf91d474f29db63ee72be3f58124
 
 line(x1, y1, 'parent', ah_s1, 'color', 'r');
 line(x1, s1, 'parent', ah_s12, 'color', 'b');
