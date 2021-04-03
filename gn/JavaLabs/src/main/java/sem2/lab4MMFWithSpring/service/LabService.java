@@ -9,7 +9,6 @@ import sem2.lab4MMFWithSpring.repository.Model4lab4MMFRepository;
 @Service
 public class LabService implements ServiceRepository {
 
-
     @Override
     public double NewtonCotes(FunctionForNewton func, int[] c, double xMin, double xMax, int sum, double E, int nm) {
         int j,k = 0, step = 1, p;
@@ -53,14 +52,5 @@ public class LabService implements ServiceRepository {
         if (xMax < xMin)
             return -(I + R) / sum;
         else return (I + R) / sum;
-    }
-
-    private static final Logger logger = LoggerFactory.getLogger(LabService.class);
-
-    private Model4lab4MMFRepository model4lab4MMFRepository;
-
-    @Autowired
-    public void setModel4lab4MMFRepository(Model4lab4MMFRepository model4lab4MMFRepository) {
-        this.model4lab4MMFRepository = model4lab4MMFRepository;
     }
 }
