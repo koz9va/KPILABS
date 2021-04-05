@@ -1,4 +1,4 @@
-
+Дима, [06.04.21 00:27]
 infun = @(x) (log(2 - sin(x))) ./ (0.1 + tan(x)^2);
 I = integral(infun, 0, pi/2.5, 'ArrayValued', true);
 display(I);
@@ -9,7 +9,6 @@ t3 = textread('G:/t3.txt');
 r1 = textread('G:/y1.txt');
 r2 = textread('G:/y2.txt');
 r3 = textread('G:/y3.txt');
-
 global T
 numb = 100;
 tmin = 0;
@@ -25,7 +24,7 @@ for i = 1:numb
     end
 end
 
-plot(t, [y; vxid1(t)], t1, r1);
+plot(t, [y; vxid1(t)]);
 grid on
 
 figure();
@@ -35,11 +34,11 @@ for i = 1:numb;
     T = t(i);
     y(i) = vxid2(tmin) * Perexid(t(i) - tmin) + integral(@Int2, tmin, t(i)) - vxid2(tmax) * Perexid(t(i) - tmax);
 end
-plot(t, [y;vxid2(t)] , t2, r2);
+plot(t, [y;vxid2(t)]);
 grid on;
 
 figure();
-tmax = 3;
+tmax = 10;
 t = linspace(tmin, tmax + 1, numb);
 for i = 1:numb
     T = t(i);
@@ -51,15 +50,12 @@ for i = 1:numb
         five = Perexid(t(i) - 1 - eps);
         y(i) = one * two + three - four * five;
     else if(t(i) <= 3)
-        y(i) = vxid3(tmin) * Perexid(t(i) - tmin) + integral(@Int3, tmin, 1) - vxid3(1 - eps) * Perexid(t(i) - 1 - eps);
-        y(i) = y(i) + vxid3(1) * Perexid(t(i) - 1) + integral(@Int3, 1, t(i)) - vxid3(3) * Perexid(t(i) - 3);
+        y(i) = vxid3(0) * Perexid(t(i)) + integral(@Int3, 0, 1 - 2 * eps) - vxid3(1 - 2 * eps) * Perexid(t(i) - 1 + 2 * eps) + vxid3(1 + 2 * eps) * Perexid(t(i) - 1 + 2 * eps) + integral(@Int3, 1 + 2 * eps, t(i)) - vxid3(3 - 2 * eps) * Perexid(t(i) - 3 + 2 * eps);
     else
-        y(i) = vxid3(tmin) * Perexid(t(i) - tmin) + integral(@Int3, tmin, 1) - vxid3(1 - eps) * Perexid(t(i) - 1 - eps);
-        y(i) = y(i) + vxid3(1) * Perexid(t(i) - 1) + integral(@Int3, 1, 3) - vxid3(3) * Perexid(t(i) - 3);
-        y(i) = y(i) + vxid3(3 + eps) * Perexid(t(i) - (3 + eps)) + integral(@Int3, 3, t(i)) - vxid3(tmax) * Perexid(t(i) - tmax);
+        y(i) = vxid3(0) * Perexid(t(i)) + integral(@Int3, 0, 1 - 2 * eps) - vxid3(1 - 2 * eps) * Perexid(t(i) - 1 + 2 * eps) + vxid3(1 + 2 * eps) * Perexid(t(i) - 1 - 2 * eps) + integral(@Int3, 1 + 2 * eps, 3 - 2 * eps) - vxid3(3 - 2 * eps) * Perexid(t(i) - 3 + 2 * eps);
     end
     end
 end
 
-plot(t,[y;vxid3(t)], t3, r3);
+plot(t,[y;vxid3(t)]);
 grid on;
