@@ -63,7 +63,7 @@ public class SpringBootApp implements CommandLineRunner {
     };
 //    private final FunctionForNewton function = x -> {
 //        countFunctionCall++;
-//        return Math.pow(x, 4);
+//        return Math.pow(x, 9);
 //    };
 
     public static void main(String[] args) throws IOException {
