@@ -21,7 +21,7 @@ import java.io.IOException;
 
 @SpringBootApplication
 @PropertySource(value={"classpath:lab4MMF.properties"})
-public class SpringBootApp implements CommandLineRunner {
+public class пшеSpringBootApp implements CommandLineRunner {
 
     private static final Logger log = LoggerFactory.getLogger(SpringBootApp.class);
     private int countFunctionCall;
