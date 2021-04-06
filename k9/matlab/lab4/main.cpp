@@ -19,10 +19,10 @@
 
 int cnt;
 const double omg = M_PI * 2.0;
-const double A = 10.0;
+const double A = 1.0;
 const double fi = M_PI / 4.0;
 const double sigm = 1.0;
-const double t0 = 4.0;
+const double t0 = 5.0;
 double tau = 4.0;
 
 
@@ -46,7 +46,6 @@ double s3(double t) {
 	if(t < 0) {
 		return 0;
 	}
-//<<<<<<< HEAD
 	else if(t < 1) {
 		return -2.0 * t + 2.0;
 	}
@@ -54,25 +53,14 @@ double s3(double t) {
 		return t - 1.0;
 	} else
 		return 0;
-//=======
-/*  	else {
-		if(t <= 1) {
-			return -2.0 * t + 2.0;
-		}
-		else if(t > 1 && t < 3) {
-			return t - 1.0;
-		}else
-			return 0; */
-//>>>>>>> cca08da58216cf91d474f29db63ee72be3f58124
-//	}
-
 }
+
 double h(double t) {
 	const double Re = 4.0;
 	const double C = 1.0;
 
 	if(t > 0) {
-		return 0.5 * (1.0 - exp(t/Re / C));
+		return 0.5 * (1.0 - exp(-t/Re / C));
 	} else{
 		return 0.0;
 	}
@@ -89,7 +77,7 @@ double funduam1(double t) {
 }
 
 double ds2(double t) {
-	return ( -( (2.0 * A * (t - t0) * exp(-((t - t0) * (t - t0)) / (sigm * sigm) )) / (sigm * sigm) ) ) * h(tau - t);
+	return -2.0 * exp(-((t - 5.0)*(t - 5.0))) * (t - 5.0) * h(tau - t);
 }
 
 double ds3(double t){
@@ -97,9 +85,11 @@ double ds3(double t){
 		return 0.0;
 //<<<<<<< HEAD
 	} else if(t < 1.0) {
-		return -2.0 * h(t - tau);
+//		return -2.0 * h(t - tau);
+		return -2.0 * h(tau - t);
 	} else if(t < 3.0) {
-		return h(t - tau);
+		return h(tau - t);
+		//return h(t - tau);
 	} else {
 //=======
 		return 0.0;
@@ -107,7 +97,7 @@ double ds3(double t){
 }
 
 int main() {
-	constexpr double tmax[] = {1.0, 10.0, 5};
+	constexpr double tmax[] = {0.6, 10.0, 4};
 	constexpr int p_len = 3;
 	constexpr int p[] = {4, 5, 8};
 	double t, dt, tpp, tpm, y;
@@ -145,34 +135,33 @@ int main() {
 		y = Integral_calc(v2, -M_PI_2, M_PI_2, p[i], 1e-6);
 		printf("p = %d, result = %g, calls to function = %d\n", p[i], y, cnt);
 	}
-/*	for(i = 0; i < 3; ++i) {
-		dt = tmax[i] / 100.0;
-		tpm = tmax[i];
-<<<<<<< HEAD
-		tau = tmax[i];
-		for(t = 0.0; t <= tmax[i]; t += dt) {
-			cnt = 0;
-		//	tau = t;
-=======
-//		tau = t;
-		for(t = 0.0; t <= tmax[i]; t += dt) {
-			cnt = 0;
-			tau = t;
->>>>>>> cca08da58216cf91d474f29db63ee72be3f58124
-			y = s_arr[i](tpp) * h(t - tpp)
-			+ Integral_calc(derr_arr[i], tpp, t, 8, 1e-6)
-			- s_arr[i](tpm) * h(t - tmax[i]);
 
-//			printf("t: %g U: %g,func calls: %d\n", t, y, cnt);
-			fprintf(xFile[i], "%g\n", t);
-			fprintf(yFile[i], "%g\n", y);
-			fprintf(sFile[i], "%g\n", s_arr[i](t));
+	for(t = 0.0; t < tmax[0]; t += tmax[0]/100.0) {
+		tau = t;
+		if(t < 0.5) {
+			y = s1(0) * h(t) + Integral_calc(funduam1, 0, t, 8, 1e-6);
+		} else {
+			y = s1(0) * h(t) + Integral_calc(funduam1, 0, 0.5 - 2 * DBL_EPSILON, 8, 1e-6)
+			+ s1(0.5 + 2.0 * DBL_EPSILON) * h(t - 0.5 - 2 * DBL_EPSILON)
+			+Integral_calc(funduam1, 0.5 + 2 * DBL_EPSILON, t, 8, 1e-6) - s1(0.5 - 2.0 * DBL_EPSILON) * h(t - 0.5 + 2.0 * DBL_EPSILON);
 		}
-	} */
+		fprintf(xFile[0], "%g\n", t);
+		fprintf(yFile[0], "%g\n", y);
+		fprintf(sFile[0], "%g\n", s1(t));
+	}
 
-	dt = 4.0 / 100.0;
 
-	for(t = 0.0; t < 4.0; t += dt) {
+	for(t = 0.0; t < tmax[1]; t += tmax[1] / 100.0) {
+		tau = t;
+
+		y = s2(0) * h(t) + Integral_calc(ds2, 0, t, 8, 1e-6);
+
+		fprintf(xFile[1], "%g\n", t);
+		fprintf(yFile[1], "%g\n", y);
+		fprintf(sFile[1], "%g\n", s2(t));
+	}
+
+	for(t = 0.0; t < tmax[2]; t += tmax[2] / 100.0) {
 		tau = t;
 		if(t < 1) {
 			y = s3(0) * h(t) + Integral_calc(ds3, 0, t, 8, 1e-6) - s3(1.0 - 2 * DBL_EPSILON) * h(t - 1.0 - 2.0 * DBL_EPSILON);
@@ -183,10 +172,12 @@ int main() {
 
 		} else {
 			y = s3(0) * h(t) + Integral_calc(ds3, 0, 1.0 - 2.0 * DBL_EPSILON, 8, 1e-6)
-			- s3(1.0 - 2.0 * DBL_EPSILON) * h(1.0 - 2.0 * DBL_EPSILON)
+			- s3(1.0 - 2.0 * DBL_EPSILON) * h(t - 1.0 + 2.0 * DBL_EPSILON)
 			+ s3(1.0 + 2.0 * DBL_EPSILON) * h(t - 1.0 - 2.0 * DBL_EPSILON)
-			+ Integral_calc(ds3, 1.0 + 2.0, 3.0 - 2.0 * DBL_EPSILON, 8, 1e-6)
-			- s3(3.0 - 2.0 * DBL_EPSILON) * h(t - 3.0 + 2.0 * DBL_EPSILON);
+			+ Integral_calc(ds3, 1+2*DBL_EPSILON, 3-2*DBL_EPSILON, 8, 1e-6)
+			- s3(3 - 2.0 * DBL_EPSILON) * h(t - 3 + 2.0 * DBL_EPSILON);
+			tpp = s3(0) * h(t) + Integral_calc(ds3, 0, 1.0 - 2.0 * DBL_EPSILON, 8, 1e-6);
+			tpm = s3(3 - 2.0 * DBL_EPSILON) * h(t - 3 + 2.0 * DBL_EPSILON);
 		}
 			fprintf(xFile[2], "%g\n", t);
 			fprintf(yFile[2], "%g\n", y);

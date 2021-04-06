@@ -1,10 +1,10 @@
 global cnt A fi tau sigm omg t0
 
 
-A = 10.0;
+A = 1.0;
 fi = pi ./ 4.0;
 sigm = 1.0;
-t0 = 4.0;
+t0 = 5.0;
 tau = 4.0;
 omg = pi .* 2.0;
 
@@ -42,32 +42,21 @@ fh_s1 = figure("name", "Signal one");
 fh_s2 = figure("name", "Signal two");
 fh_s3 = figure("name", "Signal three");
 ah_s1 = axes(fh_s1);
-%<<<<<<< HEAD
-%ah_s2 = axes(fh_s2);
-%ah_s3 = axes(fh_s3);
-%=======
 ah_s12 = axes(fh_s1);
 
 set(ah_s12, 'YAxisLocation', 'right');
 ah_s2 = axes(fh_s2);
-ah_s22 = axes(fh_s2);
-set(ah_s22, 'YAxisLocation', 'right');
 
 ah_s3 = axes(fh_s3);
-ah_s32 = axes(fh_s3);
-set(ah_s3, 'YAxisLocation', 'right');
-
-set(ah_s22, 'Color', 'none');
-set(ah_s32, 'Color', 'none');
+grid on;
 set(ah_s12, 'Color', 'none');
-%>>>>>>> cca08da58216cf91d474f29db63ee72be3f58124
 
 line(x1, y1, 'parent', ah_s1, 'color', 'r');
 line(x1, s1, 'parent', ah_s12, 'color', 'b');
-line(x2, s2, 'parent', ah_s22, 'color', 'b');
+line(x2, s2, 'parent', ah_s2, 'color', 'b');
 line(x2, y2, 'parent', ah_s2, 'color', 'r');
 line(x3, y3, 'parent', ah_s3, 'color', 'r');
-line(x3, s3, 'parent', ah_s32, 'color', 'b');
+line(x3, s3, 'parent', ah_s3, 'color', 'b');
 
 
 
@@ -79,13 +68,6 @@ disp('function calls:');
 format short
 cnt
 
-%format longE
-%cnt = 0;
-%disp('integral:');
-%integral('v2',-pi ./ 2, pi ./ 2)
-%disp('function calls:');
-%format short
-%cnt
 
 format longE
 cnt = 0;
@@ -100,15 +82,16 @@ tpm = pi ./ omg;
 
 y = y1;
 s = s1;
-tmax = 1.0;
+tmax = 0.6;
 
 x = linspace(0, tmax, length(x1));
-
+y = x;
 for i = 1:length(x)
+	tau = x(i);
 	if(x(i) < pi ./ omg)
-		y(i) = s1_f(tpp) .* h(x(i) - tpp) + quad('fun', tpp, x(i) - s1_f(tpm), 1e-6) .* h(x(i)) - s1_f(tpm) * h(x(i) - tmax);
+		y(i) = s1_f(0) .* h(x(i)) + quad('fun', 0, x(i), 1e-6);
 	else
-		y(i) = s1_f(tpp) .* h(x(i) - tpp) + quad('fun', tpp, tpm - s1_f(tpm), 1e-6) .* h(x(i)) - s1_f(tpm) .* h (x(i) - tmax);
+		y(i) = s1_f(0) .* h(x(i)) + quad('fun', 0, 0.5 - 2 * eps, 1e-6) +s1_f(0.5 + 2 * eps) * h(x(i) - 0.5 - 2 * eps) + quad('fun', 0.5 + 2 * eps, x(i), 1e-6) - s1_f(0.5 - 2*eps) .* h(x(i) - 0.5 + 2*eps);
 	end
 end
 disp('Difference between C++ and matlab data:')
@@ -117,25 +100,25 @@ norm(abs(y1 - y))
 
 tmax = 10;
 x = linspace(0, tmax, length(x2));
-y = y2;
+y = x;
 for i = 1:length(x)
-	if(x(i) < pi ./ omg)
-		y(i) = s2_f(tpp) .* h(x(i) - tpp) + quad('fun', tpp, x(i) - s2_f(tpm)) .* h(x(i)) - s2_f(tpm) * h(x(i) - tmax);
-	else
-		y(i) = s2_f(tpp) .* h(x(i) - tpp) + quad('fun', tpp, tpm - s2_f(tpm)) .* h(x(i)) - s2_f(tpm) .*  h(x(i) - tmax);
-	end
+	tau = x(i);
+	y(i) = s2_f(0) * h(x(i)) + quad('ds2', 0, x(i), 1e-6);
 end
 disp('S2:')
 norm(abs(y2 - y))
 
-tmax = 5;
+tmax = 4;
 x = linspace(0, tmax, length(x3));
 y = y3;
 for i = 1:length(x)
-	if(x(i) < pi ./ omg)
-		y(i) = s3_f(tpp) .* h(x(i) - tpp) + quad('fun', tpp, x(i) - s3_f(tpm)) .* h(x(i)) - s3_f(tpm) * h(x(i) - tmax);
+	tau = x(i);
+	if(x(i) < 1)
+		y(i) = s3_f(0) * h(x(i)) + quad('ds3', 0, x(i), 1e-6) - s3_f(1 - 2*eps) * h(x(i) - 1 - 2*eps);
+	elseif(x(i) <= 3)
+		y(i) = s3_f(0) * h(x(i)) + quad('ds3', 0, 1 - 2*eps, 1e-6) - s3_f(1 - 2*eps) * h(x(i) - 1 + 2*eps);
 	else
-		y(i) = s3_f(tpp) .* h(x(i) - tpp) + quad('fun', tpp, tpm - s3_f(tpm)) .* h(x(i)) - s3_f(tpm) .*  h(x(i) - tmax);
+		y(i) = s3_f(0) * h(x(i)) + quad('ds3', 0, 1 - 2*eps, 1e-6) - s3_f(1.0 - 2*eps) * h(x(i)-1-2*eps)+s3_f(1+2*eps) * h(x(i) - 1 - 2*eps) + quad('ds3', 1+2*eps, 3 - 2*eps, 1e-6) - s3_f(3 - 2*eps) * h(x(i)-3+2*eps);
 	end
 end
 disp('S3:')
