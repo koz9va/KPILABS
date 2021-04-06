@@ -1,4 +1,3 @@
-Дима, [06.04.21 00:27]
 infun = @(x) (log(2 - sin(x))) ./ (0.1 + tan(x)^2);
 I = integral(infun, 0, pi/2.5, 'ArrayValued', true);
 display(I);
@@ -12,19 +11,29 @@ r3 = textread('G:/y3.txt');
 global T
 numb = 100;
 tmin = 0;
-tmax = 1/3;
+tmax = 1;
+dev = 0.5;
 t = linspace(tmin, tmax + 0.2, numb);
 y = zeros(size(t));
 for i = 1:numb
     T = t(i);
-    if(t(i) <= tmax)
+    if(t(i) <= dev)
         y(i) = vxid1(tmin) * Perexid(t(i) - tmin) + integral(@Int1, tmin, t(i)) - vxid1(tmax) * Perexid(t(i) - tmax);
     else
-        y(i) = vxid1(tmin) * Perexid(t(i) - tmin) + integral(@Int1, tmin, tmax) - vxid1(tmax) * Perexid(t(i) - tmax);
+        y(i) = vxid1(tmin) * Perexid(t(i) - tmin) + integral(@Int1, tmin, dev) - vxid1(dev) * Perexid(t(i) - dev);
     end
 end
 
-plot(t, [y; vxid1(t)]);
+%plot(t, [y; vxid1(t)]);
+
+f = figure();
+a = axes(f);
+b = axes(f);
+set(a, 'YAxisLocation', 'right');
+set(b, 'Color', 'none');
+
+line(t, y, 'parent', a);
+line(t, vxid1(t), 'parent', b);
 grid on
 
 figure();

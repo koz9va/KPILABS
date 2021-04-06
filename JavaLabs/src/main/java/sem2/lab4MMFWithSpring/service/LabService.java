@@ -25,7 +25,7 @@ public class LabService implements ServiceRepository {
         }
         I1 *= h;
 
-        for(k = 0; k < 10; ++k) {
+        for(k = 0; k < 30; ++k) {
             n *= 2;
             h = (b - a)/n;
             I2 = I1;
