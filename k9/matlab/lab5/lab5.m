@@ -21,4 +21,6 @@ y_m = test_f(t_m);
 line(t_arr, y_arr, "parent", ah, "color", "r");
 line(t_m, y_m, "parent", ah);
 
+norm(y_m) - norm(y_arr)
+
 

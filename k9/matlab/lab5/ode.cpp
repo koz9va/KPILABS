@@ -50,28 +50,69 @@ int euler(
 	return i;
 }
 
-int RK(
+int RK45::RK45(
 		double f(double t, double y),
 		double tend,
 		double y0,
-		int m,
 		double eps,
 		double *t,
 		double *y,
+		double h_max,
 		int nmax
 		)
 {
-	int i;
-	double h = tend;
+	int i, j;
+	double h;
+	double R;
 
 	y[0] = y0;
 	t[0] = 0;
 	i = 0;
 
+	h = h_max;
+
 	do {
-		double y1, y2, y3, R, k[6];
+		double yi, k[6];
 
+		do {
+			if(h > 2 * DBL_EPSILON) {
+				h /= 2;
+			} else {
+				break;
+			}
 
-	}while();
+			k[0] = f(t[i], y[i]);
+			k[1] = f(t[i] + a[1] * h, y[i] + h * b[0][0] * k[0]);
+			k[2] = f(t[i] + a[2] * h, y[i] + h * (b[1][0] * k[0] + b[1][1] * k[1]));
+			k[3] = f(t[i] + a[3] * h, y[i] + h * (b[2][0] * k[0] + b[2][1] * k[1] + b[2][2] * k[2]));
+			k[4] = f(t[i] + a[4] * h, y[i] + h * (b[3][0] * k[0] + b[3][1] * k[1] + b[3][2] * k[2] + b[3][3] * k[3]));
+			k[5] = f(
+					t[i] + a[5] * h,
+					y[i] + h * (b[4][0] * k[0] + b[4][1] * k[1] + b[4][2] * k[2] + b[4][3] * k[3] + b[4][4] * k[4])
+			);
 
+			yi = 0;
+			R = 0;
+			for(j = 0; j < 6; ++j) {
+				yi += c[j] * k[j];
+				R += (c[j] - c_s[j]) * k[j];
+			}
+			yi = h * yi + y[i];
+			R *= h;
+
+		}while(fabs(R) > eps * fabs(yi));
+
+		if(++i >= nmax) {
+			break;
+		}
+
+		y[i] = yi;
+		t[i] = t[i - 1] + h;
+		if((fabs(R) < eps * fabs(yi)) && h <= h_max/2) {
+			h *= 2;
+		}
+
+	}while(t[i] < tend);
+
+	return i;
 }

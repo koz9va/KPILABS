@@ -10,7 +10,7 @@ double test(double t, double y) {
 }
 
 int main() {
-	const int nmax = 1024;
+	int nmax = 2048;
 	int i, n;
 	double tend, *t, *y;
 	FILE *y_file, *t_file;
@@ -21,8 +21,8 @@ int main() {
 	
 	cnt = 0;
 
-	n = euler(&test, tend, 1, 1e-6, t, y, nmax);
-
+//	n = euler(&test, tend, 1, 1e-6, t, y, nmax);
+	n = RK45::RK45(&test, tend, 1, 1e-6, t, y, 1e-3, nmax);
 	printf("Calls to the function: %d\nPoints were found: %d\n"
 			, cnt, n);
 	if(n == nmax) {
