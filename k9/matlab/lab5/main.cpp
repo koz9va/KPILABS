@@ -2,6 +2,9 @@
 #include <cstdio>
 #include <cmath>
 #include "ode.h"
+#include "include/SLAU.h"
+
+int cnt;
 
 namespace diff {
 	constexpr double R = 1e3, C = 2e-9, i0 = 5000e-12, m = 1.7, ft = 26e-3, Rb0 = 1e3, Iv = 0.3e-3;
@@ -16,6 +19,8 @@ namespace diff {
 	double equation(double t, double upn) {
 		double arg = upn/m/ft, exp_value, j, Rb;
 
+		++cnt;
+
 		if(arg > 80.0) {
 			exp_value = exp(80);
 		} else if(arg < -80.0) {
@@ -29,8 +34,9 @@ namespace diff {
 		return ((e(t) - upn)/(Rb + R) - j)/C;
 	}
 
-	void find_voltage(double *t, double *y, double *ud, int len) {
-		for(int i = 0; i < len; ++i) {
+	void find_voltage(lin::vector &t, lin::vector &y, lin::vector &ud) {
+
+		for(int i = 0; i < t.n; ++i) {
 			double Rb, j, arg, exp_value;
 			arg = y[i]/m/ft;
 
@@ -51,42 +57,32 @@ namespace diff {
 
 }
 
-double test(double t, double y) {
-	return -(t + 1) * y * y;
-}
 
 int main() {
 	int nmax = 1u << 16;
 	int i, n;
-	double tend, *t, *y, *Ud, *tmp;
+	double tend;
+	lin::vector t(nmax), y(nmax), Ud(nmax);
 	FILE *y_file, *t_file;
 
-	t = new double[nmax];
-	y = new double[nmax];
 	tend = 5e-6;
-	
 
-	n = euler(&diff::equation, tend, 0, 1e-6, t, y, nmax);
-//	n = RK45::RK45(&diff::equation, tend, 0, 1e-6, t, y, tend, nmax);
-	printf("Points were found: %d\n", n);
+	cnt = 0;
+	n = euler(&diff::equation, tend, 0, 1e-6, t.ptr, y.ptr, nmax);
+	printf("Euler's method:\nPoints were found: %d; calls to function: %d\n", n, cnt);
+	cnt = 0;
+	n = imp_euler(&diff::equation, tend, 0, 1e-6, t.ptr, y.ptr, tend/10000,nmax);
+	printf("Implicit Euler's method:\nPoints were found: %d; calls to function: %d\n", n, cnt);
+	cnt = 0;
+	n = RK45::RK45(&diff::equation, tend, 0, 1e-6, t.ptr, y.ptr, tend/10000, nmax);
+	printf("Runge-Kutta method:\nPoints were found: %d; calls to function: %d\n", n, cnt);
 	if(n == nmax) {
 		printf("Quantity of allocated points might not be sufficient\n");
 	}else {
-		tmp = new double[n];
-		memmove(tmp, t, sizeof(double) * n);
-		delete [] t;
-		t = new double[n];
-		memmove(t, tmp, sizeof(double) * n);
-		memmove(tmp, y, sizeof(double) * n);
-		delete [] y;
-		y = new double[n];
-		memmove(y, tmp, sizeof(double) * n);
-		delete [] tmp;
+		t.resize(n, true);
+		y.resize(n, true);
 	}
-
-	Ud = new double [n];
-
-	diff::find_voltage(t, y, Ud, n);
+	diff::find_voltage(t, y, Ud);
 
 	y_file = fopen("../y.txt", "w");
 	t_file = fopen("../t.txt", "w");
@@ -98,10 +94,6 @@ int main() {
 
 	fclose(y_file);
 	fclose(t_file);
-
-	delete [] y;
-	delete [] t;
-	delete [] Ud;
 
 	return 0;
 }

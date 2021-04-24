@@ -20,7 +20,7 @@ namespace RK45 {
 			double eps,
 			double *t,
 			double *y,
-			double h_max,
+			double h_min,
 			int nmax
 	);
 }
@@ -30,8 +30,18 @@ int euler(
 	double tend,
 	double y0,
 	double eps,
-       	double *t,	
+	double *t,
 	double *y,
 	int nmax
 	);
+int imp_euler(
+		double f(double t, double y),
+		double tend,
+		double y0,
+		double eps,
+		double *t,
+		double *y,
+		double h_min,
+		int nmax
+		);
 

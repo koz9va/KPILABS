@@ -7,4 +7,6 @@ set(CMAKE_CXX_STANDARD 14)
 add_executable(lab5
         main.cpp
         ode.cpp
-        ode.h)
+        ode.h
+        include/SLAU.h
+        include/SLAU.cpp)

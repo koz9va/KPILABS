@@ -1,4 +1,4 @@
-test_f = @(t) 2 ./ (((t + 1) .* (t + 1)) + 1);
+addpath("funcs");
 
 t_file = fopen("t.txt", "r");
 y_file = fopen("y.txt", "r");
@@ -14,6 +14,15 @@ fh = figure();
 ah = axes(fh);
 grid on;
 hold on;
+t = linspace(0, 5e-6);
+et = e(t);
 
+[t_m, y_m] = ode45('equation', [0 5e-6], 0);
+
+j = 5000e-12 .* (exp(y_m ./ 1.7 ./ 26-3) - 1);
+
+Rb = 1e3 ./ (1 + (j ./ 0.3e-3));
+Ud_m = ((e(t_m) - y_m) ./ (Rb + 1e3)) .* Rb + y_m;
 line(t_arr, y_arr, "parent", ah, "color", "r");
-%line(t_m, y_m, "parent", ah);
+line(t_m, Ud_m, "parent", ah);
+line(t, et, "parent", ah);
