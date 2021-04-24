@@ -1,3 +1,4 @@
+global cnt
 addpath("funcs");
 
 t_file = fopen("t.txt", "r");
@@ -16,9 +17,12 @@ grid on;
 hold on;
 t = linspace(0, 5e-6);
 et = e(t);
-
+cnt = 0;
 [t_m, y_m] = ode45('equation', [0 5e-6], 0);
-
+disp("Calls to function:")
+cnt
+disp("Points found:")
+size(y_m, 1)
 j = 5000e-12 .* (exp(y_m ./ 1.7 ./ 26-3) - 1);
 
 Rb = 1e3 ./ (1 + (j ./ 0.3e-3));

@@ -1,4 +1,6 @@
 function dupn = equation(t, upn)
+    global cnt
+    cnt = cnt + 1;
 	arg = upn ./ 1.7 ./ 26e-3;
 	exp_value = zeros(size(upn));
 	exp_value(arg >= 80) = exp(80) .* t;
