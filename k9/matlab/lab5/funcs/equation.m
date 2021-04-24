@@ -3,7 +3,7 @@ function dupn = equation(t, upn)
     cnt = cnt + 1;
 	arg = upn ./ 1.7 ./ 26e-3;
 	exp_value = zeros(size(upn));
-	exp_value(arg >= 80) = exp(80) .* t;
+	exp_value(arg >= 80) = exp(80);
 	exp_value(arg < 80) = exp(arg);
 	exp_value(arg < -80) = 0 .* t;
 

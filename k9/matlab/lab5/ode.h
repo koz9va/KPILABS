@@ -20,7 +20,6 @@ namespace RK45 {
 			double eps,
 			double *t,
 			double *y,
-			double h_min,
 			int nmax
 	);
 }
@@ -41,7 +40,6 @@ int imp_euler(
 		double eps,
 		double *t,
 		double *y,
-		double h_min,
 		int nmax
 		);
 

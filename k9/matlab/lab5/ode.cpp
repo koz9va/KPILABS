@@ -56,7 +56,6 @@ int imp_euler(
 		double eps,
 		double *t,
 		double *y,
-		double h_min,
 		int nmax
 	)
 {
@@ -81,7 +80,7 @@ int imp_euler(
 			y2 = y[i] + h * f(t[i], y[i]);
 			y3 = y2 + h * f(t[i] + h, y2);
 			R = y3 - y1;
-		}while(fabs(R) > eps * fabs(y3) && h >= h_min);
+		}while(fabs(R) > eps * fabs(y3));// && h >= h_min);
 
 		do {
 			y1 = y3;
@@ -108,7 +107,6 @@ int RK45::RK45(
 		double eps,
 		double *t,
 		double *y,
-		double h_min,
 		int nmax
 		)
 {
@@ -120,7 +118,7 @@ int RK45::RK45(
 	t[0] = 0;
 	i = 0;
 
-	h = h_min;
+	h = tend;
 
 	do {
 		double yi, k[6];
@@ -151,7 +149,7 @@ int RK45::RK45(
 			yi = h * yi + y[i];
 			R *= h;
 
-		}while(fabs(R) > eps * fabs(yi) && h >= h_min);
+		}while(fabs(R) > eps * fabs(yi));// && h >= h_min);
 
 		if(++i >= nmax) {
 			break;

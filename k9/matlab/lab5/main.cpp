@@ -59,7 +59,7 @@ namespace diff {
 
 
 int main() {
-	int nmax = 1u << 16;
+	int nmax = 1u << 20;
 	int i, n;
 	double tend;
 	lin::vector t(nmax), y(nmax), Ud(nmax);
@@ -71,10 +71,10 @@ int main() {
 	n = euler(&diff::equation, tend, 0, 1e-6, t.ptr, y.ptr, nmax);
 	printf("Euler's method:\nPoints were found: %d; calls to function: %d\n", n, cnt);
 	cnt = 0;
-	n = imp_euler(&diff::equation, tend, 0, 1e-6, t.ptr, y.ptr, tend/10000,nmax);
+	n = imp_euler(&diff::equation, tend, 0, 1e-6, t.ptr, y.ptr, nmax);
 	printf("Implicit Euler's method:\nPoints were found: %d; calls to function: %d\n", n, cnt);
 	cnt = 0;
-	n = RK45::RK45(&diff::equation, tend, 0, 1e-6, t.ptr, y.ptr, tend/10000, nmax);
+	n = RK45::RK45(&diff::equation, tend, 0, 1e-6, t.ptr, y.ptr, nmax);
 	printf("Runge-Kutta method:\nPoints were found: %d; calls to function: %d\n", n, cnt);
 	if(n == nmax) {
 		printf("Quantity of allocated points might not be sufficient\n");
