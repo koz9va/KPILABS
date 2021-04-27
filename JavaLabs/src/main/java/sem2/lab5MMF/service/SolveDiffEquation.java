@@ -12,13 +12,13 @@ public class SolveDiffEquation {
         {-8.0/27.0, 2.0, -3544.0/2565.0, 1859.0/4104.0, -11.0/40.0}
     };
 
-    public static int euler(DiffFunction func,
-                            double tEnd,
-                            double first_value,
-                            double epsilon,
-                            double[] argument,
-                            double[] value,
-                            int nMax
+    public static int Eul(DiffFunction func,
+                          double tEnd,
+                          double first_value,
+                          double epsilon,
+                          double[] argument,
+                          double[] value,
+                          int nMax
     ) {
         int i;
         double h = tEnd;
@@ -54,7 +54,7 @@ public class SolveDiffEquation {
         return i;
     }
 
-    public static int imp_euler(DiffFunction func,
+    public static int imEul(DiffFunction func,
                             double tEnd,
                             double first_value,
                             double epsilon,
@@ -63,49 +63,41 @@ public class SolveDiffEquation {
                             int nMax
     ) {
         int i = 0;
-        double h = tEnd;
+        double h = tEnd, R, y3;
         value[0] = first_value;
         argument[0] = 0;
         do {
-            double y2 = value[i] + h * func.calc(argument[i], value[i]), y1, y3 = 0, R, eps_y1;
             do {
-                if(h >= Math.ulp(1)) {
-                    h /= 2;
-                }else {
-                    break;
-                }
-                y1 = y2;
-                y2 = value[i] + h * func.calc(argument[i], value[i]);
-                y3 = y2 + h * func.calc(argument[i] + h, y2);
+                h /= 2;
+                double y1 = value[i] + h * func.calc(argument[i], value[i]), dy;
+                y3 = y1;
+                do {
+                    double dx = Math.sqrt(Math.ulp(1)) * y3, ff = func.calc(argument[i] + h, y3);
+                    dy = -(y3 - value[i] - h * ff) * dx / (func.calc(argument[i] + h, y3 + dx) - ff);
+                    y3 += dy;
+                } while (Math.abs(dy) > epsilon * Math.abs(y3));
                 R = y3 - y1;
-            }
-            while(Math.abs(R) > epsilon * Math.abs(y3));
-            do {
-                y1 = y3;
-                double dx = Math.sqrt(Math.ulp(1)) * y3;
-                y3 = y3 - (y3 * dx)/(func.calc(argument[i], y3 + dx) - y3);
-                eps_y1 = epsilon * Math.abs(y1);
-            }
-            while(Math.abs(y3 - y1) >= eps_y1);
-
-            if(++i >= nMax) {
+            } while (Math.abs(R) > epsilon * Math.abs(y3));
+            i++;
+            if(i >= nMax) {
                 return nMax;
             }
-            h *= 2;
             value[i] = y3;
             argument[i] = argument[i - 1] + h;
-        }
-        while(argument[i] < tEnd);
+            if(Math.abs(R) < epsilon * Math.abs(value[i])) {
+                h *= 2;
+            }
+        } while (argument[i] < tEnd);
         return i;
     }
 
-    public static int RK45 (DiffFunction func,
-                            double tEnd,
-                            double first_value,
-                            double epsilon,
-                            double[] argument,
-                            double[] value,
-                            int nMax
+    public static int RunKut(DiffFunction func,
+                             double tEnd,
+                             double first_value,
+                             double epsilon,
+                             double[] argument,
+                             double[] value,
+                             int nMax
     ) {
         value[0] = first_value;
         argument[0] = 0;
