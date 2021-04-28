@@ -1,4 +1,6 @@
+//extern "C" {
 #include "ode.h"
+//};
 
 
 int euler(
@@ -49,6 +51,7 @@ int euler(
 
 	return i;
 }
+
 int imp_euler(
 		double f(double, double),
 		double tend,
@@ -60,41 +63,38 @@ int imp_euler(
 	)
 {
 	int i;
-	double h = tend;
+	double h = tend/20;
 
 	y[0] = y0;
 	t[0] = 0;
 	i = 0;
 	do {
-		double y1, y2, y3, R, dx, eps_y1;
+        double y3, R;
+        do {
+            double y1,dy;
+            y1 = y[i] + h * f(t[i], y[i]);
+            y3 = y1;
 
-		y2 = y[i] + h * f(t[i], y[i]);
-
-		do {
-			if(h >= DBL_EPSILON) {
-				h /= 2;
-			}else {
-				break;
-			}
-			y1 = y2;
-			y2 = y[i] + h * f(t[i], y[i]);
-			y3 = y2 + h * f(t[i] + h, y2);
-			R = y3 - y1;
-		}while(fabs(R) > eps * fabs(y3));// && h >= h_min);
-
-		do {
-			y1 = y3;
-			dx = sqrt(DBL_EPSILON) * y3;
-			y3 = y3 - (y3 * dx)/(f(t[i], y3 + dx) - y3);
-			eps_y1 = eps * fabs(y1);
-		}while(fabs(y3 - y1) >= eps_y1);
-
+		    do {
+			    double dx, ff;
+			    dx = sqrt(DBL_EPSILON) * y3;
+			    ff = f(t[i] + h, y3);
+			    dy = -(y3 - y[i] - h * ff) / (1 - h * (f(t[i] + h, y3 + dx) - ff) / dx);
+                while(fabs(y3 + dy - y[i] - h * f(t[i] + h, y3 +dy)) > fabs(ff)) {
+					dy /= 2;
+				}
+                y3 += dy;
+		    } while(fabs(dy) > eps * fabs(y3));
+		    R = y3 - y1;
+            h /= 2;
+        } while(fabs(R) > eps * fabs(y3) );
+        h *= 2;
 		if(++i >= nmax) {
 			return nmax;
 		}
-
-		h *= 2;
-
+		if(fabs(R) < eps * fabs(y3) / 4) {
+			h *= 2;
+		};
 		y[i] = y3;
 		t[i] = t[i - 1] + h;
 	} while(t[i] < tend);

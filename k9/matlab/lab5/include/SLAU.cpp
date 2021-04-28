@@ -56,7 +56,7 @@ lin::vector::vector(lin::vector &ref) : n(ref.n) {
 }
 
 void lin::vector::resize(int new_size, bool save_values) {
-	auto *tmp_ptr = new double [new_size];
+	double *tmp_ptr = new double [new_size];
 	if(new_size == n)
 		return;
 	if(new_size <= 0)

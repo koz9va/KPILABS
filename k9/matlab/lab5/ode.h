@@ -3,9 +3,9 @@
 
 namespace RK45 {
 
-	constexpr double a[] = {0, 1.0/4.0, 3.0/8.0, 12.0/13.0, 1, 0.5};
-	constexpr double c[] = {16.0/135.0, 0, 6656.0/12825.0, 28561.0/56430.0, -9.0/50.0, 2.0/55.0};
-	constexpr double c_s[] = {25.0/216.0, 0, 1408.0/2565.0, 2197.0/4104.0, -1.0/5.0, 0};
+	constexpr double a[] = {0, 1.0/4.0, 3.0/8.0, 12.0/13.0, 1.0, 0.5};
+	constexpr double c[] = {16.0/135.0, 0.0, 6656.0/12825.0, 28561.0/56430.0, -9.0/50.0, 2.0/55.0};
+	constexpr double c_s[] = {25.0/216.0, 0.0, 1408.0/2565.0, 2197.0/4104.0, -1.0/5.0, 0.0};
 	constexpr double b[][5] = {
 			{1.0/4.0},
 			{3.0/32.0, 9.0/32.0},
@@ -34,7 +34,7 @@ int euler(
 	int nmax
 	);
 int imp_euler(
-		double f(double t, double y),
+		double f(double, double),
 		double tend,
 		double y0,
 		double eps,
