@@ -21,4 +21,16 @@ disp('Calls to function:');
 count
 line(t_m, uvih, "color", "b");
 
+E0 = 50;
+f = 1e3;
+phi = pi/4;
+R = 4e3;
+C = 1e-6;
+g = 0.8e-3;
+t = linspace(0, 4e-3, 5000)
+e = E0 .* sin(2 .* pi .* f .* t + phi);
+
+line(t, e, 'color', 'black')
+
+
 legend('Java', 'Matlab')
