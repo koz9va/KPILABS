@@ -1,11 +1,11 @@
 function ret = func(t, uvih)
 	global count
 	E0 = 50;
-	f = 1e3;
-	phi = pi/4;
-	R = 4e3;
-	C = 1e-6;
-	g = 0.8e-3;
+    f = 1e3;
+    phi = pi/4;
+    R = 4e3;
+    C = 1e-6;
+    g = 0.8e-3;
 
 	count = count + 1;
 
