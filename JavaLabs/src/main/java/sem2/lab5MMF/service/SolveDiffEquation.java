@@ -116,10 +116,6 @@ public class SolveDiffEquation {
             do {
                 double[] k = new double[6];
 
-                if(h > 2.0f * Math.ulp(1.0)) {
-                    h /= 2.0f;
-                } else break;
-
                 k[0] = function.calc(argument[i], value[i]);
                 k[1] = function.calc(argument[i] + a[1] * h, value[i] + h * b[0][0]);
                 k[2] = function.calc(argument[i] + a[2] * h, value[i] + h * (b[1][0] * k[0] + b[1][1] * k[1]));
@@ -135,7 +131,9 @@ public class SolveDiffEquation {
 
                 R *= h;
                 y2 = h * y2 + value[i];
+                h /= 2.0f;
             } while(epsilon * Math.abs(y2) < Math.abs(R));
+            h *= 2.0f;
             ++i;
 
             if(i >= nMax) break;
@@ -143,10 +141,11 @@ public class SolveDiffEquation {
             value[i] = y2;
             argument[i] = argument[i - 1] + h;
 
-            if(epsilon * Math.abs(y2) > Math.abs(R) && h < h_max / 2.f) h *= 2.f;
+            if(epsilon * Math.abs(y2) > Math.abs(R) / 32.0 && h < h_max / 2.0)
+                h *= 2.0;
 
         } while(argument[i] < tEnd);
 
-        return i;
+        return i + 1;
     }
 }

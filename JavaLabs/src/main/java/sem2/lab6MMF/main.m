@@ -1,0 +1,18 @@
+global b;
+f_0 = [0 0 1];
+b = 2;
+[x, f] = ode45('functionIN',[0 5], f_0);
+F1 = abs(f(:,3));
+plot(x, F1);
+figure;
+b = 3.2;
+[x,F] = ode45('functionIN',[0 5],f_0);
+F11 = abs(F(:,3));
+plot(x,F11);
+figure;
+[ymin, xmin] = min(F11);
+disp(xmin);
+disp(ymin);
+x1 = x(1:19);
+F1 = F11(1:19);
+plot(x1,F1);

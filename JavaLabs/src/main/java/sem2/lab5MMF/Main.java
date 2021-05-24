@@ -7,6 +7,8 @@ public class Main {
     public static final double E = 50, f = 1e3, fi = Math.PI / 4, R = 4e3, C = 1e-6, g = 0.8e-3, tEnd = 4e-3;
     private static int count = 0;
 
+//    private static final DiffFunction FUNCTION = (t, u) -> t;
+
     private static final DiffFunction FUNCTION = (t, u) -> {
         double e, ud, id;
         count++;
@@ -27,10 +29,10 @@ public class Main {
         System.out.format("Implicit Euler's method:\nPoints were found: %d; calls to function: %d\n", value, count);
         count = 0;
         value = SolveDiffEquation.Eul(FUNCTION, tEnd, 0, 1e-6, t, y, nMax, tEnd);
-        System.out.format("Runge-Kutta method:\nPoints were found: %d; calls to function: %d\n", value, count);
+        System.out.format("Euler's method:\nPoints were found: %d; calls to function: %d\n", value, count);
         count = 0;
         value = SolveDiffEquation.RunKut(FUNCTION, tEnd, 0, 1e-6, t, y, nMax, tEnd);
-        System.out.format("Euler's method:\nPoints were found: %d; calls to function: %d\n", value, count);
+        System.out.format("Runge-Kutta method:\nPoints were found: %d; calls to function: %d\n", value, count);
 
         try(BufferedWriter writer = new BufferedWriter(new FileWriter("y.txt"))) {
             for (int i = 0; i < value; i++) {
