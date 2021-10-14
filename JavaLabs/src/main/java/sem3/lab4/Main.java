@@ -10,14 +10,21 @@ public class Main {
 
     public static void main(String[] args) {
         try(FileWriter writer = new FileWriter("Output.txt")) {
-            double eps = Double.parseDouble(args[0]);
-            double a = Double.parseDouble(args[1]);
-            double b = Double.parseDouble(args[2]);
-            double x0n = Double.parseDouble(args[3]);
-            double xt = Double.parseDouble(args[4]);
-            double x0s = Double.parseDouble(args[5]);
-            double x1 = Double.parseDouble(args[6]);
+//            double eps = Double.parseDouble(args[0]);
+//            double a = Double.parseDouble(args[1]);
+//            double b = Double.parseDouble(args[2]);
+//            double x0n = Double.parseDouble(args[3]);
+//            double xt = Double.parseDouble(args[4]);
+//            double x0s = Double.parseDouble(args[5]);
+//            double x1 = Double.parseDouble(args[6]);
 
+            double eps = 1e-6;
+            double a = 0.1;
+            double b = 1;
+            double x0n = 0.5;
+            double xt = 0.5;
+            double x0s = 0.5;
+            double x1 = 1;
             Function<Double, Double> func = Main::function;
 
             writer.write("Bisection\n");
